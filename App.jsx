@@ -10,6 +10,7 @@ function App() {
 
   return (
     <body>
+      {/* <img src='https://commonsensecountrygirl.files.wordpress.com/2012/06/mydirtyfridge.jpg'></img> */}
       <Nav />
       <Splash />
     </body>

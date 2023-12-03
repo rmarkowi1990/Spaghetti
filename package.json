@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/CodesmithLLC/unit-6SB-simon#readme",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.7",
     "nodemon": "^3.0.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.3"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

@@ -7,7 +7,7 @@ export default function Splash() {
             <h1>a <i>mindset</i>.</h1>
             {/* <h2>your journey awaits:</h2> */}
             <button>risk it all.</button>
-            <span>SPAGHETTI GENERAL'S WARNING: Eating spoiled, posioned, rotten, overcooked/undercooked, cheap leftover 'spaghetti' can (in rare circumstances) make you sick or kill you. Your demise will not be on our consience.
+            <span>SPAGHETTI GENERAL'S WARNING: Eating spoiled, posioned, rotten, overcooked/undercooked, cheap leftover noodles can (in rare circumstances) make you sick or even kill you. <b>Your demise will not be on our consience.</b>
             </span>
         </div>
     )
