@@ -1,0 +1,40 @@
+{
+  "name": "Spaghetti",
+  "version": "1.0.0",
+  "description": "Solving World Hunger",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodesmithLLC/unit-6SB-simon.git"
+  },
+  "author": "Andrew Carlson <acarl005@g.ucla.edu> (https://github.com/acarl005)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodesmithLLC/unit-6SB-simon/issues"
+  },
+  "homepage": "https://github.com/CodesmithLLC/unit-6SB-simon#readme",
+  "dependencies": {
+    "nodemon": "^3.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "eslint": "^7.12.1",
+    "eslint-import-resolver-webpack": "^0.13.2",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.26.1",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.61.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.4.0"
+  }
+}
