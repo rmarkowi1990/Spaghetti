@@ -1,19 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
+
+//import react router
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+//import redux
+import { store } from './Redux/store.js'
+import { Provider } from 'react-redux'
+
+//import redux methods
+import { useSelector, useDispatch } from 'react-redux'
+//import specific exported actions from specific reducer slice
+// import { } from './Redux/reducerSlice.js'
+
+
+//import components
 import Nav from './Components/Nav.jsx'
-import Splash from './Components/Splash.jsx'
-import Login from './Components/Login.jsx'
+import Splash from './Pages/Splash.jsx'
+import Login from './Pages/Login.jsx'
+import Footer from './Components/Footer.jsx'
+import Signup from './Pages/Signup.jsx'
 
 
+// const dispatch = useDispatch();
 
 function App() {
 
+  //create variable from state via useSelector
+  // const count = useSelector((state) => state.initial.value);
+
+
+
   return (
-    <body>
-      {/* <img src='https://commonsensecountrygirl.files.wordpress.com/2012/06/mydirtyfridge.jpg'></img> */}
-      <Nav />
-      <Splash />
-    </body>
+    // <body>
+    <Provider store={store}>
+      <BrowserRouter>
+        <div id="container">
+          <Nav />
+
+          <Routes>
+            <Route path='/' element={<Splash />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<Signup />} />
+
+          </Routes>
+          <Footer />
+        </div>
+
+      </BrowserRouter>
+    </Provider >
 
   );
 }

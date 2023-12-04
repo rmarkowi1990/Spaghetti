@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Nav() {
+
+    const navigate = useNavigate();
+
     return (
         <div id="navBar">
-            <h1>spaghetti</h1>
+            <h1 id='logo' onClick={() => navigate('/')}>spaghetti</h1>
             <ul>
-                <li>Login</li>
-                <li>Contact</li>
+                <Link to='/' className="navLink">Home</Link>
+                <Link to='/login' className="navLink">Login</Link>
+
             </ul>
         </div>
     )

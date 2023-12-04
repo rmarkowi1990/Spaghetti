@@ -13,6 +13,12 @@ body {
     /* height: 100vw */
 }
 
+#container {
+    min-height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
 
 
@@ -32,6 +38,13 @@ body {
 
 #navBar:hover {
     background-color: #FC4B4B;
+
+}
+
+#navBar>#logo:hover {
+    cursor: pointer;
+    background-color: #233142;
+
 }
 
 #navBar>h1 {
@@ -49,23 +62,44 @@ body {
 
 }
 
+
+
 #navBar>ul {
-    font-size: 20px;
-    list-style-type: none;
-    color: white;
     display: flex;
     flex-direction: row;
-    gap: 30px;
+    gap: 40px;
 
+
+}
+
+.navLink {
+    color: white;
+    text-decoration: none;
+    letter-spacing: 1.5px;
+}
+
+#footer {
+    padding-left: 45px;
+    padding-right: 45px;
+    margin-bottom: 0px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FD5252;
+    color: #F6F6F6;
 }
 
 #splash {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: left;
+    /* min-height: 600px; */
+
+
     /* width: 60%; */
-    padding-top: 10%;
+
     padding-left: 10%;
     padding-right: 10%;
 }
@@ -75,12 +109,71 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* min-height: 600px; */
 }
+
+#signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* min-height: 600px; */
+}
+
+
+.entryField {
+    display: flex;
+    flex-direction: row;
+    width: 350px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.entryField>input {
+    width: 200px;
+    height: 40px;
+    font-size: 25px;
+}
+
+
+#buttonSection {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+
+}
+
+.submitButton {
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 3px;
+    background-color: #233142;
+    font-size: 20px;
+    font-weight: 400;
+    color: white;
+    /* padding: 5px, 20px, 5px, 20px; */
+    border: none;
+    width: 150px;
+    height: 60px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
+}
+
+.submitButton:hover {
+    background-color: #f95959;
+    cursor: pointer;
+}
+
+
+
+
 
 #splash>h1 {
     font-size: 120px;
     color: #233142;
     margin: -30px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
     /* font-style: italic; */
     letter-spacing: 5px;
     filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 5%));
@@ -88,13 +181,16 @@ body {
 
 
 
+
+
 #splash>h2 {
     font-size: 60px;
+    /* background-color: pink; */
 
     color: #455d7a;
     letter-spacing: 1px;
 
-
+    padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
     filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
 }
@@ -110,8 +206,8 @@ body {
     border: none;
     width: 200px;
     height: 100px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    /* margin-top: 30px;
+    margin-bottom: 30px; */
     filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
 }
 
@@ -121,5 +217,5 @@ body {
 }
 
 #splash>span {
-    margin-top: 90px;
+    /* margin-top: 90px; */
 }
