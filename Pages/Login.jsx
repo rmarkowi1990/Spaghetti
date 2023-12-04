@@ -15,7 +15,7 @@ export default function Login() {
 
     return (
         <div id="login">
-            <h2>Log in</h2>
+            <h2 className="header">Log in</h2>
             <div id="formField">
                 <div className="entryField">
                     <h3>Username</h3>
