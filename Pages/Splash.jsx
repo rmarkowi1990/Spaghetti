@@ -6,6 +6,7 @@ export default function Splash() {
 
     const navigate = useNavigate()
 
+
     return (
         <div id="splash">
             <h2>not just a noodle.</h2>

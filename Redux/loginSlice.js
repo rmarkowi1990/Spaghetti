@@ -2,12 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     userName: '',
-    password: '',
-    address: ''
+    password: ''
 }
 
-export const signupSlice = createSlice({
-    name: 'signup',
+export const loginSlice = createSlice({
+    name: 'login',
     initialState,
     reducers: {
 
@@ -17,16 +16,14 @@ export const signupSlice = createSlice({
         },
         enterPassword: (state, action) => {
             state.password = action.payload.target.value;
-        },
-        enterAddress: (state, action) => {
-            state.address = action.payload.target.value;
         }
+
     },
 });
 
 
 // destructuring to export each action based on reducer functions
-export const { enterUserName, enterPassword, enterAddress } = signupSlice.actions;
+export const { enterUserName, enterPassword } = loginSlice.actions;
 
-export default signupSlice.reducer;
+export default loginSlice.reducer;
 
