@@ -27,7 +27,7 @@ module.exports = {
       publicPath: '/',
       directory: path.resolve(__dirname)
     },
-    port: 3000,
+    port: 2000,
     historyApiFallback: {
       index: 'index.html'
     }

@@ -1,24 +1,31 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const PORT = 2000;
+const PORT = 3000;
+const userController = require('./userController.jsx')
 
 
 // parses JSON from incoming request
 app.use(express.json());
 
-app.use(() => {
 
+//cors error handling
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:2000');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
 })
 
-// "start": "webpack serve"
 
 
+app.post('/signup', userController.createUser, (req, res) => {
+    res.status(200).json("hello")
+    //adds new user to users table
+})
 
-
-
-
-
+app.post('/meals', (req, res) => {
+    //adds new meal to meals table
+})
 
 
 

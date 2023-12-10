@@ -1,0 +1,209 @@
+body {
+    font-family: 'DM Sans', sans-serif;
+    margin: 0px 0px 0px 0px;
+    background-color: #F6F6F6;
+    color: #233142;
+}
+
+.fullScreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#container {
+    min-height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.twoSides {
+    display: grid;
+    grid-template-columns: [left] 50% [center] 50% [right];
+
+}
+
+.leftSide {
+    grid-column-start: left;
+    grid-column-end: center;
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.signup {
+    grid-column-start: center;
+    grid-column-end: right;
+
+}
+
+#navBar {
+    padding-left: 45px;
+    padding-right: 45px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FD5252;
+    color: #F6F6F6;
+    height: 100px;
+    filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
+}
+
+#navBar:hover {
+    background-color: #FC4B4B;
+}
+
+#navBar>#logo:hover {
+    cursor: pointer;
+    background-color: #233142;
+}
+
+#navBar>h1 {
+    font-size: 40px;
+    color: white;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: -2px;
+    background-color: #FF1F1F;
+    padding: 10px 30px 10px 30px;
+    border-radius: 50px;
+}
+
+#navBar>ul {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.navLink {
+    color: white;
+    text-decoration: none;
+    letter-spacing: 1.5px;
+}
+
+#footer {
+    padding-left: 45px;
+    padding-right: 45px;
+    margin-bottom: 0px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FD5252;
+    color: #F6F6F6;
+}
+
+#splash {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+#login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    font-size: 30px;
+    letter-spacing: 1.5px;
+}
+
+.entryField {
+    display: flex;
+    flex-direction: row;
+    width: 350px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.entryField>input {
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#buttonSection {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}
+
+.submitButton {
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 2px;
+    background-color: #233142;
+    font-size: 20px;
+    font-weight: 400;
+    color: white;
+    border: none;
+    width: 150px;
+    height: 60px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
+}
+
+.submitButton:hover {
+    background-color: #f95959;
+    cursor: pointer;
+}
+
+#splash>h1 {
+    font-size: 120px;
+    color: #233142;
+    margin: -30px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    letter-spacing: 5px;
+    filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 5%));
+}
+
+#splash>h2 {
+    font-size: 60px;
+    color: #455d7a;
+    letter-spacing: 1px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
+}
+
+#splash>button {
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 3px;
+    background-color: #233142;
+    font-size: 30px;
+    font-weight: 400;
+    color: white;
+    border: none;
+    width: 200px;
+    height: 100px;
+    filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
+}
+
+#splash>button:hover {
+    background-color: #f95959;
+    cursor: pointer;
+}

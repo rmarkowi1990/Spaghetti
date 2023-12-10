@@ -16,7 +16,7 @@ export default function Login() {
     return (
         <div id="login">
             <h2 className="header">Log in</h2>
-            <div id="formField">
+            <div className="formLogin">
                 <div className="entryField">
                     <h3>Username</h3>
                     <input onInput={(event) => dispatch(enterUserName(event))} value={userName}></input>

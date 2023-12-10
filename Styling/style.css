@@ -1,16 +1,21 @@
 body {
     font-family: 'DM Sans', sans-serif;
-    /* font-family: 'Eczar', serif; */
-
     margin: 0px 0px 0px 0px;
-
-    /* width: 100vw;
-    height: 100vw; */
-    /* background-color: #e3e3e3; */
     background-color: #F6F6F6;
     color: #233142;
-    /* background-image: linear-gradient(#e3e3e3, #F3F3F3); */
-    /* height: 100vw */
+}
+
+.fullScreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.leftSide,
+.signup {
+    padding: 30px
 }
 
 #container {
@@ -20,7 +25,27 @@ body {
     justify-content: space-between;
 }
 
+.twoSides {
+    display: grid;
+    grid-template-columns: [left] 50% [center] 50% [right];
 
+}
+
+.leftSide {
+    grid-column-start: left;
+    grid-column-end: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.signup {
+    grid-column-start: center;
+    grid-column-end: right;
+
+}
 
 #navBar {
     padding-left: 45px;
@@ -31,24 +56,25 @@ body {
     align-items: center;
     background-color: #FD5252;
     color: #F6F6F6;
-    /* width: 100%; */
     height: 100px;
     filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
+    background: repeating-linear-gradient(135deg,
+            #FD5252,
+            #FD5252 9px,
+            #fa5d57 9px,
+            #fa5d57 18px);
 }
 
 #navBar:hover {
     background-color: #FC4B4B;
-
 }
 
 #navBar>#logo:hover {
     cursor: pointer;
     background-color: #233142;
-
 }
 
 #navBar>h1 {
-
     font-size: 40px;
     color: white;
     font-style: italic;
@@ -57,19 +83,12 @@ body {
     background-color: #FF1F1F;
     padding: 10px 30px 10px 30px;
     border-radius: 50px;
-    /* filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%)); */
-
-
 }
-
-
 
 #navBar>ul {
     display: flex;
     flex-direction: row;
     gap: 40px;
-
-
 }
 
 .navLink {
@@ -88,6 +107,7 @@ body {
     align-items: center;
     background-color: #FD5252;
     color: #F6F6F6;
+
 }
 
 #splash {
@@ -95,11 +115,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: left;
-    /* min-height: 600px; */
-
-
-    /* width: 60%; */
-
     padding-left: 10%;
     padding-right: 10%;
 }
@@ -109,7 +124,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* min-height: 600px; */
+
 }
 
 #signup {
@@ -117,16 +132,12 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    /* min-height: 600px; */
 }
 
 .header {
     font-size: 30px;
     letter-spacing: 1.5px;
-
 }
-
 
 .entryField {
     display: flex;
@@ -138,29 +149,17 @@ body {
 
 .entryField>input {
     width: 200px;
-
     height: 40px;
     font-size: 20px;
     padding-left: 10px;
     padding-right: 10px;
-    /* border: solid 2px #455d7a; */
-
-    /* filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%)); */
-
-
 }
-
-.entryField>h3 {
-    /* letter-spacing: 1px; */
-}
-
 
 #buttonSection {
     display: flex;
     flex-direction: row;
     gap: 20px;
     justify-content: center;
-
 }
 
 .submitButton {
@@ -169,9 +168,7 @@ body {
     background-color: #233142;
     font-size: 20px;
     font-weight: 400;
-
     color: white;
-    /* padding: 5px, 20px, 5px, 20px; */
     border: none;
     width: 150px;
     height: 60px;
@@ -185,31 +182,19 @@ body {
     cursor: pointer;
 }
 
-
-
-
-
 #splash>h1 {
     font-size: 120px;
     color: #233142;
     margin: -30px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
-    /* font-style: italic; */
     letter-spacing: 5px;
     filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 5%));
 }
 
-
-
-
-
 #splash>h2 {
     font-size: 60px;
-    /* background-color: pink; */
-
     color: #455d7a;
     letter-spacing: 1px;
-
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
     filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
@@ -222,20 +207,13 @@ body {
     font-size: 30px;
     font-weight: 400;
     color: white;
-    /* padding: 5px, 20px, 5px, 20px; */
     border: none;
     width: 200px;
     height: 100px;
-    /* margin-top: 30px;
-    margin-bottom: 30px; */
     filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
 }
 
 #splash>button:hover {
     background-color: #f95959;
     cursor: pointer;
-}
-
-#splash>span {
-    /* margin-top: 90px; */
 }
