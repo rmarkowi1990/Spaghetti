@@ -20,6 +20,8 @@
   "homepage": "https://github.com/CodesmithLLC/unit-6SB-simon#readme",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
+    "bcrypt": "^5.1.1",
+    "crypto-browserify": "^3.12.0",
     "mongodb": "^6.3.0",
     "nodemon": "^3.0.2",
     "pg": "^8.11.3",

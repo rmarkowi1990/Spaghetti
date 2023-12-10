@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const PORT = 3000;
-const userController = require('./userController.jsx')
+const userController = require('./Controllers/userController.jsx')
 
 
 // parses JSON from incoming request
@@ -17,10 +17,10 @@ app.use((req, res, next) => {
 })
 
 
-
+//adds new user to users table
 app.post('/signup', userController.createUser, (req, res) => {
-    res.status(200).json("hello")
-    //adds new user to users table
+    res.status(200).json("user successfully added")
+
 })
 
 app.post('/meals', (req, res) => {
@@ -33,6 +33,9 @@ app.post('/meals', (req, res) => {
 
 
 
+
+
+//error handling
 
 app.use((err, req, res, next) => {
     const defaultErr = {
