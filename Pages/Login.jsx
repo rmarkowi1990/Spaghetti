@@ -2,14 +2,14 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { enterUserName, enterPassword } from '../Redux/loginSlice.js';
+import { enterUserName, enterPassword, errorTrue, errorFalse } from '../Redux/loginSlice.js';
 
 export default function Login() {
 
     const dispatch = useDispatch();
 
-    const userName = useSelector((state) => state.login.userName);
-    const password = useSelector((state) => state.login.password);
+    const { userName, password, errorMessage } = useSelector((state) => state.login);
+
 
     const navigate = useNavigate();
 
@@ -29,11 +29,11 @@ export default function Login() {
         fetch('http://localhost:3000/login', requestOptions)
             .then(response => {
                 if (response.status === 200) {
-                    console.log("SUCCESS")
-                    // dispatch(resetState());
+                    dispatch(errorFalse())
                     return navigate('/');
                 } else {
-                    return navigate('/signup')
+                    dispatch(errorTrue());
+                    return navigate('/login')
                 }
             })
 
@@ -52,10 +52,15 @@ export default function Login() {
                     <input onInput={(event) => dispatch(enterPassword(event))} value={password} type='password'></input>
                 </div>
             </div>
-            <div id="buttonSection">
-                <button className="submitButton" onClick={login}>Log in</button>
-                <button id="altButton" className="submitButton" onClick={() => navigate('/signup')}>Sign Up</button>
+            <div className="bottom">
+                <div className="errorDisplay">
+                    {errorMessage ? "Invalid Username/Password" : " "}
+                </div>
 
+                <div className="buttonSection">
+                    <button className="submitButton" onClick={login}>Log in</button>
+                    <button id="altButton" className="submitButton" onClick={() => navigate('/signup')}>Sign Up</button>
+                </div>
             </div>
         </div >
     )

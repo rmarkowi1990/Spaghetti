@@ -109,10 +109,14 @@ export default function Signup() {
 
                 </div >
             </div >
-            <div id="buttonSection2">
-                {errorMessage}<br></br>
-                <button className="submitButton" onClick={submit} >Sign up</button>
+            <div className="bottom">
+                <div className="errorDisplay">
+                    {errorMessage}
+                </div>
+                <div className="buttonSection">
 
+                    <button className="submitButton" onClick={submit} >Sign up</button>
+                </div>
             </div>
         </div>
     )
