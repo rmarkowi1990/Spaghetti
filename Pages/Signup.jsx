@@ -1,24 +1,29 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 // import bcrypt from 'bcrypt';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { enterUserName, enterPassword, enterFirstName, enterLastName, enterAddress, enterCity, enterState, enterZip } from '../Redux/signupSlice.js';
+import { resetState, displayError, enterUserName, enterPassword, enterFirstName, enterLastName, enterAddress, enterCity, enterState, enterZip } from '../Redux/signupSlice.js';
 
 export default function Signup() {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     //retrieve fields from state via redux
-    const { userName, password, firstName, lastName, address, city, state, zip } = useSelector((state) => state.signup);
+    const { errorMessage, userName, password, firstName, lastName, address, city, state, zip } = useSelector((state) => state.signup);
 
 
     //submit fields and make post request to database
-    async function submit() {
+    function submit() {
 
         //hash password before storing
-        const hashedPassword = await bcrypt.hash(password, 12);
-        console.log('hashed password: ,', hashedPassword);
+        // const hashedPassword = await bcrypt.hash(password, 12);
+        // console.log('hashed password: ,', hashedPassword);
+
+
 
         const requestOptions = {
             method: 'POST',
@@ -27,7 +32,7 @@ export default function Signup() {
             },
             body: JSON.stringify({
                 userName: userName,
-                password: hashedPassword,
+                password: password,
                 firstName: firstName,
                 lastName: lastName,
                 address: address,
@@ -38,8 +43,21 @@ export default function Signup() {
         }
 
         fetch('http://localhost:3000/signup', requestOptions)
-            .then(response => response.json())
-            .then(data => console.log(data))
+            .then(response => {
+                if (response.status === 200) {
+                    dispatch(resetState());
+                    return navigate('/login');
+                } else {
+                    dispatch(displayError('Invalid Username'));
+                }
+            })
+        // .then(data =>
+        //     dispatch(displayError(data.msg)))
+        // .then(data => {
+        //     console.log(data);
+        //     return navigate('/login');
+        // })
+
 
     }
 
@@ -91,7 +109,8 @@ export default function Signup() {
 
                 </div >
             </div >
-            <div id="buttonSection">
+            <div id="buttonSection2">
+                {errorMessage}<br></br>
                 <button className="submitButton" onClick={submit} >Sign up</button>
 
             </div>

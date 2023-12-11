@@ -23,6 +23,12 @@ app.post('/signup', userController.createUser, (req, res) => {
 
 })
 
+app.post('/login', userController.checkUser, (req, res) => {
+
+    res.status(200).json("user successfully exists")
+
+})
+
 app.post('/meals', (req, res) => {
     //adds new meal to meals table
 })

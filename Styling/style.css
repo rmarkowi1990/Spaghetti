@@ -162,6 +162,15 @@ body {
     justify-content: center;
 }
 
+#buttonSection2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    color: #FD5252;
+}
+
 .submitButton {
     font-family: 'DM Sans', sans-serif;
     letter-spacing: 2px;

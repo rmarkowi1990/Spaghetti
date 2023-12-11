@@ -13,6 +13,32 @@ export default function Login() {
 
     const navigate = useNavigate();
 
+    function login() {
+
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userName: userName,
+                password: password,
+            })
+        }
+
+        fetch('http://localhost:3000/login', requestOptions)
+            .then(response => {
+                if (response.status === 200) {
+                    console.log("SUCCESS")
+                    // dispatch(resetState());
+                    return navigate('/');
+                } else {
+                    return navigate('/signup')
+                }
+            })
+
+    }
+
     return (
         <div id="login">
             <h2 className="header">Log in</h2>
@@ -27,7 +53,7 @@ export default function Login() {
                 </div>
             </div>
             <div id="buttonSection">
-                <button className="submitButton">Log in</button>
+                <button className="submitButton" onClick={login}>Log in</button>
                 <button id="altButton" className="submitButton" onClick={() => navigate('/signup')}>Sign Up</button>
 
             </div>

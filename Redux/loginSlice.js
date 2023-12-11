@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     userName: '',
-    password: ''
+    password: '',
+    // errorMessage: ''
 }
 
 export const loginSlice = createSlice({

@@ -10,13 +10,13 @@ const initialState = {
     city: '',
     state: '',
     zip: '',
+    errorMessage: ''
 }
 
 export const signupSlice = createSlice({
     name: 'signup',
     initialState,
     reducers: {
-
 
         enterUserName: (state, action) => {
             state.userName = action.payload.target.value;
@@ -42,12 +42,26 @@ export const signupSlice = createSlice({
         enterZip: (state, action) => {
             state.zip = action.payload.target.value;
         },
+        displayError: (state, action) => {
+            state.errorMessage = action.payload;
+        },
+        resetState: (state) => {
+            state.userName = '',
+                state.password = '',
+                state.firstName = '',
+                state.lastName = '',
+                state.address = '',
+                state.city = '',
+                state.state = '',
+                state.zip = '',
+                state.errorMessage = ''
+        }
     },
 });
 
 
 // destructuring to export each action based on reducer functions
-export const { enterUserName, enterPassword, enterFirstName, enterLastName, enterAddress, enterCity, enterState, enterZip } = signupSlice.actions;
+export const { resetState, displayError, enterUserName, enterPassword, enterFirstName, enterLastName, enterAddress, enterCity, enterState, enterZip } = signupSlice.actions;
 
 export default signupSlice.reducer;
 
