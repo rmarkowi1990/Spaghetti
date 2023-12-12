@@ -8,7 +8,7 @@ export default function MealCard(props) {
 
 
     return (
-        <div className='mealContainer' onClick={() => navigate('/login')}>
+        <div className='mealContainer' onClick={() => navigate('/meal')}>
             <div className='mealImage'>
 
             </div>
