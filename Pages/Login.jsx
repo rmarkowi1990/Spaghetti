@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { enterUserName, enterPassword, errorTrue, errorFalse } from '../Redux/loginSlice.js';
+import { setLogin } from '../Redux/macroSlice.js';
 
 // import { setLogin } from '../Redux/macroSlice.js';
 
@@ -37,7 +38,7 @@ export default function Login() {
             .then(response => {
                 if (response.status === 200) {
                     dispatch(errorFalse())
-                    // dispatch(setLogin(true))
+                    dispatch(setLogin(true))
                     return navigate('/feed');
                 } else {
                     dispatch(errorTrue());

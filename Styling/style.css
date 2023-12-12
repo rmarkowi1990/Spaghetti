@@ -58,11 +58,11 @@ body {
     color: #F6F6F6;
     height: 100px;
     filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
-    background: repeating-linear-gradient(135deg,
+    /* background: repeating-linear-gradient(135deg,
             #FD5252,
             #FD5252 9px,
             #fa5d57 9px,
-            #fa5d57 18px);
+            #fa5d57 18px); */
 }
 
 #navBar:hover {
@@ -258,17 +258,156 @@ body {
     justify-content: flex-start;
     align-items: center;
     height: 100%;
-    background-color: pink;
+    /* background-color: pink; */
 
 }
 
 #mainFeed {
-    width: 90%;
-    height: 90%;
-    background-color: purple;
+    width: 93%;
+    margin: 30px 10px 30px 10px;
+    padding: 20px 20px 20px 20px;
+    background-color: #233142;
+    /* border: 10px solid;
+    border-color: #233142; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
+    background: repeating-linear-gradient(135deg,
+            #233142,
+            #233142 9px,
+            #273648 9px,
+            #273648 18px);
 
+
+
+}
+
+#mainFeed>h1 {
+    font-size: 50px;
+    color: white;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: -2px;
+    background-color: #FF1F1F;
+    padding: 10px 30px 10px 30px;
+    border-radius: 50px;
+    filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
+    /* background: repeating-linear-gradient(135deg,
+            #FF1F1F,
+            #FF1F1F 9px,
+            #ff3535 9px,
+            #ff3535 18px); */
+
+}
+
+.feedGrid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: [start] 33.33% [left] 33.34% [right] 33.33% [end];
+    /* gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-star;
+    align-items: center; */
+
+
+}
+
+.mealContainer {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px;
+    border-radius: 10px;
+    padding: 20px;
+    filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
+    /* width: 100%; */
+}
+
+.mealContainer:hover {
+    cursor: pointer;
+}
+
+.bottomSection {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.mealDetails {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-content: flex-start
+}
+
+.mealImage {
+
+    background-color: black;
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.mealTitle {
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: -2px;
+    color: red;
+    font-size: 30px;
+    margin: 10px 0px 0px 0px;
+}
+
+.mealChef {
+    margin: 5px 0px 0px 0px;
+    font-size: 20px;
+    color: #233142;
+    letter-spacing: .5px;
+}
+
+.chefRating {
+
+    /* font-style: italic; */
+
+    font-weight: 300;
+    padding-left: 5px;
+    letter-spacing: 1px;
+    /* color: #233142 */
+}
+
+.mealDescription {
+    margin: 5px 0px 0px 0px;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 300;
+    color: #484F57;
+}
+
+.mealBox {
+    margin: 10px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.mealPrice {
+
+    font-size: 25px;
+    font-weight: 500;
+    color: white;
+    font-style: italic;
+    letter-spacing: -1px;
 }

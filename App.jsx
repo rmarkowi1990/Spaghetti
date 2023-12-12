@@ -10,6 +10,8 @@ import { Provider } from 'react-redux'
 
 //import redux methods
 import { useSelector, useDispatch } from 'react-redux'
+
+import Main from './Main.jsx'
 //import specific exported actions from specific reducer slice
 
 // import { } from './Redux/reducerSlice.js'
@@ -39,33 +41,14 @@ function App() {
   //checks if logged in
 
 
-  // const { loggedIn } = useSelector((state) => state.macro);
 
-  // console.log(loggedIn)
 
 
 
   return (
     // <body>
     <Provider store={store}>
-      <BrowserRouter>
-        <div id="container">
-
-
-          {/* {loggedIn ? <NavLoggedIn /> : <Nav />} */}
-          <NavLoggedIn />
-
-          <Routes>
-            <Route path='/' element={<Splash />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/signup' element={<Signup />} />
-            <Route path='/feed' element={<Feed />} />
-
-          </Routes>
-          <Footer />
-        </div>
-
-      </BrowserRouter>
+      <Main />
     </Provider >
 
   );
