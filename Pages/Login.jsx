@@ -4,7 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { enterUserName, enterPassword, errorTrue, errorFalse } from '../Redux/loginSlice.js';
 
+// import { setLogin } from '../Redux/macroSlice.js';
+
 export default function Login() {
+
+
 
     const dispatch = useDispatch();
 
@@ -12,6 +16,9 @@ export default function Login() {
 
 
     const navigate = useNavigate();
+
+
+
 
     function login() {
 
@@ -30,7 +37,8 @@ export default function Login() {
             .then(response => {
                 if (response.status === 200) {
                     dispatch(errorFalse())
-                    return navigate('/');
+                    // dispatch(setLogin(true))
+                    return navigate('/feed');
                 } else {
                     dispatch(errorTrue());
                     return navigate('/login')
@@ -40,6 +48,7 @@ export default function Login() {
     }
 
     return (
+
         <div id="login">
             <h2 className="header">Log in</h2>
             <div className="formLogin">
@@ -63,5 +72,6 @@ export default function Login() {
                 </div>
             </div>
         </div >
+
     )
 }

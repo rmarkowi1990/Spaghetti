@@ -249,3 +249,26 @@ body {
     background-color: #f95959;
     cursor: pointer;
 }
+
+/* MAIN FEED */
+
+.background {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    background-color: pink;
+
+}
+
+#mainFeed {
+    width: 90%;
+    height: 90%;
+    background-color: purple;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}

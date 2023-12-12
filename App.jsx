@@ -15,12 +15,17 @@ import { useSelector, useDispatch } from 'react-redux'
 // import { } from './Redux/reducerSlice.js'
 
 
+
+
 //import components
 import Nav from './Components/Nav.jsx'
+import NavLoggedIn from './Components/NavLoggedIn.jsx'
 import Splash from './Pages/Splash.jsx'
 import Login from './Pages/Login.jsx'
 import Footer from './Components/Footer.jsx'
 import Signup from './Pages/Signup.jsx'
+
+import Feed from './Pages/Feed.jsx'
 
 
 // const dispatch = useDispatch();
@@ -31,18 +36,30 @@ function App() {
   // const count = useSelector((state) => state.initial.value);
 
 
+  //checks if logged in
+
+
+  // const { loggedIn } = useSelector((state) => state.macro);
+
+  // console.log(loggedIn)
+
+
 
   return (
     // <body>
     <Provider store={store}>
       <BrowserRouter>
         <div id="container">
-          <Nav />
+
+
+          {/* {loggedIn ? <NavLoggedIn /> : <Nav />} */}
+          <NavLoggedIn />
 
           <Routes>
             <Route path='/' element={<Splash />} />
             <Route path='/login' element={<Login />} />
             <Route path='/signup' element={<Signup />} />
+            <Route path='/feed' element={<Feed />} />
 
           </Routes>
           <Footer />

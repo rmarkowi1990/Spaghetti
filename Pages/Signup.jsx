@@ -62,60 +62,62 @@ export default function Signup() {
     }
 
     return (
-        <div className="fullScreen">
-            <h2 className="header">Create Account</h2>
-            <div className="twoSides">
-                <div className="leftSide">
-                    <div className="formField">
-                        <div className="entryField">
-                            <h3>Username</h3>
-                            <input onInput={(event) => dispatch(enterUserName(event))} value={userName}></input>
-                        </div>
-                        <div className="entryField">
-                            <h3>Password</h3>
-                            <input onInput={(event) => dispatch(enterPassword(event))} value={password} type='password'></input>
-                        </div>
-                        <div className="entryField">
-                            <h3>First Name</h3>
-                            <input onInput={(event) => dispatch(enterFirstName(event))} value={firstName}></input>
-                        </div>
-                        <div className="entryField">
-                            <h3>Last Name</h3>
-                            <input onInput={(event) => dispatch(enterLastName(event))} value={lastName}></input>
-                        </div>
-                    </div>
-                </div>
-                <div id="signup">
-
-                    <div className="formField">
-
-                        <div className="entryField">
-                            <h3>Address</h3>
-                            <input onInput={(event) => dispatch(enterAddress(event))} value={address}></input>
-                        </div>
-                        <div className="entryField">
-                            <h3>City</h3>
-                            <input onInput={(event) => dispatch(enterCity(event))} value={city}></input>
-                        </div>
-                        <div className="entryField">
-                            <h3>State</h3>
-                            <input onInput={(event) => dispatch(enterState(event))} value={state}></input>
-                        </div>
-                        <div className="entryField">
-                            <h3>Zip Code</h3>
-                            <input onInput={(event) => dispatch(enterZip(event))} value={zip}></input>
+        <div className="container">
+            <div className="fullScreen">
+                <h2 className="header">Create Account</h2>
+                <div className="twoSides">
+                    <div className="leftSide">
+                        <div className="formField">
+                            <div className="entryField">
+                                <h3>Username</h3>
+                                <input onInput={(event) => dispatch(enterUserName(event))} value={userName}></input>
+                            </div>
+                            <div className="entryField">
+                                <h3>Password</h3>
+                                <input onInput={(event) => dispatch(enterPassword(event))} value={password} type='password'></input>
+                            </div>
+                            <div className="entryField">
+                                <h3>First Name</h3>
+                                <input onInput={(event) => dispatch(enterFirstName(event))} value={firstName}></input>
+                            </div>
+                            <div className="entryField">
+                                <h3>Last Name</h3>
+                                <input onInput={(event) => dispatch(enterLastName(event))} value={lastName}></input>
+                            </div>
                         </div>
                     </div>
+                    <div id="signup">
 
+                        <div className="formField">
+
+                            <div className="entryField">
+                                <h3>Address</h3>
+                                <input onInput={(event) => dispatch(enterAddress(event))} value={address}></input>
+                            </div>
+                            <div className="entryField">
+                                <h3>City</h3>
+                                <input onInput={(event) => dispatch(enterCity(event))} value={city}></input>
+                            </div>
+                            <div className="entryField">
+                                <h3>State</h3>
+                                <input onInput={(event) => dispatch(enterState(event))} value={state}></input>
+                            </div>
+                            <div className="entryField">
+                                <h3>Zip Code</h3>
+                                <input onInput={(event) => dispatch(enterZip(event))} value={zip}></input>
+                            </div>
+                        </div>
+
+                    </div >
                 </div >
-            </div >
-            <div className="bottom">
-                <div className="errorDisplay">
-                    {errorMessage}
-                </div>
-                <div className="buttonSection">
+                <div className="bottom">
+                    <div className="errorDisplay">
+                        {errorMessage}
+                    </div>
+                    <div className="buttonSection">
 
-                    <button className="submitButton" onClick={submit} >Sign up</button>
+                        <button className="submitButton" onClick={submit} >Sign up</button>
+                    </div>
                 </div>
             </div>
         </div>

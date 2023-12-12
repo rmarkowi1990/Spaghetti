@@ -21,7 +21,7 @@ userController.createUser = async (req, res, next) => {
         console.log("error handling")
         return next({
             log: 'Invalid Username',
-            status: 402,
+            status: 500,
             message: { err: 'username Already Exists' },
         })
     }
