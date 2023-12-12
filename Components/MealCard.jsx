@@ -9,9 +9,10 @@ export default function MealCard(props) {
 
     return (
         <div className='mealContainer' onClick={() => navigate('/meal')}>
-            <div className='mealImage'>
+            {/* <div className='mealImage'>
 
-            </div>
+            </div> */}
+            <img className='mealImage' src={props.image} />
 
             <div className='mealDetails'>
                 <h1 className='mealTitle'>{props.name}</h1>
