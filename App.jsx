@@ -1,54 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-//import react router
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-//import redux
-import { store } from './Redux/store.js'
-import { Provider } from 'react-redux'
-
-//import redux methods
-import { useSelector, useDispatch } from 'react-redux'
-
-import Main from './Main.jsx'
-//import specific exported actions from specific reducer slice
-
-// import { } from './Redux/reducerSlice.js'
-
-
-
+//import redux, redux persist for authentication
+import { persistor, store } from './Redux/store.js';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
 //import components
-import Nav from './Components/Nav.jsx'
-import NavLoggedIn from './Components/NavLoggedIn.jsx'
-import Splash from './Pages/Splash.jsx'
-import Login from './Pages/Login.jsx'
-import Footer from './Components/Footer.jsx'
-import Signup from './Pages/Signup.jsx'
+import Main from './Main.jsx'
 
-import Feed from './Pages/Feed.jsx'
-
-
-// const dispatch = useDispatch();
 
 function App() {
 
-  //create variable from state via useSelector
-  // const count = useSelector((state) => state.initial.value);
-
-
-  //checks if logged in
-
-
-
-
-
 
   return (
-    // <body>
+
     <Provider store={store}>
-      <Main />
+      <PersistGate loading={null} persistor={persistor}>
+        <Main />
+      </PersistGate>
     </Provider >
 
   );
