@@ -11,9 +11,11 @@ import ProtectedRoute from "./Utilities/ProtectedRoute.jsx"
 import Nav from './Components/Nav.jsx'
 import NavLoggedIn from './Components/NavLoggedIn.jsx'
 import Splash from './Pages/Splash.jsx'
+import Error404 from './Pages/Error404.jsx'
 import Login from './Pages/Login.jsx'
 import Footer from './Components/Footer.jsx'
 import Signup from './Pages/Signup.jsx'
+
 
 import Feed from './Pages/Feed.jsx'
 
@@ -42,6 +44,7 @@ export default function Main() {
                             <Feed />
                         </ProtectedRoute>
                     } />
+                    <Route path='*' element={<Error404 />} />
 
                 </Routes>
                 <Footer />
