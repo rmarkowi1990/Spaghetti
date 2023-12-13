@@ -34,7 +34,7 @@ export default function Main() {
 
 
                 <Routes>
-                    <Route path='/' element={<Splash />} />
+                    <Route path='/' element={loggedIn ? <Feed /> : <Splash />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/signup' element={<Signup />} />
                     <Route path='/feed' element={
