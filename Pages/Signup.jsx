@@ -23,7 +23,11 @@ export default function Signup() {
         // const hashedPassword = await bcrypt.hash(password, 12);
         // console.log('hashed password: ,', hashedPassword);
 
-
+        //makes sure zip code is a number that is 5 characters long
+        if (zip.length !== 5 || Number(zip) === 'unefined') {
+            dispatch(displayError('Invalid Zip'));
+            return
+        }
 
         const requestOptions = {
             method: 'POST',
