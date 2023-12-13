@@ -5,6 +5,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { useSelector, useDispatch } from 'react-redux'
 
+//protected Route module
+import ProtectedRoute from "./Utilities/ProtectedRoute.jsx"
+
 import Nav from './Components/Nav.jsx'
 import NavLoggedIn from './Components/NavLoggedIn.jsx'
 import Splash from './Pages/Splash.jsx'
@@ -22,24 +25,29 @@ export default function Main() {
 
 
 
-    return (<BrowserRouter>
-        <div id="container">
+    return (
+        <BrowserRouter>
+            <div id="container">
 
 
-            {loggedIn ? <NavLoggedIn /> : <Nav />}
+                {loggedIn ? <NavLoggedIn /> : <Nav />}
 
 
-            <Routes>
-                <Route path='/' element={<Splash />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/signup' element={<Signup />} />
-                <Route path='/feed' element={<Feed />} />
+                <Routes>
+                    <Route path='/' element={<Splash />} />
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/signup' element={<Signup />} />
+                    <Route path='/feed' element={
+                        <ProtectedRoute>
+                            <Feed />
+                        </ProtectedRoute>
+                    } />
 
-            </Routes>
-            <Footer />
-        </div>
+                </Routes>
+                <Footer />
+            </div>
 
-    </BrowserRouter>
+        </BrowserRouter>
 
     )
 }
