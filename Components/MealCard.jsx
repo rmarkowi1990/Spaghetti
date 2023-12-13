@@ -11,17 +11,19 @@ export default function MealCard(props) {
         <div className='mealContainer' onClick={() => navigate('/meal')}>
 
             <img className='mealImage' src={props.image} />
+            <div className='mealBox'><h2 className='mealPrice'>{props.price}</h2></div>
+
             <div className='detailsSplit'>
                 <div className='mealDetails'>
                     <h1 className='mealTitle'>{props.name}</h1>
                     <h2 className='mealChef'>{props.chef}<span className='chefRating'> ({props.rating}) </span></h2>
                     <h2 className='mealDescription'>{props.days} Days Old</h2>
-                    <div className='mealBox'><h2 className='mealPrice'>{props.price}</h2></div>
                 </div>
                 <div className='detailsRight'>
                     <h2>3 mi.</h2>
                 </div>
             </div>
+
 
 
         </div >
