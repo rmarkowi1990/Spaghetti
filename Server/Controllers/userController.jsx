@@ -1,4 +1,8 @@
+const { MongoBatchReExecutionError } = require('mongodb');
 const db = require('../Models/databaseModels.jsx');
+
+
+
 
 
 const userController = {};
@@ -37,7 +41,11 @@ userController.checkUser = async (req, res, next) => {
 
         //update to bcrypt.compare
         if (password === match.rows[0].password) {
-            console.log('match!')
+            // console.log('match: ', match.rows[0])
+            const userDetails = match.rows[0];
+            delete userDetails.password;
+            res.locals.userDetails = userDetails;
+
             return next()
         } else {
             return next({

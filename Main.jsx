@@ -23,7 +23,7 @@ import Feed from './Pages/Feed.jsx'
 export default function Main() {
 
 
-    const { loggedIn } = useSelector((state) => state.macro)
+    const { loggedIn } = useSelector((state) => state.session)
 
 
 

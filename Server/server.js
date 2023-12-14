@@ -24,8 +24,8 @@ app.post('/signup', userController.createUser, (req, res) => {
 })
 
 app.post('/login', userController.checkUser, (req, res) => {
-
-    res.status(200).json("user successfully exists")
+    console.log('user details: ', res.locals.userDetails)
+    res.status(200).json(res.locals.userDetails)
 
 })
 

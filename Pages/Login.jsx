@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { enterUserName, enterPassword, errorTrue, errorFalse } from '../Redux/loginSlice.js';
-import { setLogin } from '../Redux/macroSlice.js';
+import { startSession } from '../Redux/sessionSlice.js';
 
-// import { setLogin } from '../Redux/macroSlice.js';
+
 
 export default function Login() {
 
@@ -15,11 +15,7 @@ export default function Login() {
 
     const { userName, password, errorMessage } = useSelector((state) => state.login);
 
-
     const navigate = useNavigate();
-
-
-
 
     function login() {
 
@@ -35,18 +31,23 @@ export default function Login() {
         }
 
         fetch('http://localhost:3000/login', requestOptions)
-            .then(response => {
-                if (response.status === 200) {
-                    dispatch(errorFalse())
-                    dispatch(setLogin(true))
+            .then(response => response.json().then(data => ({ status: response.status, body: data })))
+            .then(obj => {
+
+                if (obj.status === 200) {
+                    dispatch(startSession(obj.body));
                     return navigate('/feed');
                 } else {
                     dispatch(errorTrue());
                     return navigate('/login')
                 }
+
             })
 
     }
+
+
+
 
     return (
 

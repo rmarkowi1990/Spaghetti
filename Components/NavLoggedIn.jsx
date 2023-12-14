@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux'
-import { setLogin } from '../Redux/macroSlice.js';
+import { endSession } from '../Redux/sessionSlice.js';
 
 export default function NavLoggedIn() {
 
@@ -11,7 +11,7 @@ export default function NavLoggedIn() {
     const navigate = useNavigate();
 
     function logout() {
-        dispatch(setLogin(false))
+        dispatch(endSession())
 
     }
 

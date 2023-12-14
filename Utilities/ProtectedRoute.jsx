@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom'
 const ProtectedRoute = ({ children }) => {
 
     //check location property from redux state
-    const loggedIn = useSelector((state) => state.macro.loggedIn);
+    const loggedIn = useSelector((state) => state.session.loggedIn);
 
     console.log("checking if logged in: ", loggedIn);
 
