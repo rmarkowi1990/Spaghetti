@@ -11,6 +11,5 @@ export default function Error404() {
             <h1>Oh No!</h1>
             <h2>We <i>spilled</i>  the Spaghetti.</h2>
             <button onClick={() => navigate('/')}>return</button>
-        </div>
-    )
+        </div>)
 }
