@@ -508,3 +508,91 @@ body {
     margin-top: 40px;
 
 }
+
+/* chef table */
+
+#chefTableContainer {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background: repeating-linear-gradient(135deg,
+            #233142,
+            #233142 9px,
+            #273648 9px,
+            #273648 18px);
+
+}
+
+#chefTableContainer>h1 {
+    font-size: 65px;
+    width: 40%;
+    color: #273648;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: -2px;
+    /* background-color: #FF1F1F; */
+    background-color: #E2FF37;
+    padding: 10px 30px 10px 30px;
+    border-radius: 5px;
+
+    filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
+    /* background: repeating-linear-gradient(135deg,
+            #FF1F1F,
+            #FF1F1F 9px,
+            #ff3535 9px,
+            #ff3535 18px); */
+}
+
+#mealSubmission {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: pink;
+    border-radius: 20px;
+    width: 80%;
+    margin-bottom: 40px;
+}
+
+.formSection {
+    width: 50%;
+    background-color: white;
+    padding: 40px;
+}
+
+.ingredientsWrapper {
+    display: grid;
+    grid-template-columns: [left] 50% [center] 50% [right]
+}
+
+.ingredientsList {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.chefField {
+    display: flex;
+    flex-direction: row;
+    /* width: 350px; */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chefField>input {
+    width: 400px;
+    height: 40px;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#description {
+
+    width: 100%;
+    height: 100px;
+    font-size: 20px;
+    resize: none;
+}

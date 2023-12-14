@@ -21,6 +21,7 @@ export const sessionSlice = createSlice({
     reducers: {
 
 
+
         startSession: (state, action) => {
             state.loggedIn = true;
             state.userDetails = action.payload

@@ -15,6 +15,7 @@ import Error404 from './Pages/Error404.jsx'
 import Login from './Pages/Login.jsx'
 import Footer from './Components/Footer.jsx'
 import Signup from './Pages/Signup.jsx'
+import ChefTable from './Pages/ChefTable.jsx'
 
 
 import Feed from './Pages/Feed.jsx'
@@ -42,6 +43,11 @@ export default function Main() {
                     <Route path='/feed' element={
                         <ProtectedRoute>
                             <Feed />
+                        </ProtectedRoute>
+                    } />
+                    <Route path='/cheftable' element={
+                        <ProtectedRoute>
+                            <ChefTable />
                         </ProtectedRoute>
                     } />
                     <Route path='*' element={<Error404 />} />

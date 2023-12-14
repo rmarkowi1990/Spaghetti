@@ -7,7 +7,8 @@ import thunk from 'redux-thunk';
 
 import signupSlice from './signupSlice.js';
 import loginSlice from './loginSlice.js';
-import sessionSlice from './sessionSlice.js'
+import sessionSlice from './sessionSlice.js';
+import chefSlice from './chefSlice.js';
 
 
 //persist syntax;
@@ -26,6 +27,7 @@ export const store = configureStore({
     reducer: {
         signup: signupSlice,
         login: loginSlice,
+        chef: chefSlice,
         session: persistedMacro,
         middleware: [thunk]
     }

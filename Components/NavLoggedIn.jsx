@@ -22,7 +22,7 @@ export default function NavLoggedIn() {
             <h1 id='logo' onClick={() => navigate('/feed')}>spaghetti</h1>
             <ul>
                 <Link to='/feed' className="navLink">Home</Link>
-                <Link to='/chefTable' className="navLink">Chef Table</Link>
+                <Link to='/cheftable' className="navLink">Chef Table</Link>
                 <Link to='/profile' className="navLink">Profile</Link>
                 <Link to='/login' className="navLink" onClick={logout}>Log Out</Link>
 
