@@ -3,7 +3,7 @@ import React from 'react';
 import { addImage, enterMealTitle, enterDescription, enterExpiration, enterPrice, toggleCrustaceans, toggleDairy, toggleEggs, toggleFish, toggleMeat, togglePeanuts, toggleSesame, toggleSoybeans, toggleTreeNuts, toggleWheat } from '../Redux/chefSlice';
 import { useSelector, useDispatch } from 'react-redux'
 
-export default function ChefTable() {
+export default function Chef() {
 
 
 
@@ -15,13 +15,33 @@ export default function ChefTable() {
     const { dairy, eggs, fish, crustaceans, treeNuts, peanuts, wheat, soybeans, sesame, meat } = useSelector(state => state.chef.ingredients)
 
 
-    function imageUpload(event) {
-
-
-        dispatch(addImage(event.target.files[0]))
-    }
+    // function imageUpload(event) {
+    //     dispatch(addImage(event.target.files[0]))
+    // }
 
     console.log('image, ', image);
+
+    function submit() {
+
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'multipart/formData'
+            },
+            body: image
+        }
+
+        console.log("about to submit", image)
+        fetch('http://localhost:3000/photo', requestOptions)
+            .then(res => res.json())
+            .then(data => console.log(data))
+
+    }
+
+
+
+
+
 
     return (
         <div id='chefTableContainer'>
@@ -31,7 +51,7 @@ export default function ChefTable() {
 
                 <div id='imageSection'>
                     <img></img>
-                    <input type='file' onChange={imageUpload} />
+                    <input type='file' onChange={(event) => dispatch(addImage(event.target.files[0]))} />
                 </div>
                 <div className='formSection'>
                     <h2>new leftovers:</h2>
@@ -104,7 +124,7 @@ export default function ChefTable() {
                     <h3>Description</h3>
                     <textarea id="description" onInput={(event) => dispatch(enterDescription(event))} value={description}></textarea>
 
-                    <button>Share</button>
+                    <button onClick={submit}>Share</button>
 
 
                 </div>

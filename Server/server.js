@@ -5,6 +5,7 @@ const PORT = 3000;
 const userController = require('./Controllers/userController.jsx')
 
 
+
 // parses JSON from incoming request
 app.use(express.json());
 
@@ -29,8 +30,9 @@ app.post('/login', userController.checkUser, (req, res) => {
 
 })
 
-app.post('/meals', (req, res) => {
-    //adds new meal to meals table
+app.post('/photo', (req, res) => {
+    console.log("request: ", req.body);
+    res.send(req.body)
 })
 
 

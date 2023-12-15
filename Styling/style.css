@@ -550,7 +550,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: pink;
+    background-color: #F6F6F6;
     border-radius: 20px;
     width: 80%;
     margin-bottom: 40px;
@@ -558,8 +558,9 @@ body {
 
 .formSection {
     width: 50%;
-    background-color: white;
+    background-color: #F6F6F6;
     padding: 40px;
+    border-radius: 20px;
 }
 
 .ingredientsWrapper {
