@@ -550,17 +550,30 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 20px;
+
+}
+
+#outerMeal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     background-color: #F6F6F6;
     border-radius: 20px;
     width: 80%;
     margin-bottom: 40px;
+
 }
 
 .formSection {
     width: 50%;
     background-color: #F6F6F6;
-    padding: 40px;
+    /* padding: 40px; */
     border-radius: 20px;
+    /* gap: 20px; */
+    display: flex;
+    flex-direction: column;
 }
 
 .ingredientsWrapper {
@@ -576,18 +589,21 @@ body {
 
 .chefField {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+
     /* width: 350px; */
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+
 }
 
 .chefField>input {
-    width: 400px;
+    width: 300px;
     height: 40px;
     font-size: 20px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-top: -15px;
 }
 
 #description {
