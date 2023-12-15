@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     mealTitle: '',
+    image: null,
     expiration: '',
     price: '',
     ingredients: {
@@ -67,6 +68,9 @@ export const chefSlice = createSlice({
         toggleMeat: (state) => {
             state.ingredients.meat = !state.ingredients.meat
         },
+        addImage: (state, action) => {
+            state.image = action.payload
+        }
 
 
     },
@@ -74,7 +78,7 @@ export const chefSlice = createSlice({
 
 
 // destructuring to export each action based on reducer functions
-export const { enterMealTitle, enterDescription, enterExpiration, enterPrice, toggleCrustaceans, toggleDairy, toggleEggs, toggleFish, toggleMeat, togglePeanuts, toggleSesame, toggleSoybeans, toggleTreeNuts, toggleWheat } = chefSlice.actions;
+export const { addImage, enterMealTitle, enterDescription, enterExpiration, enterPrice, toggleCrustaceans, toggleDairy, toggleEggs, toggleFish, toggleMeat, togglePeanuts, toggleSesame, toggleSoybeans, toggleTreeNuts, toggleWheat } = chefSlice.actions;
 
 export default chefSlice.reducer;
 

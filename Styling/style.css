@@ -527,7 +527,7 @@ body {
 
 #chefTableContainer>h1 {
     font-size: 65px;
-    width: 40%;
+    width: auto;
     color: #273648;
     font-style: italic;
     font-weight: 800;

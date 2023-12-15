@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { enterMealTitle, enterDescription, enterExpiration, enterPrice, toggleCrustaceans, toggleDairy, toggleEggs, toggleFish, toggleMeat, togglePeanuts, toggleSesame, toggleSoybeans, toggleTreeNuts, toggleWheat } from '../Redux/chefSlice';
+import { addImage, enterMealTitle, enterDescription, enterExpiration, enterPrice, toggleCrustaceans, toggleDairy, toggleEggs, toggleFish, toggleMeat, togglePeanuts, toggleSesame, toggleSoybeans, toggleTreeNuts, toggleWheat } from '../Redux/chefSlice';
 import { useSelector, useDispatch } from 'react-redux'
 
 export default function ChefTable() {
@@ -11,15 +11,28 @@ export default function ChefTable() {
 
     const dispatch = useDispatch();
 
-    const { mealTitle, price, expiration, description } = useSelector(state => state.chef);
+    const { image, mealTitle, price, expiration, description } = useSelector(state => state.chef);
     const { dairy, eggs, fish, crustaceans, treeNuts, peanuts, wheat, soybeans, sesame, meat } = useSelector(state => state.chef.ingredients)
+
+
+    function imageUpload(event) {
+
+
+        dispatch(addImage(event.target.files[0]))
+    }
+
+    console.log('image, ', image);
 
     return (
         <div id='chefTableContainer'>
             <h1>{username}'s Chef Table</h1>
             <div id='mealSubmission'>
 
-                <img></img>
+
+                <div id='imageSection'>
+                    <img></img>
+                    <input type='file' onChange={imageUpload} />
+                </div>
                 <div className='formSection'>
                     <h2>new leftovers:</h2>
 
@@ -50,36 +63,36 @@ export default function ChefTable() {
                         <div className="ingredientsWrapper">
                             <div className="ingredientsList">
 
-                                <span> <input type="checkbox" id="dairy" name="dairy" onChange={dispatch(toggleDairy)} value={dairy} />
+                                <span> <input type="checkbox" id="dairy" name="dairy" onClick={() => dispatch(toggleDairy())} checked={dairy} />
                                     <label for="dairy">Dairy</label></span>
 
-                                <span><input type="checkbox" id="eggs" name="eggs" onChange={dispatch(toggleEggs)} value={eggs} />
+                                <span><input type="checkbox" id="eggs" name="eggs" onClick={() => dispatch(toggleEggs())} checked={eggs} />
                                     <label for="eggs">Eggs</label></span>
 
-                                <span><input type="checkbox" id="fish" name="fish" onChange={dispatch(toggleFish)} value={fish} />
+                                <span><input type="checkbox" id="fish" name="fish" onClick={() => dispatch(toggleFish())} checked={fish} />
                                     <label for="fish">Fish</label></span>
 
-                                <span><input type="checkbox" id="crustaceans" name="crustaceans" onChange={dispatch(toggleCrustaceans)} value={crustaceans} />
+                                <span><input type="checkbox" id="crustaceans" name="crustaceans" onClick={() => dispatch(toggleCrustaceans())} checked={crustaceans} />
                                     <label for="crustaceans">Crustaceans</label></span>
 
-                                <span><input type="checkbox" id="treeNuts" name="treeNuts" onChange={dispatch(toggleTreeNuts)} value={treeNuts} />
+                                <span><input type="checkbox" id="treeNuts" name="treeNuts" onClick={() => dispatch(toggleTreeNuts())} checked={treeNuts} />
                                     <label for="treeNuts">Tree Nuts</label></span>
                             </div>
                             <div className="ingredientsList">
 
-                                <span><input type="checkbox" id="peanuts" name="peanuts" onChange={dispatch(togglePeanuts)} value={peanuts} />
+                                <span><input type="checkbox" id="peanuts" name="peanuts" onClick={() => dispatch(togglePeanuts())} checked={peanuts} />
                                     <label for="peanuts">Peanuts</label></span>
 
-                                <span><input type="checkbox" id="wheat" name="wheat" onChange={dispatch(toggleWheat)} value={wheat} />
+                                <span><input type="checkbox" id="wheat" name="wheat" onClick={() => dispatch(toggleWheat())} checked={wheat} />
                                     <label for="wheat">Wheat</label></span>
 
-                                <span><input type="checkbox" id="soybeans" name="soybean" onChange={dispatch(toggleSoybeans)} value={soybeans} />
+                                <span><input type="checkbox" id="soybeans" name="soybean" onClick={() => dispatch(toggleSoybeans())} checked={soybeans} />
                                     <label for="soybeans">Soybeans</label></span>
 
-                                <span><input type="checkbox" id="sesame" name="sesame" onChange={dispatch(toggleSesame)} value={sesame} />
+                                <span><input type="checkbox" id="sesame" name="sesame" onClick={() => dispatch(toggleSesame())} checked={sesame} />
                                     <label for="sesame">Sesame</label></span>
 
-                                <span><input type="checkbox" id="meat" name="meat" onChange={dispatch(toggleMeat)} value={meat} />
+                                <span><input type="checkbox" id="meat" name="meat" onClick={() => dispatch(toggleMeat())} checked={meat} />
                                     <label for="meat">Meat</label></span>
                             </div>
                         </div>
@@ -91,10 +104,7 @@ export default function ChefTable() {
                     <h3>Description</h3>
                     <textarea id="description" onInput={(event) => dispatch(enterDescription(event))} value={description}></textarea>
 
-                    {/* <div className="chefField">
-
-                        <textarea></textarea>
-                    </div> */}
+                    <button>Share</button>
 
 
                 </div>
