@@ -3,6 +3,11 @@ const app = express();
 const path = require('path');
 const PORT = 3000;
 const userController = require('./Controllers/userController.jsx')
+const generateImageURL = require('./S3/s3.js')
+
+
+
+
 
 
 
@@ -33,6 +38,12 @@ app.post('/login', userController.checkUser, (req, res) => {
 app.post('/photo', (req, res) => {
     console.log("request: ", req.body);
     res.send(req.body)
+})
+
+app.get('/s3', async (req, res) => {
+    const url = await generateImageURL();
+    res.send({ url })
+
 })
 
 

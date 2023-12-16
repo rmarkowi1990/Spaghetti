@@ -3,6 +3,7 @@ import React from 'react';
 import { addImage, enterMealTitle, enterDescription, enterExpiration, enterPrice, toggleCrustaceans, toggleDairy, toggleEggs, toggleFish, toggleMeat, togglePeanuts, toggleSesame, toggleSoybeans, toggleTreeNuts, toggleWheat } from '../Redux/chefSlice';
 import { useSelector, useDispatch } from 'react-redux'
 
+
 export default function Chef() {
 
 
@@ -21,24 +22,61 @@ export default function Chef() {
 
     console.log('image, ', image);
 
-    function submit() {
+    // function submit() {
 
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'multipart/formData'
-            },
-            body: image
-        }
 
-        console.log("about to submit", image)
-        fetch('http://localhost:3000/photo', requestOptions)
-            .then(res => res.json())
-            .then(data => console.log(data))
 
+
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'multipart/formData'
+        },
+        body: image
     }
 
+    //     // console.log("about to submit", image)
+    //     // fetch('http://localhost:3000/photo', requestOptions)
+    //     //     .then(res => res.json())
+    //     //     .then(data => console.log(data))
 
+    // }
+
+
+    function submit() {
+        console.log('submit hit')
+        fetch('http://localhost:3000/s3')
+            .then(res => res.json())
+            .then(url => {
+
+                console.log(url.url)
+
+                const requestOptions = {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'multipart/formData',
+                        'Access-Control-Allow-Credentials': "true",
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'PUT, GET, POST'
+                    },
+                    body: image
+                }
+
+                fetch('https://justcors.com/tl_e65846d/' + url.url, requestOptions)
+
+
+
+
+
+
+            }
+
+            )
+
+
+
+
+    }
 
 
 
