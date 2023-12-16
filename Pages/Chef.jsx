@@ -27,6 +27,9 @@ export default function Chef() {
 
 
 
+
+
+
     const requestOptions = {
         method: 'POST',
         headers: {
@@ -35,10 +38,10 @@ export default function Chef() {
         body: image
     }
 
-    //     // console.log("about to submit", image)
-    //     // fetch('http://localhost:3000/photo', requestOptions)
-    //     //     .then(res => res.json())
-    //     //     .then(data => console.log(data))
+    // console.log("about to submit", image)
+    // fetch('http://localhost:3000/photo', requestOptions)
+    //     .then(res => res.json())
+    //     .then(data => console.log(data))
 
     // }
 
@@ -62,7 +65,7 @@ export default function Chef() {
                     body: image
                 }
 
-                fetch('https://justcors.com/tl_e65846d/' + url.url, requestOptions)
+                fetch(url.url, requestOptions)
 
 
 

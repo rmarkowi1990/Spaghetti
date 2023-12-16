@@ -14,8 +14,8 @@ const bucketName = 'rmarkowi1990 ';
 
 const s3 = new aws.S3({
     region,
-    accessKeyId: '',
-    secretAccessKey: '',
+    accessKeyId: 'AKIA42LHJIHYBI4PA7VC',
+    secretAccessKey: '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',
     signatureVersion: 'v4'
 })
 

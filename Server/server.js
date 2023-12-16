@@ -5,6 +5,9 @@ const PORT = 3000;
 const userController = require('./Controllers/userController.jsx')
 const generateImageURL = require('./S3/s3.js')
 
+// const cors = require('cors');
+
+
 
 
 
@@ -15,12 +18,24 @@ const generateImageURL = require('./S3/s3.js')
 app.use(express.json());
 
 
-//cors error handling
+
+// app.use(cors({
+
+//     origin: 'http://localhost:2000',
+//     credentials: false
+
+// }
+// ))
+
+// cors error handling
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'http://localhost:2000');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
 })
+
+
+
 
 
 //adds new user to users table
