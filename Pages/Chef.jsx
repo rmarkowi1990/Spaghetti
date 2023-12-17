@@ -1,5 +1,7 @@
 import React from 'react';
 
+import axios from 'axios'
+
 import { addImage, enterMealTitle, enterDescription, enterExpiration, enterPrice, toggleCrustaceans, toggleDairy, toggleEggs, toggleFish, toggleMeat, togglePeanuts, toggleSesame, toggleSoybeans, toggleTreeNuts, toggleWheat } from '../Redux/chefSlice';
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -20,66 +22,57 @@ export default function Chef() {
     //     dispatch(addImage(event.target.files[0]))
     // }
 
-    console.log('image, ', image);
+    // console.log('image, ', image);
+
+    const submit = (event) => {
+        event.preventDefault();
+
+        const formData = new FormData();
+        formData.append('image', image)
+        // formData.append('chefData', {
+        //     mealTitle, mealTitle
+
+        // })
+
+        axios.post('http://localhost:3000/photo', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+            .then(function (res) {
+                const imageTitle = res.data;
+                console.log(imageTitle)
+            })
+        // .then(data => console.log('returned: ', data))
+
+        // console.log("about to submit", image)
+        // fetch('http://localhost:3000/photo', requestOptions)
+        //     .then(res => res.json())
+        //     .then(data => console.log(data))
+
+    }
+
 
     // function submit() {
+    //     console.log('submit hit')
+    //     fetch('http://localhost:3000/s3')
+    //         .then(res => res.json())
+    //         .then(url => {
 
+    //             console.log(url.url)
 
+    //             const requestOptions = {
+    //                 method: 'PUT',
+    //                 headers: {
+    //                     'Content-Type': 'multipart/formData',
+    //                     'Access-Control-Allow-Credentials': "true",
+    //                     'Access-Control-Allow-Origin': '*',
+    //                     'Access-Control-Allow-Methods': 'PUT, GET, POST'
+    //                 },
+    //                 body: image
+    //             }
 
+    //             fetch(url.url, requestOptions)
 
-
-
-
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'multipart/formData'
-        },
-        body: image
-    }
-
-    // console.log("about to submit", image)
-    // fetch('http://localhost:3000/photo', requestOptions)
-    //     .then(res => res.json())
-    //     .then(data => console.log(data))
-
+    //         }
+    //         )
     // }
-
-
-    function submit() {
-        console.log('submit hit')
-        fetch('http://localhost:3000/s3')
-            .then(res => res.json())
-            .then(url => {
-
-                console.log(url.url)
-
-                const requestOptions = {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'multipart/formData',
-                        'Access-Control-Allow-Credentials': "true",
-                        'Access-Control-Allow-Origin': '*',
-                        'Access-Control-Allow-Methods': 'PUT, GET, POST'
-                    },
-                    body: image
-                }
-
-                fetch(url.url, requestOptions)
-
-
-
-
-
-
-            }
-
-            )
-
-
-
-
-    }
 
 
 
@@ -97,7 +90,20 @@ export default function Chef() {
 
                     <div id='imageSection'>
                         <img></img>
-                        <input type='file' onChange={(event) => dispatch(addImage(event.target.files[0]))} />
+
+
+                        <form onSubmit={submit}>
+                            <input type='file' accept='image/*' onChange={(event) => dispatch(addImage(event.target.files[0]))} />
+                            <button type='submit'>Submit</button>
+
+                        </form>
+
+
+
+
+                        {/* <input type='file' name='image' onChange={(event) => dispatch(addImage(event.target.files[0]))} /> */}
+
+
                     </div>
                     <div className='formSection'>
 

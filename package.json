@@ -19,8 +19,11 @@
   },
   "homepage": "https://github.com/CodesmithLLC/unit-6SB-simon#readme",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.474.0",
+    "@aws-sdk/s3-request-presigner": "^3.474.0",
     "@reduxjs/toolkit": "^1.9.7",
     "aws-sdk": "^2.1520.0",
+    "axios": "^1.6.2",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
