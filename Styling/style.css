@@ -547,7 +547,7 @@ body {
 
 #mealSubmission {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
@@ -561,13 +561,13 @@ body {
     align-items: center;
     background-color: #F6F6F6;
     border-radius: 20px;
-    width: 80%;
+    /* width: 80%; */
     margin-bottom: 40px;
 
 }
 
 .formSection {
-    width: 50%;
+    /* width: 50%; */
     background-color: #F6F6F6;
     /* padding: 40px; */
     border-radius: 20px;
