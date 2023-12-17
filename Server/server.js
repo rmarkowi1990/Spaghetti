@@ -4,6 +4,10 @@ const path = require('path');
 const PORT = 3000;
 const userController = require('./Controllers/userController.jsx')
 
+//database
+const db = require('./Models/databaseModels.jsx');
+
+
 
 // multer to help pass data types thru express + config
 const multer = require('multer');
@@ -77,7 +81,7 @@ app.post('/photo', upload.single('image'), async (req, res) => {
     console.log("req.file : ", req.file);
     console.log('req.body', req.body)
 
-    const { mealTitle, price, expiration, description, dairy, eggs, fish, crustaceans, treeNuts, peanuts, wheat, soybeans, sesame, meat } = req.body
+    const { chefId, mealTitle, price, expiration, description, dairy, eggs, fish, crustaceans, treeNuts, peanuts, wheat, soybeans, sesame, meat } = req.body
 
 
     //generates random title
@@ -96,6 +100,12 @@ app.post('/photo', upload.single('image'), async (req, res) => {
     const putCommand = new PutObjectCommand(params);
     await s3.send(putCommand)
 
+    //put entire meal in database
+    const values = [imageName, mealTitle, Number(chefId), price, expiration, description, dairy, eggs, fish, crustaceans, treeNuts, peanuts, wheat, soybeans, sesame, meat]
+    const text = "INSERT INTO meals (imagetitle, mealTitle, chef_id, price, expiration, description, dairy, eggs, fish, crustaceans, treenuts, peanuts, wheat, soybeans, sesame, meat) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)"
+
+    await db.query(text, values);
+    console.log('submitted to Database')
 
     // //creates parameters to recieve url
     // const getObjectParams = {

@@ -17,7 +17,7 @@ export default function Chef() {
     const { image, mealTitle, price, expiration, description } = useSelector(state => state.chef);
     const { dairy, eggs, fish, crustaceans, treeNuts, peanuts, wheat, soybeans, sesame, meat } = useSelector(state => state.chef.ingredients)
 
-
+    const { id } = useSelector((state) => state.session.userDetails)
 
 
     const submit = (event) => {
@@ -28,6 +28,7 @@ export default function Chef() {
         const formData = new FormData();
         formData.append('image', image);
         formData.append('mealTitle', mealTitle);
+        formData.append('chefId', id)
         formData.append('price', price);
         formData.append('expiration', expiration);
         formData.append('description', description);
