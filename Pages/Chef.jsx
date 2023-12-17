@@ -2,8 +2,9 @@ import React from 'react';
 
 import axios from 'axios'
 
-import { addImage, enterMealTitle, enterDescription, enterExpiration, enterPrice, toggleCrustaceans, toggleDairy, toggleEggs, toggleFish, toggleMeat, togglePeanuts, toggleSesame, toggleSoybeans, toggleTreeNuts, toggleWheat } from '../Redux/chefSlice';
+import { reset, addImage, enterMealTitle, enterDescription, enterExpiration, enterPrice, toggleCrustaceans, toggleDairy, toggleEggs, toggleFish, toggleMeat, togglePeanuts, toggleSesame, toggleSoybeans, toggleTreeNuts, toggleWheat } from '../Redux/chefSlice';
 import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Chef() {
@@ -13,6 +14,7 @@ export default function Chef() {
     const username = useSelector((state) => state.session.userDetails.username);
 
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const { image, mealTitle, price, expiration, description } = useSelector(state => state.chef);
     const { dairy, eggs, fish, crustaceans, treeNuts, peanuts, wheat, soybeans, sesame, meat } = useSelector(state => state.chef.ingredients)
@@ -48,11 +50,10 @@ export default function Chef() {
             .then(function (res) {
                 const imageTitle = res.data;
                 console.log('image title', imageTitle)
-
-
-
-
+                dispatch(reset())
+                navigate('/feed')
             })
+
 
 
     }
@@ -82,7 +83,7 @@ export default function Chef() {
                                 <input onInput={(event) => dispatch(enterMealTitle(event))} value={mealTitle}></input>
                             </div>
                             <h3>Image</h3>
-                            
+
                             <input type='file' accept='image/*' onChange={(event) => dispatch(addImage(event.target.files[0]))} />
 
 
