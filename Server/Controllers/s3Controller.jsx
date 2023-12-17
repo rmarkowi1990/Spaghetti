@@ -34,8 +34,6 @@ s3Controller.uploadImage = async (req, res, next) => {
 
         res.locals.meal = req.body;
 
-
-
         //generates random title
         const rawBytes = await randomBytes(16);
         const imageName = rawBytes.toString('hex');
@@ -54,24 +52,6 @@ s3Controller.uploadImage = async (req, res, next) => {
 
         res.locals.imageName = imageName;
 
-
-
-        // // //creates parameters to recieve url
-        // // const getObjectParams = {
-        // //     Bucket: bucketName,
-        // //     Key: imageName
-
-        // // }
-        // // //recieves url from uploaded image via Key (random title)
-
-        // // const getCommand = new GetObjectCommand(getObjectParams);
-        // // const url = await getSignedUrl(s3, getCommand, { expiresIn: 3600 });
-        // // console.log('url: ', url)
-        // res.send(imageName)
-
-
-
-
         return next()
 
 
@@ -79,8 +59,9 @@ s3Controller.uploadImage = async (req, res, next) => {
 
         return next(error)
     }
-
 }
+
+
 
 s3Controller.generateURLs = async (req, res, next) => {
     try {
@@ -112,9 +93,6 @@ s3Controller.generateURLs = async (req, res, next) => {
     } catch (error) {
         return next(error)
     }
-
-
-
 
 }
 

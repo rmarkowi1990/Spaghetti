@@ -6,8 +6,6 @@ mealController.addMeal = async (req, res, next) => {
 
     try {
 
-
-
         const { chefId, mealTitle, price, expiration, description, dairy, eggs, fish, crustaceans, treeNuts, peanuts, wheat, soybeans, sesame, meat } = res.locals.meal;
         const imageName = res.locals.imageName;
 
@@ -18,24 +16,21 @@ mealController.addMeal = async (req, res, next) => {
         console.log('submitted to Database')
         return next(
 
-
         )
     } catch (error) {
         return next(error)
     }
-
-
 }
+
+
 
 mealController.getMeals = async (req, res, next) => {
 
     try {
 
-        const getText = 'SELECT * FROM meals';
+        const getText = 'SELECT meals.*, users.username AS chef, users.address, users.city, users.state, users.zip, users.chefrating AS rating FROM meals LEFT OUTER JOIN users ON users.id = meals.chef_id';
         const returned = await db.query(getText);
         res.locals.meals = returned.rows
-
-        // console.log('returned meals from database: ', res.locals.meals)
 
         return next()
 
@@ -43,11 +38,7 @@ mealController.getMeals = async (req, res, next) => {
     catch (error) {
         return next(error)
     }
-
 }
-
-
-
 
 
 
