@@ -35,7 +35,7 @@ mealController.getMeals = async (req, res, next) => {
         const returned = await db.query(getText);
         res.locals.meals = returned.rows
 
-        console.log('returned meals from database: ', res.locals.meals)
+        // console.log('returned meals from database: ', res.locals.meals)
 
         return next()
 
