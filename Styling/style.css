@@ -437,7 +437,7 @@ body {
 .mealDescription {
     margin: 5px 0px 0px 0px;
     font-size: 20px;
-    font-style: italic;
+    /* font-style: italic; */
     font-weight: 300;
     color: #484F57;
 }
@@ -545,45 +545,122 @@ body {
             #ff3535 18px); */
 }
 
+#newChefCreation {
+    font-size: 35px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    /* font-style: italic;
+    color: white; */
+
+}
+
 #mealSubmission {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 20px; */
 
 }
 
 #outerMeal {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    background-color: #ff6363;
     background-color: #F6F6F6;
     border-radius: 20px;
-    margin-bottom: 40px;
-    padding: 40px;
+    /* border: 5px solid #ff6363; */
+    color: #273648;
+
+    /* color: white; */
+
+    /* margin-bottom: 40px; */
+    /* padding: 40px; */
+    /* height: auto; */
 
 }
 
-.formSection {
-    /* width: 50%; */
-    background-color: #F6F6F6;
-    /* padding: 40px; */
-    border-radius: 20px;
-    /* gap: 20px; */
+.subtitle {
+    letter-spacing: 1.5px;
+    margin: 0px;
+    margin-bottom: 3px;
+    /* font-style: italic; */
+    /* color: white; */
+}
+
+
+#splitScreenChef {
+    display: grid;
+    grid-template-columns: [left] 40% [center] 60% [right];
+    column-gap: 40px;
+    width: 80%;
+    margin-bottom: 40px;
+
+}
+
+#imageSection {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    gap: 40px;
+    height: 100%;
+}
+
+#imageSection>img {
+    width: 100%;
+    border-radius: 20px;
+    filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
+
+}
+
+#imageSubmit {
+    margin-bottom: 30px;
+}
+
+.spacer {
+    margin-bottom: 30px;
+}
+
+
+
+.formSection {
+    /* width: 50%; */
+    /* background-color: #F6F6F6;
+    /* padding: 40px; */
+    /* border-radius: 20px; */
+    /* gap: 20px; */
+    /* display: flex;
+    flex-direction: column; */
+
 }
 
 .ingredientsWrapper {
     display: grid;
-    grid-template-columns: [left] 50% [center] 50% [right]
+    grid-template-columns: [left] 50% [center] 50% [right];
+    margin-bottom: 20px;
 }
 
 .ingredientsList {
     display: flex;
     flex-direction: column;
+}
+
+#formSubmit {
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 2px;
+    background-color: #233142;
+    font-size: 20px;
+    /* font-weight: 600;
+    font-style: italic; */
+    color: white;
+    border: none;
+    width: 150px;
+    height: 60px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
 }
 
 
@@ -594,21 +671,28 @@ body {
     /* width: 350px; */
     justify-content: center;
     align-items: flex-start;
+    margin-bottom: 15px;
 
 }
 
 .chefField>input {
-    width: 300px;
+    width: 90%;
     height: 40px;
     font-size: 20px;
     padding-left: 10px;
     padding-right: 10px;
-    margin-top: -15px;
+    /* border-radius: 10px;
+    border: none; */
+
+    /* margin-bottom: 15px; */
+    /* margin-top: -15px; */
 }
 
 #description {
 
-    width: 100%;
+    /* width: 100%; */
+    padding-left: 10px;
+    padding-right: 10px;
     height: 100px;
     font-size: 20px;
     resize: none;

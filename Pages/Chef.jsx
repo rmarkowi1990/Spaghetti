@@ -67,96 +67,101 @@ export default function Chef() {
         <div id='chefTableContainer'>
             <div id='container2'></div>
             <h1>{username}'s Chef Table</h1>
+            <div id='splitScreenChef'>
 
-
-            <div id='outerMeal'>
-                <h1>New Chef Creation</h1>
-                <div id='mealSubmission'>
-
-
-
-                    <div className='formSection'>
-                        <form onSubmit={submit}>
-
-                            <div className="chefField">
-                                <h3>Meal Title</h3>
-                                <input onInput={(event) => dispatch(enterMealTitle(event))} value={mealTitle}></input>
-                            </div>
-                            <h3>Image</h3>
-
-                            <input type='file' accept='image/*' onChange={(event) => dispatch(addImage(event.target.files[0]))} />
+                <div id='outerMeal'>
+                    {/* <h1>New Chef Creation</h1> */}
+                    <div id='mealSubmission'>
+                        <h1 id='newChefCreation'>New Chef Creation</h1>
 
 
 
+                        <div className='formSection'>
+                            <form onSubmit={submit}>
+
+                                <div className="chefField">
+                                    <h3 className='subtitle'>Meal Title</h3>
+                                    <input onInput={(event) => dispatch(enterMealTitle(event))} value={mealTitle}></input>
+                                </div>
+                                <h3 className='subtitle'>Image</h3>
+
+                                <input id='imageSubmit' type='file' accept='image/*' onChange={(event) => dispatch(addImage(event.target.files[0]))} />
 
 
-                            <div className="chefField">
-                                <h3>Expiration Date</h3>
-                                <input type="date" onChange={(date) => dispatch(enterExpiration(date))} value={expiration}></input>
-                            </div>
 
 
 
-                            <div className="chefField">
-                                <h3>Price Ceiling</h3>
-                                <input onInput={(event) => dispatch(enterPrice(event))} value={price} ></input>
-                            </div>
-
-                            <div className="ingredients">
-                                <h3>Ingredients</h3>
-                                <div className="ingredientsWrapper">
-                                    <div className="ingredientsList">
-
-                                        <span> <input type="checkbox" id="dairy" name="dairy" onClick={() => dispatch(toggleDairy())} checked={dairy} />
-                                            <label for="dairy">Dairy</label></span>
-
-                                        <span><input type="checkbox" id="eggs" name="eggs" onClick={() => dispatch(toggleEggs())} checked={eggs} />
-                                            <label for="eggs">Eggs</label></span>
-
-                                        <span><input type="checkbox" id="fish" name="fish" onClick={() => dispatch(toggleFish())} checked={fish} />
-                                            <label for="fish">Fish</label></span>
-
-                                        <span><input type="checkbox" id="crustaceans" name="crustaceans" onClick={() => dispatch(toggleCrustaceans())} checked={crustaceans} />
-                                            <label for="crustaceans">Crustaceans</label></span>
-
-                                        <span><input type="checkbox" id="treeNuts" name="treeNuts" onClick={() => dispatch(toggleTreeNuts())} checked={treeNuts} />
-                                            <label for="treeNuts">Tree Nuts</label></span>
-                                    </div>
-                                    <div className="ingredientsList">
-
-                                        <span><input type="checkbox" id="peanuts" name="peanuts" onClick={() => dispatch(togglePeanuts())} checked={peanuts} />
-                                            <label for="peanuts">Peanuts</label></span>
-
-                                        <span><input type="checkbox" id="wheat" name="wheat" onClick={() => dispatch(toggleWheat())} checked={wheat} />
-                                            <label for="wheat">Wheat</label></span>
-
-                                        <span><input type="checkbox" id="soybeans" name="soybean" onClick={() => dispatch(toggleSoybeans())} checked={soybeans} />
-                                            <label for="soybeans">Soybeans</label></span>
-
-                                        <span><input type="checkbox" id="sesame" name="sesame" onClick={() => dispatch(toggleSesame())} checked={sesame} />
-                                            <label for="sesame">Sesame</label></span>
-
-                                        <span><input type="checkbox" id="meat" name="meat" onClick={() => dispatch(toggleMeat())} checked={meat} />
-                                            <label for="meat">Meat</label></span>
-                                    </div>
+                                <div className="chefField">
+                                    <h3 className='subtitle'>Expiration Date</h3>
+                                    <input type="date" onChange={(date) => dispatch(enterExpiration(date))} value={expiration}></input>
                                 </div>
 
 
 
+                                <div className="chefField">
+                                    <h3 className='subtitle'>Price Ceiling</h3>
+                                    <input onInput={(event) => dispatch(enterPrice(event))} value={price} ></input>
+                                </div>
 
-                            </div>
-                            <h3>Description</h3>
-                            <textarea id="description" onInput={(event) => dispatch(enterDescription(event))} value={description}></textarea>
-                            {/* <h3>Image</h3> */}
-                            {/* <form onSubmit={submit}> */}
+                                <div className="ingredients" >
 
-                            {/* <input type='file' accept='image/*' onChange={(event) => dispatch(addImage(event.target.files[0]))} /> */}
-                            <button type='submit'>Submit</button>
+                                    <h3 className='subtitle'>Ingredients</h3>
 
-                        </form>
+                                    <div className="ingredientsWrapper" >
+                                        <div className="ingredientsList">
 
-                    </div>
-                    {/* <h3>Image</h3>
+                                            <span> <input type="checkbox" id="dairy" name="dairy" onClick={() => dispatch(toggleDairy())} checked={dairy} />
+                                                <label for="dairy">Dairy</label></span>
+
+                                            <span><input type="checkbox" id="eggs" name="eggs" onClick={() => dispatch(toggleEggs())} checked={eggs} />
+                                                <label for="eggs">Eggs</label></span>
+
+                                            <span><input type="checkbox" id="fish" name="fish" onClick={() => dispatch(toggleFish())} checked={fish} />
+                                                <label for="fish">Fish</label></span>
+
+                                            <span><input type="checkbox" id="crustaceans" name="crustaceans" onClick={() => dispatch(toggleCrustaceans())} checked={crustaceans} />
+                                                <label for="crustaceans">Crustaceans</label></span>
+
+                                            <span><input type="checkbox" id="treeNuts" name="treeNuts" onClick={() => dispatch(toggleTreeNuts())} checked={treeNuts} />
+                                                <label for="treeNuts">Tree Nuts</label></span>
+                                        </div>
+                                        <div className="ingredientsList">
+
+                                            <span><input type="checkbox" id="peanuts" name="peanuts" onClick={() => dispatch(togglePeanuts())} checked={peanuts} />
+                                                <label for="peanuts">Peanuts</label></span>
+
+                                            <span><input type="checkbox" id="wheat" name="wheat" onClick={() => dispatch(toggleWheat())} checked={wheat} />
+                                                <label for="wheat">Wheat</label></span>
+
+                                            <span><input type="checkbox" id="soybeans" name="soybean" onClick={() => dispatch(toggleSoybeans())} checked={soybeans} />
+                                                <label for="soybeans">Soybeans</label></span>
+
+                                            <span><input type="checkbox" id="sesame" name="sesame" onClick={() => dispatch(toggleSesame())} checked={sesame} />
+                                                <label for="sesame">Sesame</label></span>
+
+                                            <span><input type="checkbox" id="meat" name="meat" onClick={() => dispatch(toggleMeat())} checked={meat} />
+                                                <label for="meat">Meat</label></span>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+                                <div id='spacer'>
+                                    <h3 className='subtitle'>Description</h3>
+                                    <textarea id="description" onInput={(event) => dispatch(enterDescription(event))} value={description}></textarea>
+                                    {/* <h3>Image</h3> */}
+                                    {/* <form onSubmit={submit}> */}
+
+                                    {/* <input type='file' accept='image/*' onChange={(event) => dispatch(addImage(event.target.files[0]))} /> */}
+                                </div>
+                                <button id='formSubmit' type='submit'>Serve</button>
+
+                            </form>
+
+                        </div>
+                        {/* <h3>Image</h3>
                     <form onSubmit={submit}>
 
                         <input type='file' accept='image/*' onChange={(event) => dispatch(addImage(event.target.files[0]))} />
@@ -164,14 +169,20 @@ export default function Chef() {
 
                     </form> */}
 
+                    </div>
+
+                    {/* <button onClick={submit}>Share</button> */}
+
+
+
+
                 </div>
-
-                {/* <button onClick={submit}>Share</button> */}
-
-
-
-
-            </div>
+                <div id='imageSection'>
+                    <img src="https://img.freepik.com/premium-photo/refrigerator-with-holiday-leftovers-turkey-ham-stuffing-generative-ai_864588-12391.jpg"></img>
+                    <img src="https://whatsfordinner.com/wp-content/uploads/2017/04/Keep_Them_Busy_10_Things_Kids_Can_Do_in_The_Kitchen_-_Feature.jpg"></img>
+                    <img src="https://media-cldnry.s-nbcnews.com/image/upload/newscms/2018_52/2698661/181228-neighbors-stock-cs-433p.jpg"></img>
+                </div>
+            </div >
 
         </div >
     )
