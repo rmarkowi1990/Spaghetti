@@ -75,7 +75,10 @@ app.post('/photo', upload.single('image'), async (req, res) => {
 
     //receives image from frontend 
     console.log("req.file : ", req.file);
-    console.log("req.body, ", req.body)
+    console.log('req.body', req.body)
+
+    const { mealTitle, price, expiration, description, dairy, eggs, fish, crustaceans, treeNuts, peanuts, wheat, soybeans, sesame, meat } = req.body
+
 
     //generates random title
     const rawBytes = await randomBytes(16);
@@ -94,34 +97,27 @@ app.post('/photo', upload.single('image'), async (req, res) => {
     await s3.send(putCommand)
 
 
-    //creates parameters to recieve url
-    const getObjectParams = {
-        Bucket: bucketName,
-        Key: imageName
-
-    }
-    //recieves url from uploaded image via Key (random title)
-
-    const getCommand = new GetObjectCommand(getObjectParams);
-    const url = await getSignedUrl(s3, getCommand, { expiresIn: 3600 });
-    console.log('url: ', url)
-    res.send(imageName)
-
-})
-
-app.get('Meals', async (req, res) => {
-
-
-
-
+    // //creates parameters to recieve url
     // const getObjectParams = {
     //     Bucket: bucketName,
     //     Key: imageName
 
     // }
+    // //recieves url from uploaded image via Key (random title)
 
-    // const command = new GetObjectCommand(getObjectParams);
-    // const url = await getSignedUrl(client, command, { expiresIn: 3600 });
+    // const getCommand = new GetObjectCommand(getObjectParams);
+    // const url = await getSignedUrl(s3, getCommand, { expiresIn: 3600 });
+    // console.log('url: ', url)
+    res.send(imageName)
+
+})
+
+app.post('/storeMeal', (req, res) => {
+
+    console.log('inside store meal:', req.body)
+    res.send()
+
+
 
 })
 

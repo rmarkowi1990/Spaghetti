@@ -18,61 +18,45 @@ export default function Chef() {
     const { dairy, eggs, fish, crustaceans, treeNuts, peanuts, wheat, soybeans, sesame, meat } = useSelector(state => state.chef.ingredients)
 
 
-    // function imageUpload(event) {
-    //     dispatch(addImage(event.target.files[0]))
-    // }
 
-    // console.log('image, ', image);
 
     const submit = (event) => {
         event.preventDefault();
 
-        const formData = new FormData();
-        formData.append('image', image)
-        // formData.append('chefData', {
-        //     mealTitle, mealTitle
 
-        // })
+
+        const formData = new FormData();
+        formData.append('image', image);
+        formData.append('mealTitle', mealTitle);
+        formData.append('price', price);
+        formData.append('expiration', expiration);
+        formData.append('description', description);
+        formData.append('dairy', dairy);
+        formData.append('eggs', eggs);
+        formData.append('fish', fish);
+        formData.append('crustaceans', crustaceans);
+        formData.append('treeNuts', treeNuts);
+        formData.append('peanuts', peanuts);
+        formData.append('wheat', wheat);
+        formData.append('soybeans', soybeans);
+        formData.append('sesame', sesame);
+        formData.append('meat', meat);
+
 
         axios.post('http://localhost:3000/photo', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
             .then(function (res) {
                 const imageTitle = res.data;
-                console.log(imageTitle)
-            })
-        // .then(data => console.log('returned: ', data))
+                console.log('image title', imageTitle)
 
-        // console.log("about to submit", image)
-        // fetch('http://localhost:3000/photo', requestOptions)
-        //     .then(res => res.json())
-        //     .then(data => console.log(data))
+
+
+
+            })
+
 
     }
 
 
-    // function submit() {
-    //     console.log('submit hit')
-    //     fetch('http://localhost:3000/s3')
-    //         .then(res => res.json())
-    //         .then(url => {
-
-    //             console.log(url.url)
-
-    //             const requestOptions = {
-    //                 method: 'PUT',
-    //                 headers: {
-    //                     'Content-Type': 'multipart/formData',
-    //                     'Access-Control-Allow-Credentials': "true",
-    //                     'Access-Control-Allow-Origin': '*',
-    //                     'Access-Control-Allow-Methods': 'PUT, GET, POST'
-    //                 },
-    //                 body: image
-    //             }
-
-    //             fetch(url.url, requestOptions)
-
-    //         }
-    //         )
-    // }
 
 
 
