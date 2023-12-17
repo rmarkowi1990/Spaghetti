@@ -12,11 +12,6 @@ dotenv.config()
 const randomBytes = promisify(crypto.randomBytes)
 
 
-//s3 imports + config
-// const aws = require('aws-sdk');
-// const { S3Client, PutObjectAclCommand, PutObjectCommand, GetObjectCommand } = require('@aws-sdk/client-s3');
-// const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
-
 const region = 'us-west-1';
 const bucketName = 'rmarkowi1990';
 
@@ -28,7 +23,7 @@ const s3 = new S3Client({
     region: region,
 })
 
-
+//controllers
 
 const s3Controller = {};
 

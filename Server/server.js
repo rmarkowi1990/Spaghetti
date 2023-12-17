@@ -50,9 +50,12 @@ app.post('/login', userController.checkUser, (req, res) => {
 //adds meal photo to aws and adds entire meal to database
 app.post('/meals', upload.single('image'), s3Controller.uploadImage, mealController.addMeal, async (req, res) => {
 
-
-
     res.send('success')
+
+})
+
+app.get('/meals', mealController.getMeals, (req, res) => {
+    res.status(200).send({})
 
 })
 

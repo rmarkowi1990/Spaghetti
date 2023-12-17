@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -6,6 +6,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import MealCard from '../Components/MealCard.jsx'
 
 export default function Feed() {
+
+
+    useEffect(() => {
+
+        fetch('http://localhost:3000/meals')
+
+    }, [])
 
 
 
