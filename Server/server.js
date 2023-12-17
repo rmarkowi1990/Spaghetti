@@ -2,10 +2,11 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const PORT = 3000;
-const userController = require('./Controllers/userController.jsx')
 
-//database
-const db = require('./Models/databaseModels.jsx');
+const userController = require('./Controllers/userController.jsx')
+const s3Controller = require('./Controllers/s3Controller.jsx')
+const mealController = require('./Controllers/mealController.jsx')
+
 
 
 
@@ -15,34 +16,6 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage })
 
 upload.single('image')
-
-
-
-//random number generator imports + config
-const dotenv = require('dotenv');
-const crypto = require('crypto')
-const { promisify } = require('util')
-
-dotenv.config()
-const randomBytes = promisify(crypto.randomBytes)
-
-
-//s3 imports + config
-const aws = require('aws-sdk');
-const { S3Client, PutObjectAclCommand, PutObjectCommand, GetObjectCommand } = require('@aws-sdk/client-s3');
-const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
-
-const region = 'us-west-1';
-const bucketName = 'rmarkowi1990';
-
-const s3 = new S3Client({
-    credentials: {
-        accessKeyId: 'AKIA42LHJIHYBI4PA7VC',
-        secretAccessKey: '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'
-    },
-    region: region,
-})
-
 
 
 
@@ -73,52 +46,13 @@ app.post('/login', userController.checkUser, (req, res) => {
 
 })
 
-app.post('/photo', upload.single('image'), async (req, res) => {
+
+//adds meal photo to aws and adds entire meal to database
+app.post('/meals', upload.single('image'), s3Controller.uploadImage, mealController.addMeal, async (req, res) => {
 
 
 
-    //receives image from frontend 
-    console.log("req.file : ", req.file);
-    console.log('req.body', req.body)
-
-    const { chefId, mealTitle, price, expiration, description, dairy, eggs, fish, crustaceans, treeNuts, peanuts, wheat, soybeans, sesame, meat } = req.body
-
-
-    //generates random title
-    const rawBytes = await randomBytes(16);
-    const imageName = rawBytes.toString('hex');
-
-    //creates parameters for s3 request
-    const params = {
-        Bucket: bucketName,
-        Key: imageName,
-        Body: req.file.buffer,
-        ContentType: req.file.mimetype
-    }
-
-    //places image in s3
-    const putCommand = new PutObjectCommand(params);
-    await s3.send(putCommand)
-
-    //put entire meal in database
-    const values = [imageName, mealTitle, Number(chefId), price, expiration, description, dairy, eggs, fish, crustaceans, treeNuts, peanuts, wheat, soybeans, sesame, meat]
-    const text = "INSERT INTO meals (imagetitle, mealTitle, chef_id, price, expiration, description, dairy, eggs, fish, crustaceans, treenuts, peanuts, wheat, soybeans, sesame, meat) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)"
-
-    await db.query(text, values);
-    console.log('submitted to Database')
-
-    // //creates parameters to recieve url
-    // const getObjectParams = {
-    //     Bucket: bucketName,
-    //     Key: imageName
-
-    // }
-    // //recieves url from uploaded image via Key (random title)
-
-    // const getCommand = new GetObjectCommand(getObjectParams);
-    // const url = await getSignedUrl(s3, getCommand, { expiresIn: 3600 });
-    // console.log('url: ', url)
-    res.send(imageName)
+    res.send('success')
 
 })
 

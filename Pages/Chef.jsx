@@ -44,7 +44,7 @@ export default function Chef() {
         formData.append('meat', meat);
 
 
-        axios.post('http://localhost:3000/photo', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+        axios.post('http://localhost:3000/meals', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
             .then(function (res) {
                 const imageTitle = res.data;
                 console.log('image title', imageTitle)
