@@ -9,6 +9,7 @@ import signupSlice from './signupSlice.js';
 import loginSlice from './loginSlice.js';
 import sessionSlice from './sessionSlice.js';
 import chefSlice from './chefSlice.js';
+import mealsSlice from './mealsSlice.js';
 
 
 //persist syntax;
@@ -29,6 +30,7 @@ export const store = configureStore({
         login: loginSlice,
         chef: chefSlice,
         session: persistedMacro,
+        meals: mealsSlice,
         middleware: [thunk]
     }
 });
