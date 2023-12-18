@@ -24,7 +24,7 @@ export default function Feed() {
 
     }, [])
 
-    let rendered = undefined;
+    let rendered;
 
     if (retrieved) {
         rendered = mealData.map(meal => <MealCard name={meal.mealtitle} chef={meal.chef} rating={meal.rating ? meal.rating : 'No Rating'} days="1.5" price={meal.price} image={meal.url} />)

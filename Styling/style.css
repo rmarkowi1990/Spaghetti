@@ -263,9 +263,9 @@ body {
 }
 
 #mainFeed {
-    width: 93%;
-    margin: 30px 10px 30px 10px;
-    padding: 20px 20px 20px 20px;
+    /* width: 93%; */
+    /* margin: 30px 10px 30px 10px; */
+    padding: 30px 30px 30px 30px;
     background-color: #233142;
     /* border: 10px solid;
     border-color: #233142; */
@@ -466,6 +466,32 @@ body {
     letter-spacing: -1px;
 }
 
+.miniMealBox {
+    margin: -20px 0px 0px 0px;
+    /* padding-top: 20px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F6F6F6;
+    width: 100%;
+    height: 50px;
+    filter: drop-shadow(10px 10px 10px rgb(35, 49, 66, 10%));
+    border-radius: 0px 0px 20px 20px;
+
+
+}
+
+.miniMealTitle {
+
+    font-size: 25px;
+    font-weight: 500;
+    color: #273648;
+    font-style: italic;
+    letter-spacing: -1px;
+    /* border-radius: 20px; */
+}
+
 /* 404 error */
 
 .error404 {
@@ -603,9 +629,11 @@ body {
 #imageSection {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 40px;
     height: 100%;
+    /* display: grid;
+    grid-template-columns: [left] 50% [center] 50% [right] */
 }
 
 #imageSection>img {
@@ -696,4 +724,39 @@ body {
     height: 100px;
     font-size: 20px;
     resize: none;
+}
+
+.chefFeed {
+    width: 90%;
+    /* padding: 20px; */
+    display: grid;
+    grid-template-columns: [start] 25%[left] 25% [center] 25% [right] 25% [end];
+    /* gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-star;
+    align-items: center; */
+    grid-row-gap: 50px;
+}
+
+#menuSubtitle {
+    font-size: 45px;
+    width: auto;
+    color: #273648;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: -2px;
+    /* background-color: #FF1F1F; */
+    background-color: #E2FF37;
+    padding: 10px 30px 10px 30px;
+    border-radius: 5px;
+
+    filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
+    /* background: repeating-linear-gradient(135deg,
+            #FF1F1F,
+            #FF1F1F 9px,
+            #ff3535 9px,
+            #ff3535 18px); */
+
 }

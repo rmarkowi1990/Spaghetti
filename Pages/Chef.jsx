@@ -1,25 +1,47 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import axios from 'axios'
 
-import { reset, addImage, enterMealTitle, enterDescription, enterExpiration, enterPrice, toggleCrustaceans, toggleDairy, toggleEggs, toggleFish, toggleMeat, togglePeanuts, toggleSesame, toggleSoybeans, toggleTreeNuts, toggleWheat } from '../Redux/chefSlice';
+import { refreshMeals, reset, addImage, enterMealTitle, enterDescription, enterExpiration, enterPrice, toggleCrustaceans, toggleDairy, toggleEggs, toggleFish, toggleMeat, togglePeanuts, toggleSesame, toggleSoybeans, toggleTreeNuts, toggleWheat } from '../Redux/chefSlice';
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 
+import MiniMealCard from '../Components/MiniMealCard.jsx'
+
 
 export default function Chef() {
-
-
-
-    const username = useSelector((state) => state.session.userDetails.username);
-
     const dispatch = useDispatch();
     const navigate = useNavigate()
 
-    const { image, mealTitle, price, expiration, description } = useSelector(state => state.chef);
+    const { id } = useSelector((state) => state.session.userDetails)
+
+
+    //checks for meals made by chef to display
+    useEffect(() => {
+        fetch(`http://localhost:3000/meals/chef/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                // console.log('returned from chef: ', data)
+                dispatch(refreshMeals(data));
+
+            })
+
+
+    }, [])
+
+    const username = useSelector((state) => state.session.userDetails.username);
+
+
+
+    const { meals, image, mealTitle, price, expiration, description } = useSelector(state => state.chef);
     const { dairy, eggs, fish, crustaceans, treeNuts, peanuts, wheat, soybeans, sesame, meat } = useSelector(state => state.chef.ingredients)
 
-    const { id } = useSelector((state) => state.session.userDetails)
+
+
+    let mealsRendered;
+    if (meals) mealsRendered = meals.map(meal => <MiniMealCard name={meal.mealtitle} chef={meal.chef} rating={meal.rating ? meal.rating : 'No Rating'} days="1.5" price={meal.price} image={meal.url} />)
+
+
 
 
     const submit = (event) => {
@@ -152,6 +174,7 @@ export default function Chef() {
                                     <h3 className='subtitle'>Description</h3>
                                     <textarea id="description" onInput={(event) => dispatch(enterDescription(event))} value={description}></textarea>
                                     {/* <h3>Image</h3> */}
+
                                     {/* <form onSubmit={submit}> */}
 
                                     {/* <input type='file' accept='image/*' onChange={(event) => dispatch(addImage(event.target.files[0]))} /> */}
@@ -178,11 +201,17 @@ export default function Chef() {
 
                 </div>
                 <div id='imageSection'>
+                    {/* {mealsRendered} */}
+
                     <img src="https://img.freepik.com/premium-photo/refrigerator-with-holiday-leftovers-turkey-ham-stuffing-generative-ai_864588-12391.jpg"></img>
                     <img src="https://whatsfordinner.com/wp-content/uploads/2017/04/Keep_Them_Busy_10_Things_Kids_Can_Do_in_The_Kitchen_-_Feature.jpg"></img>
-                    <img src="https://media-cldnry.s-nbcnews.com/image/upload/newscms/2018_52/2698661/181228-neighbors-stock-cs-433p.jpg"></img>
+
                 </div>
             </div >
+            <h2 id='menuSubtitle'>Your Creations</h2>
+            <div className='chefFeed'>
+                {mealsRendered}
+            </div>
 
         </div >
     )
