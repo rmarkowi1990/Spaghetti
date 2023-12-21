@@ -9,12 +9,10 @@ mealController.addMeal = async (req, res, next) => {
         const { chefId, mealTitle, price, expiration, description, dairy, eggs, fish, crustaceans, treeNuts, peanuts, wheat, soybeans, sesame, meat, portions } = res.locals.meal;
         const imageName = res.locals.imageName;
 
-        console.log('portions', portions)
         const values = [portions, imageName, mealTitle, Number(chefId), price, expiration, description, dairy, eggs, fish, crustaceans, treeNuts, peanuts, wheat, soybeans, sesame, meat]
         const addText = "INSERT INTO meals (portions, imagetitle, mealTitle, chef_id, price, expiration, description, dairy, eggs, fish, crustaceans, treenuts, peanuts, wheat, soybeans, sesame, meat) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)"
 
         await db.query(addText, values);
-        console.log('submitted to Database')
         return next()
     } catch (error) {
         return next(error)
