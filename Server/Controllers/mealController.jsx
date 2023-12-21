@@ -37,12 +37,30 @@ mealController.getMeals = async (req, res, next) => {
     }
 }
 
-mealController.getMealsByID = async (req, res, next) => {
+mealController.getMealsByChefID = async (req, res, next) => {
 
     try {
         const id = req.params.id;
 
         const getText = `SELECT meals.*, users.username AS chef, users.address, users.city, users.state, users.zip, users.chefrating AS rating FROM meals LEFT OUTER JOIN users ON users.id = meals.chef_id WHERE chef_id = ${id}`;
+        const returned = await db.query(getText);
+        res.locals.meals = returned.rows
+
+        return next()
+
+    }
+    catch (error) {
+        return next(error)
+    }
+
+}
+
+mealController.getMealsByID = async (req, res, next) => {
+
+    try {
+        const id = req.params.id;
+
+        const getText = `SELECT meals.*, users.username AS chef, users.address, users.city, users.state, users.zip, users.chefrating AS rating FROM meals LEFT OUTER JOIN users ON users.id = meals.chef_id WHERE meal_id =  ${id}`;
         const returned = await db.query(getText);
         res.locals.meals = returned.rows
 

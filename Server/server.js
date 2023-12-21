@@ -54,7 +54,13 @@ app.post('/meals', upload.single('image'), s3Controller.uploadImage, mealControl
 
 })
 
-app.get('/meals/chef/:id', mealController.getMealsByID, s3Controller.generateURLs, async (req, res) => {
+//for pulling all of chef's creations on chef page
+app.get('/meals/chef/:id', mealController.getMealsByChefID, s3Controller.generateURLs, async (req, res) => {
+    res.status(200).send(res.locals.mealsWithURLs)
+})
+
+//for viewing a specific meal page
+app.get('/meals/meal/:id', mealController.getMealsByID, s3Controller.generateURLs, async (req, res) => {
     res.status(200).send(res.locals.mealsWithURLs)
 })
 

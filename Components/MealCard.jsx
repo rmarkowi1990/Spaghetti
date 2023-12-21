@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { clearPreview } from '../Redux/mealsSlice.js';
+import { useDispatch } from 'react-redux'
+
+
 
 export default function MealCard(props) {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    function handleClick() {
+        dispatch(clearPreview())
+        navigate('/preview', { state: props.id })
+    }
+
 
 
 
     return (
-        <div className='mealContainer' onClick={() => navigate('/meal')}>
+        <div className='mealContainer' onClick={handleClick}>
 
             <img className='mealImage' src={props.image} />
             <div className='mealBox'><h2 className='mealPrice'>{props.price}</h2></div>

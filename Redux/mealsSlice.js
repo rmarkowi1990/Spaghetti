@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     retrieved: false,
-    meals: null
+    meals: null,
+    preview: null
 
 }
 
@@ -16,6 +17,12 @@ export const mealsSlice = createSlice({
             state.retrieved = true;
             state.meals = action.payload;
 
+        },
+        storePreview: (state, action) => {
+            state.preview = action.payload;
+        },
+        clearPreview: (state) => {
+            state.preview = null
         }
 
 
@@ -25,7 +32,7 @@ export const mealsSlice = createSlice({
 
 
 // destructuring to export each action based on reducer functions
-export const { storeMeals } = mealsSlice.actions;
+export const { storeMeals, storePreview, clearPreview } = mealsSlice.actions;
 
 export default mealsSlice.reducer;
 

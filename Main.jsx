@@ -16,6 +16,7 @@ import Login from './Pages/Login.jsx'
 import Footer from './Components/Footer.jsx'
 import Signup from './Pages/Signup.jsx'
 import Chef from './Pages/Chef.jsx'
+import Preview from './Pages/Preview.jsx'
 
 
 import Feed from './Pages/Feed.jsx'
@@ -48,6 +49,11 @@ export default function Main() {
                     <Route path='/cheftable' element={
                         <ProtectedRoute>
                             <Chef />
+                        </ProtectedRoute>
+                    } />
+                    <Route path='/preview' element={
+                        <ProtectedRoute>
+                            <Preview />
                         </ProtectedRoute>
                     } />
                     <Route path='*' element={<Error404 />} />
