@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import axios from 'axios'
 
-import { refreshMeals, reset, addImage, enterMealTitle, enterDescription, enterExpiration, enterPrice, toggleCrustaceans, toggleDairy, toggleEggs, toggleFish, toggleMeat, togglePeanuts, toggleSesame, toggleSoybeans, toggleTreeNuts, toggleWheat } from '../Redux/chefSlice';
+import { enterPortions, refreshMeals, reset, addImage, enterMealTitle, enterDescription, enterExpiration, enterPrice, toggleCrustaceans, toggleDairy, toggleEggs, toggleFish, toggleMeat, togglePeanuts, toggleSesame, toggleSoybeans, toggleTreeNuts, toggleWheat } from '../Redux/chefSlice';
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 
@@ -33,7 +33,7 @@ export default function Chef() {
 
 
 
-    const { meals, image, mealTitle, price, expiration, description } = useSelector(state => state.chef);
+    const { portions, meals, image, mealTitle, price, expiration, description } = useSelector(state => state.chef);
     const { dairy, eggs, fish, crustaceans, treeNuts, peanuts, wheat, soybeans, sesame, meat } = useSelector(state => state.chef.ingredients)
 
 
@@ -52,7 +52,8 @@ export default function Chef() {
         const formData = new FormData();
         formData.append('image', image);
         formData.append('mealTitle', mealTitle);
-        formData.append('chefId', id)
+        formData.append('chefId', id);
+        // formData.append('portions', portions)
         formData.append('price', price);
         formData.append('expiration', expiration);
         formData.append('description', description);
@@ -116,6 +117,11 @@ export default function Chef() {
                                 <div className="chefField">
                                     <h3 className='subtitle'>Expiration Date</h3>
                                     <input type="date" onChange={(date) => dispatch(enterExpiration(date))} value={expiration}></input>
+                                </div>
+
+                                <div className="chefField">
+                                    <h3 className='subtitle'>Portions</h3>
+                                    <input onInput={(event) => dispatch(enterPortions(event))} value={portions} ></input>
                                 </div>
 
 
