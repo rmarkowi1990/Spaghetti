@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux'
-import { storePreview } from '../Redux/mealsSlice';
+import { increaseQuantity, decreaseQuantity } from '../Redux/orderSlice';
+
 
 
 
@@ -13,6 +14,8 @@ export default function Preview(props) {
     const location = useLocation();
 
     const meals = useSelector((state) => state.meals.meals);
+    const quantity = useSelector((state) => state.order.quantity);
+    console.log('quantity', quantity)
 
 
 
@@ -61,6 +64,8 @@ export default function Preview(props) {
 
                     <h3>Description:</h3>
                     <p>{preview.description}</p>
+                    <h3>Distance:</h3>
+                    <p>3 Miles</p>
 
                     <h3>Portions Available:</h3>
                     <p>{preview.portions}</p>
@@ -71,11 +76,11 @@ export default function Preview(props) {
                     <p>{preview.expiration}</p>
                     <div id='previewFooter'>
                         <div id='previewPriceBox'>{preview.price}</div>
-                        <select name='previewQuantity' id='previewQuantity'>
-                            <option value='1'>1</option>
-                            <option value='1'>2</option>
-                            <option value='1'>3</option>
-                        </select>
+                        <div className='previewQuantityBox'>
+                            <div id='previewArrowDown' onClick={() => dispatch(decreaseQuantity())}>↓</div>
+                            <div id='previewQuantity' >{quantity}</div>
+                            <div id='previewArrowUp' onClick={() => dispatch(increaseQuantity())}>↑</div>
+                        </div>
                         <button>Order</button>
                     </div>
                 </div>

@@ -258,15 +258,22 @@ body {
     justify-content: flex-start;
     align-items: center;
     height: 100%;
+    background: repeating-linear-gradient(135deg,
+            #233142,
+            #233142 9px,
+            #273648 9px,
+            #273648 18px);
+
     /* background-color: pink; */
 
 }
 
 #mainFeed {
+    width: 90%;
     /* width: 93%; */
-    /* margin: 30px 10px 30px 10px; */
-    padding: 30px 30px 30px 30px;
-    background-color: #233142;
+    /* margin: 30px 40px 30px 40px; */
+    /* eee */
+    /* background-color: #233142; */
     /* border: 10px solid;
     border-color: #233142; */
     display: flex;
@@ -274,11 +281,7 @@ body {
     justify-content: center;
     align-items: center;
     filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
-    background: repeating-linear-gradient(135deg,
-            #233142,
-            #233142 9px,
-            #273648 9px,
-            #273648 18px);
+
 
 
 
@@ -306,6 +309,7 @@ body {
 
 .feedGrid {
     width: 100%;
+
     display: grid;
     grid-template-columns: [start] 33.33% [left] 33.34% [right] 33.33% [end];
     /* gap: 20px;
@@ -339,9 +343,9 @@ body {
 
 .mealContainer:hover {
     cursor: pointer;
-    /* background-color: green; */
-    margin: 10px;
-    padding: 10px;
+    background-color: #FFF9DA;
+    /* margin: 10px;
+    padding: 10px; */
 
     /* margin: -5px; */
 
@@ -784,6 +788,8 @@ body {
     color: #273648;
     border-radius: 20px;
     height: 100%;
+    margin-bottom: 50px;
+    padding: 15px;
 }
 
 #previewTitle {
@@ -835,11 +841,21 @@ body {
     font-weight: 700;
     letter-spacing: 2px;
     padding-left: 10px;
+    text-decoration: underline;
+
+}
+
+#previewUsername:hover {
+    cursor: pointer;
 
 }
 
 #previewLeft {
     margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 #previewImage {
@@ -855,6 +871,7 @@ body {
     margin-top: 20px;
     margin-right: 20px;
     margin-bottom: 20px;
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -866,18 +883,20 @@ body {
 
 
 #previewRight>h3 {
-    font-size: 20px;
-    letter-spacing: 1px;
+    font-size: 23px;
+    /* letter-spacing: 1px; */
     font-weight: 800;
     margin: 0px;
     padding: 0px;
+    padding-bottom: 10px;
+
 }
 
 
 #previewRight>p {
     margin: 0px;
-    font-size: 20px;
-    /* padding-bottom: 20px; */
+    font-size: 18px;
+    padding-bottom: 20px;
     /* padding-left: 20px; */
 }
 
@@ -911,18 +930,12 @@ body {
     border-radius: 10px;
 }
 
-#previewQuantity {
-    font-size: 28px;
-    font-weight: 400;
-    height: 60px;
-    width: 70px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-
+#previewFooter>button:hover {
+    background-color: #8390A0;
+    cursor: pointer;
 }
+
+
 
 #previewPriceBox {
     background-color: #FD5252;
@@ -938,5 +951,69 @@ body {
     /* background-color: red; */
     border-radius: 10px;
 
+
+}
+
+.previewQuantityBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#previewArrowDown {
+    background-color: #455d7a;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 25px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+
+}
+
+
+
+#previewArrowUp {
+    background-color: #FD5252;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 25px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+
+}
+
+#previewArrowDown:hover {
+    user-select: none;
+    cursor: pointer;
+    background-color: #8390A0;
+}
+
+#previewArrowUp:hover {
+    user-select: none;
+    cursor: pointer;
+    background-color: #F89A9A;
+}
+
+#previewQuantity {
+
+    background-color: #233142;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 50px;
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
 
 }
