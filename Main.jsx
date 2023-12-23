@@ -40,12 +40,15 @@ export default function Main() {
                 <Routes>
                     <Route path='/' element={loggedIn ? <Feed /> : <Splash />} />
                     <Route path='/login' element={<Login />} />
+                    
                     <Route path='/signup' element={<Signup />} />
+
                     <Route path='/feed' element={
                         <ProtectedRoute>
                             <Feed />
                         </ProtectedRoute>
                     } />
+                    
                     <Route path='/cheftable' element={
                         <ProtectedRoute>
                             <Chef />
