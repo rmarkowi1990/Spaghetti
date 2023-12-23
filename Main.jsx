@@ -17,6 +17,8 @@ import Footer from './Components/Footer.jsx'
 import Signup from './Pages/Signup.jsx'
 import Chef from './Pages/Chef.jsx'
 import Preview from './Pages/Preview.jsx'
+import Alert from './Components/Alert.jsx'
+import Orders from './Pages/Orders.jsx'
 
 
 import Feed from './Pages/Feed.jsx'
@@ -25,7 +27,8 @@ import Feed from './Pages/Feed.jsx'
 export default function Main() {
 
 
-    const { loggedIn } = useSelector((state) => state.session)
+    const { loggedIn, alert } = useSelector((state) => state.session)
+
 
 
 
@@ -35,12 +38,13 @@ export default function Main() {
 
 
                 {loggedIn ? <NavLoggedIn /> : <Nav />}
+                {alert && <Alert />}
 
 
                 <Routes>
                     <Route path='/' element={loggedIn ? <Feed /> : <Splash />} />
                     <Route path='/login' element={<Login />} />
-                    
+
                     <Route path='/signup' element={<Signup />} />
 
                     <Route path='/feed' element={
@@ -48,7 +52,7 @@ export default function Main() {
                             <Feed />
                         </ProtectedRoute>
                     } />
-                    
+
                     <Route path='/cheftable' element={
                         <ProtectedRoute>
                             <Chef />
@@ -57,6 +61,11 @@ export default function Main() {
                     <Route path='/preview' element={
                         <ProtectedRoute>
                             <Preview />
+                        </ProtectedRoute>
+                    } />
+                    <Route path='/orders' element={
+                        <ProtectedRoute>
+                            <Orders />
                         </ProtectedRoute>
                     } />
                     <Route path='*' element={<Error404 />} />

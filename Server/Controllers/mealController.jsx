@@ -73,6 +73,27 @@ mealController.getMealsByID = async (req, res, next) => {
 
 }
 
+mealController.updatePortions = async (req, res, next) => {
+    try {
+
+        const { meal_id, quantity } = req.body;
+
+        //retrieve previous portions from meal
+        let portions = await db.query(`SELECT portions FROM meals WHERE meal_id = ${meal_id}`);
+        portions = portions.rows[0].portions;
+
+
+        //modify portions, decremeanting by order
+        await db.query(`UPDATE meals SET portions = ${portions - quantity} WHERE meal_id = ${meal_id};`)
+
+        return next()
+    } catch (error) {
+        return next(error)
+
+
+    }
+}
+
 
 
 module.exports = mealController;

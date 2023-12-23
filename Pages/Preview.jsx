@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux'
-import { increaseQuantity, decreaseQuantity } from '../Redux/orderSlice';
+import { invalidQuantity, increaseQuantity, decreaseQuantity } from '../Redux/orderSlice';
+import { storeMeals } from '../Redux/mealsSlice.js';
+
 
 
 
@@ -12,21 +14,25 @@ export default function Preview(props) {
 
     const dispatch = useDispatch();
     const location = useLocation();
+    const navigate = useNavigate();
 
-    const meals = useSelector((state) => state.meals.meals);
     const quantity = useSelector((state) => state.order.quantity);
-    console.log('quantity', quantity)
+    const preview = useSelector((state) => state.order.order)
+    const { errorMessage } = useSelector((state) => state.order)
+    const user_id = useSelector(state => state.session.userDetails.id);
 
 
+    const date = new Date()
+    let today = date.getFullYear().toString() + '-' + date.getMonth().toString() + '-' + date.getDate().toString()
 
 
-    const passedID = location.state;
-
-    const preview = meals.filter((meal) => meal.meal_id === passedID)[0];
     const { dairy, eggs, fish, crustaceans, treenuts, peanuts, wheat, soybeans, sesame, meat } = preview;
 
 
+
+    //converts ingredient boolean to string to display
     function ingredientScript() {
+
         let output = ''
         const list = { dairy, eggs, fish, crustaceans, treenuts, peanuts, wheat, soybeans, sesame, meat }
         let keys = Object.keys(list);
@@ -40,9 +46,48 @@ export default function Preview(props) {
                 output = output + firstLetter.toUpperCase() + ingredient + ', '
             }
         }
-
         output = output.slice(0, -2)
         return output;
+    }
+
+    //places order
+    function placeOrder() {
+
+        if (quantity > preview.portions) {
+            dispatch(invalidQuantity())
+            return;
+        }
+
+        console.log('user id: ', user_id)
+
+
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user_id: user_id,
+                meal_id: preview.meal_id,
+                date: today,
+                //adjust price
+                price: preview.price,
+                quantity: quantity
+            })
+        }
+
+        fetch('http://localhost:3000/placeOrder', requestOptions)
+            .then(res => res.json())
+            .then(meals => {
+                dispatch(storeMeals(meals));
+                navigate('/orders')
+
+            })
+
+
+
+
+
     }
 
 
@@ -81,10 +126,12 @@ export default function Preview(props) {
                             <div id='previewQuantity' >{quantity}</div>
                             <div id='previewArrowUp' onClick={() => dispatch(increaseQuantity())}>↑</div>
                         </div>
-                        <button>Order</button>
+                        <button onClick={placeOrder}>Order</button>
                     </div>
                 </div>
             </div>
+
+            <h3 id="previewError">{errorMessage}</h3>
 
         </div>
     )

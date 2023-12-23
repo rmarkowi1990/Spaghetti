@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     loggedIn: false,
+    alert: false,
+    alertBody: null,
     userDetails: {
         id: '',
         username: '',
@@ -40,6 +42,8 @@ export const sessionSlice = createSlice({
                 chefrating: '',
                 patronrating: '',
             }
+            state.alert = false;
+            state.alertBody = null
 
         }
 

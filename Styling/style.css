@@ -290,11 +290,12 @@ body {
 #mainFeed>h1 {
     font-size: 50px;
     color: #273648;
+    background-color: #E2FF37;
     font-style: italic;
     font-weight: 800;
     letter-spacing: -2px;
     /* background-color: #FF1F1F; */
-    background-color: #E2FF37;
+
     padding: 10px 30px 10px 30px;
     border-radius: 5px;
     width: 60%;
@@ -1016,4 +1017,43 @@ body {
     font-size: 24px;
     font-weight: 500;
 
+}
+
+#previewError {
+    color: red;
+}
+
+#alert {
+    padding-left: 45px;
+    padding-right: 45px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #273648;
+    background-color: #E2FF37;
+    height: 40px;
+    filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
+    /* background: repeating-linear-gradient(135deg,
+            #FD5252,
+            #FD5252 9px,
+            #fa5d57 9px,
+            #fa5d57 18px); */
+}
+
+/* orders page */
+
+#ordersContainer {
+    padding-left: 100px;
+    height: 100%;
+    padding-right: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background: repeating-linear-gradient(135deg,
+            #233142,
+            #233142 9px,
+            #273648 9px,
+            #273648 18px);
 }

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { clearPreview } from '../Redux/mealsSlice.js';
-import { useDispatch } from 'react-redux'
+import { adjustOrder } from '../Redux/orderSlice.js';
+import { useDispatch, useSelector } from 'react-redux'
 
 
 
@@ -10,9 +11,15 @@ export default function MealCard(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    const meals = useSelector((state) => state.meals.meals);
+    const order = meals.filter((meal) => meal.meal_id === props.id)[0];
+
+
+
     function handleClick() {
         dispatch(clearPreview())
-        navigate('/preview', { state: props.id })
+        dispatch(adjustOrder(order))
+        navigate('/preview')
     }
 
 

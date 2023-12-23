@@ -26,11 +26,14 @@ export default function Feed() {
 
     let rendered;
 
+
+    //only show meals with portions available
     if (retrieved) {
-        rendered = mealData.map(meal => <MealCard id={meal.meal_id} name={meal.mealtitle} chef={meal.chef} rating={meal.rating ? meal.rating : 'No Rating'} days="1.5" price={meal.price} image={meal.url} />)
+        const filtered = mealData.filter((meal) => meal.portions > 0)
+        rendered = filtered.map(meal => <MealCard id={meal.meal_id} name={meal.mealtitle} chef={meal.chef} rating={meal.rating ? meal.rating : 'No Rating'} days="1.5" price={meal.price} image={meal.url} />)
     }
 
-    // console.log(rendered)
+
 
     return (
         <div className='background'>
