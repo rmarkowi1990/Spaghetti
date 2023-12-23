@@ -780,19 +780,23 @@ body {
 .previewGrid {
     display: grid;
     grid-template-columns: [left] 55% [center] 45% [right];
-    background-color: #F6F6F6
+    background-color: #F6F6F6;
+    color: #273648;
+    border-radius: 20px;
+    height: 100%;
 }
 
 #previewTitle {
     font-size: 85px;
-    min-width: 60%;
+    /* min-width: 60%; */
+    /* align-self: center; */
     color: #273648;
     font-style: italic;
     font-weight: 800;
     letter-spacing: -2px;
     /* background-color: #FF1F1F; */
     background-color: #E2FF37;
-    padding: 10px 30px 10px 30px;
+    padding: 10px 90px 10px 90px;
     border-radius: 5px;
 
     filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
@@ -834,8 +838,105 @@ body {
 
 }
 
+#previewLeft {
+    margin: 20px;
+}
+
 #previewImage {
+    object-fit: cover;
+    overflow: hidden;
     width: 100%;
-    /* object-fit: cover; */
-    /* height: 400px; */
+    height: 400px;
+    border-radius: 20px;
+    /* border: 5px solid #273648; */
+}
+
+#previewRight {
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* background-color: pink; */
+}
+
+
+
+
+#previewRight>h3 {
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 800;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+#previewRight>p {
+    margin: 0px;
+    font-size: 20px;
+    /* padding-bottom: 20px; */
+    /* padding-left: 20px; */
+}
+
+#previewFooter {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* gap: 20px; */
+
+}
+
+#previewFooter>button {
+
+
+    font-family: 'DM Sans',
+        sans-serif;
+    letter-spacing: 2px;
+    background-color: #233142;
+    font-size: 28px;
+    font-weight: 400;
+    color: white;
+    border: none;
+    width: 175px;
+    height: 60px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
+    margin: 0px;
+    border-radius: 10px;
+}
+
+#previewQuantity {
+    font-size: 28px;
+    font-weight: 400;
+    height: 60px;
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+
+}
+
+#previewPriceBox {
+    background-color: #FD5252;
+    color: white;
+    width: 175px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    font-size: 28px;
+    font-weight: 400;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+    border-radius: 10px;
+
+
 }

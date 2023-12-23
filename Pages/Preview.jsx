@@ -23,8 +23,6 @@ export default function Preview(props) {
     const { dairy, eggs, fish, crustaceans, treenuts, peanuts, wheat, soybeans, sesame, meat } = preview;
 
 
-    // console.log('preview: ', preview);
-
     function ingredientScript() {
         let output = ''
         const list = { dairy, eggs, fish, crustaceans, treenuts, peanuts, wheat, soybeans, sesame, meat }
@@ -55,11 +53,31 @@ export default function Preview(props) {
             <h2 id='previewChef'>a creation by <span id='previewUsername'>{preview.chef}</span></h2>
 
             <div className='previewGrid'>
+                <div id='previewLeft'>
 
-                <img id='previewImage' src={preview.url}></img>
+                    <img id='previewImage' src={preview.url}></img>
+                </div>
                 <div id='previewRight'>
+
+                    <h3>Description:</h3>
+                    <p>{preview.description}</p>
+
+                    <h3>Portions Available:</h3>
+                    <p>{preview.portions}</p>
+
                     <h3>Contains:</h3>
                     <p>{ingredientScript()}</p>
+                    <h3>Expiration:</h3>
+                    <p>{preview.expiration}</p>
+                    <div id='previewFooter'>
+                        <div id='previewPriceBox'>{preview.price}</div>
+                        <select name='previewQuantity' id='previewQuantity'>
+                            <option value='1'>1</option>
+                            <option value='1'>2</option>
+                            <option value='1'>3</option>
+                        </select>
+                        <button>Order</button>
+                    </div>
                 </div>
             </div>
 
