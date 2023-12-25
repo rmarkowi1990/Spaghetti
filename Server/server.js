@@ -6,7 +6,6 @@ const PORT = 3000;
 const userController = require('./Controllers/userController.jsx')
 const s3Controller = require('./Controllers/s3Controller.jsx')
 const mealController = require('./Controllers/mealController.jsx')
-const orderController = require('./Controllers/orderController.jsx')
 
 
 
@@ -41,11 +40,14 @@ app.post('/signup', userController.createUser, (req, res) => {
 
 })
 
-app.post('/login', userController.checkUser, (req, res) => {
-    console.log('user details: ', res.locals.userDetails)
-    res.status(200).json(res.locals.userDetails)
+app.post('/login',
+    userController.checkUser,
 
-})
+    (req, res) => {
+
+        res.status(200).json(res.locals.userDetails)
+
+    })
 
 
 //adds meal photo to aws and adds entire meal to database
@@ -70,20 +72,14 @@ app.get('/meals', mealController.getMeals, s3Controller.generateURLs, (req, res)
 
 })
 
+app.post('/storeMeal', (req, res) => {
+
+    console.log('inside store meal:', req.body)
+    res.send()
 
 
 
-//place order
-app.post('/placeOrder',
-    orderController.processOrder,
-    mealController.updatePortions,
-    mealController.getMeals,
-    s3Controller.generateURLs,
-    (req, res) => {
-
-        res.status(200).send(res.locals.mealsWithURLs)
-
-    })
+})
 
 
 
