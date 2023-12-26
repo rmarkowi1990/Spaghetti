@@ -30,6 +30,19 @@ export default function Preview(props) {
 
 
 
+
+    // renders orders to the page
+    useEffect(() => {
+
+        fetch(`http://localhost:3000/orderHistory/${user_id}`)
+            .then(res => res.json())
+            .then(meals => {
+                dispatch(storeMeals(meals))
+            })
+
+    }, [])
+
+
     //converts ingredient boolean to string to display
     function ingredientScript() {
 

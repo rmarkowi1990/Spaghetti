@@ -36,10 +36,12 @@ app.use((req, res, next) => {
 
 
 //adds new user to users table
-app.post('/signup', userController.createUser, (req, res) => {
-    res.status(200).json("user successfully added")
+app.post('/signup',
+    userController.createUser,
+    (req, res) => {
+        res.status(200).json("user successfully added")
 
-})
+    })
 
 app.post('/login',
     userController.checkUser,
@@ -52,26 +54,39 @@ app.post('/login',
 
 
 //adds meal photo to aws and adds entire meal to database
-app.post('/meals', upload.single('image'), s3Controller.uploadImage, mealController.addMeal, async (req, res) => {
+app.post('/meals',
+    upload.single('image'),
+    s3Controller.uploadImage,
+    mealController.addMeal,
+    async (req, res) => {
 
-    res.send('success')
+        res.send('success')
 
-})
+    })
 
 //for pulling all of chef's creations on chef page
-app.get('/meals/chef/:id', mealController.getMealsByChefID, s3Controller.generateURLs, async (req, res) => {
-    res.status(200).send(res.locals.mealsWithURLs)
-})
+app.get('/meals/chef/:id',
+    mealController.getMealsByChefID,
+    s3Controller.generateURLs,
+    async (req, res) => {
+        res.status(200).send(res.locals.mealsWithURLs)
+    })
 
 //for viewing a specific meal page
-app.get('/meals/meal/:id', mealController.getMealsByID, s3Controller.generateURLs, async (req, res) => {
-    res.status(200).send(res.locals.mealsWithURLs)
-})
+app.get('/meals/meal/:id',
+    mealController.getMealsByID,
+    s3Controller.generateURLs,
+    async (req, res) => {
+        res.status(200).send(res.locals.mealsWithURLs)
+    })
 
-app.get('/meals', mealController.getMeals, s3Controller.generateURLs, (req, res) => {
-    res.status(200).send(res.locals.mealsWithURLs)
+app.get('/meals',
+    mealController.getMeals,
+    s3Controller.generateURLs,
+    (req, res) => {
+        res.status(200).send(res.locals.mealsWithURLs)
 
-})
+    })
 
 app.post('/storeMeal', (req, res) => {
 
@@ -81,6 +96,12 @@ app.post('/storeMeal', (req, res) => {
 
 
 })
+
+app.get('/orderHistory/:id',
+    orderController.getReceived,
+    (req, res) => {
+        res.status(200).send(res.locals.returned)
+    })
 
 app.post('/placeOrder',
     orderController.processOrder,
