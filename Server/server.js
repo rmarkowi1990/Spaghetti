@@ -6,6 +6,7 @@ const PORT = 3000;
 const userController = require('./Controllers/userController.jsx')
 const s3Controller = require('./Controllers/s3Controller.jsx')
 const mealController = require('./Controllers/mealController.jsx')
+const orderController = require('./Controllers/orderController.jsx')
 
 
 
@@ -80,6 +81,18 @@ app.post('/storeMeal', (req, res) => {
 
 
 })
+
+app.post('/placeOrder',
+    orderController.processOrder,
+    mealController.updatePortions,
+    mealController.getMeals,
+    s3Controller.generateURLs,
+    (req, res) => {
+
+        res.status(200).send(res.locals.mealsWithURLs)
+
+    })
+
 
 
 
