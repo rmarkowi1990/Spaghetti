@@ -30,8 +30,10 @@ export default function Orders() {
     let history = []
 
     if (rendered) history = rendered.map((order, index) => {
+
+        console.log('order: ', order)
         if (order.visible) {
-            return <OrderVisible index={index} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.chef_address} city={order.chef_city} state={order.chef_state} zip={order.chef_zip} />
+            return <OrderVisible index={index} chefName={order.chef_username} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.chef_address} city={order.chef_city} state={order.chef_state} zip={order.chef_zip} />
         } else {
             return <OrderHidden index={index} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.address} city={order.city} state={order.state} zip={order.zip} />
         }

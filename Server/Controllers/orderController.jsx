@@ -37,7 +37,7 @@ orderController.orderHistory = async (req, res, next) => {
 
         const userId = req.params.id;
         console.log('userID: ', userId)
-        const queryText = `SELECT orders.*, meals.mealtitle, meals.chef_id, meals.price, users.username AS chef_username, users.address AS chef_address, users.city AS chef_city, users.state AS chef_state, users.zip AS chef_zip, users.chefrating AS chef_rating FROM meals LEFT OUTER JOIN orders ON meals.meal_id = orders.meal_id LEFT OUTER JOIN users ON meals.chef_id = users.id WHERE user_id =${userId}`;
+        const queryText = `SELECT orders.*, meals.mealtitle, meals.chef_id, users.username AS chef_username, users.address AS chef_address, users.city AS chef_city, users.state AS chef_state, users.zip AS chef_zip, users.chefrating AS chef_rating FROM meals LEFT OUTER JOIN orders ON meals.meal_id = orders.meal_id LEFT OUTER JOIN users ON meals.chef_id = users.id WHERE user_id =${userId}`;
         const returned = await db.query(queryText);
         console.log('returned: ', returned.rows)
         res.locals.returned = returned.rows;

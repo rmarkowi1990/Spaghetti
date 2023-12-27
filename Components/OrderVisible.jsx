@@ -31,7 +31,7 @@ export default function OrderVisible(props) {
 
             <div className='OrderExtras'>
                 <div className='OrdersLeft'>
-                    <h3>GrandmaBarb</h3>
+                    <h3>{props.chefName}</h3>
                 </div>
 
                 <div className='OrdersRight'>
