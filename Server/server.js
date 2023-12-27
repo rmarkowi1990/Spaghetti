@@ -98,7 +98,7 @@ app.post('/storeMeal', (req, res) => {
 })
 
 app.get('/orderHistory/:id',
-    orderController.getReceived,
+    orderController.orderHistory,
     (req, res) => {
         res.status(200).send(res.locals.returned)
     })

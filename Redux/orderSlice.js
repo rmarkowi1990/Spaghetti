@@ -5,7 +5,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     quantity: 1,
     order: null,
-    errorMessage: ''
+    errorMessage: '',
+    history: null
 }
 
 export const orderSlice = createSlice({
@@ -21,7 +22,7 @@ export const orderSlice = createSlice({
             state.quantity = state.quantity > 1 ? state.quantity - 1 : state.quantity
         },
         adjustOrder: (state, action) => {
-            state.order = action.payload
+            state.order = action.payload;
         },
         invalidQuantity: (state) => {
             state.errorMessage = "You can't order more portions than available!"
@@ -30,6 +31,18 @@ export const orderSlice = createSlice({
             state.quantity = 1;
             state.order = null;
             state.error = '';
+        },
+        getHistory: (state, action) => {
+            let returned = action.payload;
+            returned = returned.map(order => {
+                return { ...order, visible: false }
+            })
+            state.history = returned;
+
+        },
+        toggleVisibility: (state, action) => {
+            state.history[action.payload].visible = !state.history[action.payload].visible
+
         }
 
 
@@ -38,7 +51,7 @@ export const orderSlice = createSlice({
 
 
 // destructuring to export each action based on reducer functions
-export const { increaseQuantity, decreaseQuantity, adjustOrder, invalidQuantity, resetOrder } = orderSlice.actions;
+export const { toggleVisibility, getHistory, increaseQuantity, decreaseQuantity, adjustOrder, invalidQuantity, resetOrder } = orderSlice.actions;
 
 export default orderSlice.reducer;
 

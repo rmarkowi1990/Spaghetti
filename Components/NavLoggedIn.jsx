@@ -7,8 +7,8 @@ import { endSession } from '../Redux/sessionSlice.js';
 export default function NavLoggedIn() {
 
     const dispatch = useDispatch()
-
     const navigate = useNavigate();
+
 
     function logout() {
         dispatch(endSession())

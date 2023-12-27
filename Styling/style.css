@@ -1106,9 +1106,11 @@ body {
 
 
 .orderHidden {
-    display: flex;
+    /* display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-between; */
+    display: grid;
+    grid-template-columns: [first] 37% [left] 43% [middle] 18% [right] 2% [last];
     align-items: center;
     padding-left: 50px;
     padding-right: 20px;
@@ -1151,11 +1153,12 @@ body {
 }
 
 .orderHeader {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: [first] 37% [left] 43% [middle] 18% [right] 2% [last];
+    align-items: center;
     align-items: center;
     width: 100%;
+    padding-top: 7px;
     /* border-bottom: 2px solid black; */
 
     font-size: 20px;

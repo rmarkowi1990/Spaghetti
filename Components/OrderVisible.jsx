@@ -2,17 +2,30 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import OrderHidden from '../Components/OrderHidden.jsx'
 
-export default function OrderVisible() {
+import { toggleVisibility } from '../Redux/orderSlice.js';
+import { useDispatch } from 'react-redux'
+
+export default function OrderVisible(props) {
+
+
+    const dispatch = useDispatch()
+
+    function handleClick() {
+        dispatch(toggleVisibility(props.index))
+    }
+
+    const price = props.price
 
 
 
     return (
 
-        <div className='orderVisibleContainer'>
+        <div className='orderVisibleContainer' onClick={handleClick}>
             <div className='orderHeader'>
                 <span>12/13/2023</span>
-                <span id='orderMealTitle'>My Famous Lasagna</span>
-                <span>$13.99</span>
+                <span id='orderMealTitle'>{props.title}</span>
+                <span>{props.price}</span>
+
                 <span>-</span>
             </div>
 
@@ -23,9 +36,9 @@ export default function OrderVisible() {
 
                 <div className='OrdersRight'>
 
-                    <p>251 Melbourne Ave</p>
-                    <p>Los Angeles, CA</p>
-                    <p>10223</p>
+                    <p>{props.address}</p>
+                    <p>{props.city}, {props.state}</p>
+                    <p>{props.zip}</p>
 
                 </div>
 
