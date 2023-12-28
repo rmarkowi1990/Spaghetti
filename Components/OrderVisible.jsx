@@ -32,6 +32,7 @@ export default function OrderVisible(props) {
             <div className='OrderExtras'>
                 <div className='OrdersLeft'>
                     <h3>{props.chefName}</h3>
+                    {/* <button>Rate Chef</button> */}
                 </div>
 
                 <div className='OrdersRight'>
