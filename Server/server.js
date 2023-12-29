@@ -114,6 +114,15 @@ app.post('/placeOrder',
 
     })
 
+app.get('/markReceived/:id',
+    orderController.markReceieved,
+    orderController.orderHistory,
+    (req, res) => {
+        res.status(200).send(res.locals.returned)
+    })
+
+
+
 
 
 

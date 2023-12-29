@@ -6,6 +6,7 @@ import OrderAwaits from '../Components/OrderAwaits.jsx';
 
 import { getHistory } from '../Redux/orderSlice.js';
 import { useSelector, useDispatch } from 'react-redux'
+import { render } from 'react-dom';
 
 export default function Orders() {
 
@@ -27,11 +28,16 @@ export default function Orders() {
 
     }, [])
 
+    function refresh(orders) {
+        console.log('rendering')
+        dispatch(getHistory(orders))
+    }
+
     //rendered gets all order history for user
     const rendered = useSelector((state) => state.order.history)
 
     //get all fulfilled orders awaiting pickup
-    const awaitingPickup = rendered ? rendered.filter(order => order.fulfilled === true && order.received === false).map(order => <OrderAwaits chefName={order.chef_username} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.chef_address} city={order.chef_city} state={order.chef_state} zip={order.chef_zip} />) : []
+    const awaitingPickup = rendered ? rendered.filter(order => order.fulfilled === true && order.received === false).map(order => <OrderAwaits render={refresh} chefName={order.chef_username} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.chef_address} city={order.chef_city} state={order.chef_state} zip={order.chef_zip} />) : []
 
     //receieved is all orders that have been finished and marked received
     const received = rendered ? rendered.filter(order => order.received === true) : []
@@ -50,6 +56,8 @@ export default function Orders() {
 
 
     })
+
+
 
 
     return (

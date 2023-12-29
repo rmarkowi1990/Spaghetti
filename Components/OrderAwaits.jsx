@@ -1,7 +1,30 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+import { getHistory } from '../Redux/orderSlice.js';
+import { useSelector, useDispatch } from 'react-redux'
+
 export default function orderAwaits(props) {
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+
+    function handleClick() {
+
+        console.log('order id:', typeof props.orderId)
+
+        fetch(`http://localhost:3000/markReceived/${JSON.stringify(props.orderId)}`)
+            .then(res => res.json())
+            .then(orders => {
+
+                props.render(orders)
+            })
+
+
+
+
+    }
 
 
     return (
@@ -23,7 +46,7 @@ export default function orderAwaits(props) {
 
                 </div>
             </div>
-            <button id='receievedButton'>Order Receieved</button>
+            <button id='receievedButton' onClick={handleClick}>Order Receieved</button>
         </div>
 
     )

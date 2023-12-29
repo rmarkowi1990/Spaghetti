@@ -49,5 +49,21 @@ orderController.orderHistory = async (req, res, next) => {
     }
 }
 
+orderController.markReceieved = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const text = `UPDATE orders SET received = true WHERE order_id = ${id}`;
+        console.log('order ' + id + ' recieved: true')
+        db.query(text)
+
+
+        return next()
+    } catch (error) {
+        return next(error)
+    }
+
+
+
+}
 
 module.exports = orderController;
