@@ -33,6 +33,17 @@ export default function Orders() {
     function receive(id) {
 
         fetch(`http://localhost:3000/markReceived/${JSON.stringify(id)}`)
+            .then(
+
+                fetch(`http://localhost:3000/orderHistory/${user_id}`)
+                    .then(res => res.json())
+                    .then(orders => {
+                        console.log('orders: ', orders);
+                        dispatch(getHistory(orders))
+
+                    })
+
+            )
         // .then(res => res.json())
         // .then(orders => {
         //     console.log('order now marked received, now updating state. order: ', orders)
@@ -42,13 +53,7 @@ export default function Orders() {
 
 
         // })
-        fetch(`http://localhost:3000/orderHistory/${user_id}`)
-            .then(res => res.json())
-            .then(orders => {
-                console.log('orders: ', orders);
-                dispatch(getHistory(orders))
 
-            })
     }
 
     //rendered gets all order history for user
