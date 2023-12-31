@@ -53,8 +53,8 @@ orderController.markReceieved = async (req, res, next) => {
     try {
         const id = req.params.id;
         const text = `UPDATE orders SET received = true WHERE order_id = ${id}`;
+        await db.query(text)
         console.log('order ' + id + ' recieved: true')
-        db.query(text)
 
 
         return next()

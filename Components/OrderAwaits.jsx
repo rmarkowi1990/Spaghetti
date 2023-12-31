@@ -14,12 +14,12 @@ export default function orderAwaits(props) {
 
         console.log('order id:', typeof props.orderId)
 
-        fetch(`http://localhost:3000/markReceived/${JSON.stringify(props.orderId)}`)
-            .then(res => res.json())
-            .then(orders => {
+        // fetch(`http://localhost:3000/markReceived/${JSON.stringify(props.orderId)}`)
+        //     .then(res => res.json())
+        //     .then(orders => {
 
-                props.render(orders)
-            })
+        //         props.render(orders)
+        //     })
 
 
 
@@ -46,7 +46,7 @@ export default function orderAwaits(props) {
 
                 </div>
             </div>
-            <button id='receievedButton' onClick={handleClick}>Order Receieved</button>
+            <button id='receievedButton' onClick={() => props.receive(props.orderId)}>Order Receieved</button>
         </div>
 
     )

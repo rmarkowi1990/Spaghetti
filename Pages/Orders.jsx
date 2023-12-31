@@ -13,6 +13,7 @@ export default function Orders() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+
     const user_id = useSelector((state) => state.session.userDetails.id)
 
 
@@ -24,20 +25,37 @@ export default function Orders() {
             .then(orders => {
                 console.log('orders: ', orders);
                 dispatch(getHistory(orders))
+
             })
 
     }, [])
 
-    function refresh(orders) {
-        console.log('rendering')
-        dispatch(getHistory(orders))
+    function receive(id) {
+
+        fetch(`http://localhost:3000/markReceived/${JSON.stringify(id)}`)
+        // .then(res => res.json())
+        // .then(orders => {
+        //     console.log('order now marked received, now updating state. order: ', orders)
+
+        //     dispatch(getHistory(orders))
+        //     // navigate('/feed')
+
+
+        // })
+        fetch(`http://localhost:3000/orderHistory/${user_id}`)
+            .then(res => res.json())
+            .then(orders => {
+                console.log('orders: ', orders);
+                dispatch(getHistory(orders))
+
+            })
     }
 
     //rendered gets all order history for user
     const rendered = useSelector((state) => state.order.history)
 
     //get all fulfilled orders awaiting pickup
-    const awaitingPickup = rendered ? rendered.filter(order => order.fulfilled === true && order.received === false).map(order => <OrderAwaits render={refresh} chefName={order.chef_username} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.chef_address} city={order.chef_city} state={order.chef_state} zip={order.chef_zip} />) : []
+    const awaitingPickup = rendered ? rendered.filter(order => order.fulfilled === true && order.received === false).map(order => <OrderAwaits receive={receive} chefName={order.chef_username} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.chef_address} city={order.chef_city} state={order.chef_state} zip={order.chef_zip} />) : []
 
     //receieved is all orders that have been finished and marked received
     const received = rendered ? rendered.filter(order => order.received === true) : []
