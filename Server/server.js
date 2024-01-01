@@ -121,6 +121,13 @@ app.get('/markReceived/:id',
         res.status(200).send(res.locals.returned)
     })
 
+app.get('/markFulfilled/:orderid',
+    orderController.markFulfilled,
+    (req, res) => {
+        res.status(200).send()
+    })
+
+
 app.get('/ordersByChef/:chefid',
     orderController.getOrdersByChef,
     (req, res) => {

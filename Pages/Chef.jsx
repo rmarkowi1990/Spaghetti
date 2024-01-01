@@ -43,8 +43,28 @@ export default function Chef() {
 
     }, [])
 
+
+    function markFulfilled(orderId) {
+        console.log('order to fulfil: ', orderId)
+
+        fetch(`http://localhost:3000/markFulfilled/${orderId}`)
+            .then(
+
+                fetch(`http://localhost:3000/ordersByChef/${id}`)
+                    .then(res => res.json())
+                    .then(orders => {
+                        dispatch(getOrdersByChef(orders))
+                    })
+            )
+
+
+
+
+
+    }
+
     const newOrders = ordersByChef ? ordersByChef.filter(order => order.fulfilled === false).map(orders => {
-        return <NewOrder date={orders.date} time={orders.time} title={orders.mealtitle} quantity={orders.quantity} price={orders.price} orderid={orders.order_id} username={orders.eater_username} />
+        return <NewOrder markFulfilled={markFulfilled} date={orders.date} time={orders.time} title={orders.mealtitle} quantity={orders.quantity} price={orders.price} orderid={orders.order_id} username={orders.eater_username} />
     }) : []
 
     console.log("orders by cheffff", newOrders)
@@ -102,7 +122,6 @@ export default function Chef() {
 
 
     }
-
 
 
 

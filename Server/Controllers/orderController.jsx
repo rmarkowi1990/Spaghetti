@@ -68,6 +68,17 @@ orderController.markReceieved = async (req, res, next) => {
 
 }
 
+orderController.markFulfilled = async (req, res, next) => {
+    try {
+        const orderId = req.params.orderid;
+        await db.query(`UPDATE orders SET fulfilled = true WHERE order_id = ${orderId}`)
+        return next()
+
+    } catch (error) {
+        return next(error)
+    }
+}
+
 orderController.getOrdersByChef = async (req, res, next) => {
     try {
 

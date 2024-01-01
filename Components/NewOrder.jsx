@@ -22,7 +22,7 @@ export default function NewOrder(props) {
 
 
             </div >
-            <button id='receievedButton'>Mark Ready For Pickup</button>
+            <button id='receievedButton' onClick={() => props.markFulfilled(props.orderid)}>Mark Ready For Pickup</button>
         </div >
     )
 
