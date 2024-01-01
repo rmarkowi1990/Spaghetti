@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 
 export default function OrderHidden(props) {
 
-   
+
 
 
     const dispatch = useDispatch()
@@ -17,12 +17,12 @@ export default function OrderHidden(props) {
     }
 
 
-  
+
 
 
     return (
         <div className='orderHidden' onClick={handleClick}>
-            <span>12/13/2023</span>
+            <span>{props.date}</span>
             <span id='orderMealTitle'>{props.title}</span>
             <span>{props.price}</span>
             <span>+</span>

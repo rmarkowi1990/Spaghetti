@@ -3,6 +3,7 @@ body {
     margin: 0px 0px 0px 0px;
     background-color: #F6F6F6;
     color: #233142;
+    user-select: none;
     /* background: repeating-linear-gradient(135deg,
             #233142,
             #233142 9px,
@@ -296,18 +297,35 @@ body {
 
 }
 
-#mainFeed>h1 {
+#scoreboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+
+    align-items: center;
+    /* background-color: pink; */
+    height: 220px;
+    margin: 10px;
+    gap: 20px
+}
+
+.pounds {
     font-size: 50px;
     color: #273648;
+
     background-color: #E2FF37;
     font-style: italic;
     font-weight: 800;
     letter-spacing: -2px;
+
+    /* display: flex;
+    justify-content: space-between; */
     /* background-color: #FF1F1F; */
 
     padding: 10px 30px 10px 30px;
     border-radius: 5px;
-    width: 60%;
+    /* width: 50%; */
     filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
     /* background: repeating-linear-gradient(135deg,
             #FF1F1F,
@@ -315,7 +333,28 @@ body {
             #ff3535 9px,
             #ff3535 18px); */
 
+
 }
+
+#spaghetti {
+    /* color: white; */
+    font-size: 130px;
+    /* padding: 0px 20px -100px 10px; */
+    padding-left: 14px;
+    padding-right: 18px;
+    /* background-color: lime; */
+    background-color: #232E3B;
+    color: #F6F6F6;
+    /* color: black; */
+    line-height: 85%;
+    font-weight: 600;
+    /* border: orange solid 1px; */
+    letter-spacing: -2px;
+
+    /* text-shadow: 8px #273648; */
+    /* magin: 0px; */
+}
+
 
 .feedGrid {
     width: 100%;
@@ -613,6 +652,8 @@ body {
     border-radius: 20px;
     /* border: 5px solid #ff6363; */
     color: #273648;
+    width: 100%;
+    height: 1000px;
 
     /* color: white; */
 
@@ -1172,6 +1213,11 @@ body {
     /* border-radius: 5px */
 }
 
+.orderHeader:hover {
+    cursor: pointer;
+    background-color: #FFF9DA;
+}
+
 .orderHidden:hover {
     cursor: pointer;
     background-color: #FFF9DA;
@@ -1190,7 +1236,7 @@ body {
 
 .OrderExtras {
     display: grid;
-    grid-template-columns: [left] 40% [center] 60% [right];
+    grid-template-columns: [left] 25% [center] 35% [right] 50% [end];
     width: 100%;
     height: 100%;
 }
@@ -1344,3 +1390,133 @@ body {
     background-color: #f95959;
     cursor: pointer;
 }
+
+#ratingSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#chefRatingInput {
+
+    margin: 20px;
+    width: 700px;
+    padding: 20px;
+    color: black;
+
+
+}
+
+.chefRatingContainer {
+
+    background-color: #FD5252;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 68%;
+    padding: 50px;
+    margin-top: 20px;
+    border-radius: 1000px;
+    color: white;
+    border: 5px white solid;
+    /* height: 200px; */
+
+
+    /* font-style: italic;
+    font-weight: 800;
+    letter-spacing: -2px; */
+}
+
+#ratingDropdown {
+    font-size: 18px;
+
+    padding: 10px;
+}
+
+#chefReviewText {
+    font-size: 20px;
+    margin: 0px;
+}
+
+.reviewSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#ordersAlertSection {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    /* padding-top: 0px; */
+}
+
+#newOrderContainer {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+
+
+
+
+}
+
+#newOrderContainer>h1 {
+    font-size: 42px;
+    width: auto;
+    color: white;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: -2px;
+    /* background-color: #FF1F1F; */
+    background-color: #FC4B4B;
+    padding: 10px 30px 10px 30px;
+    border-radius: 40px;
+    margin-top: 0px;
+
+    filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
+}
+
+#newOrderDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#newOrderDetails>h3 {
+    font-size: 25px;
+    margin: 0px;
+    /* margin: 10px; */
+
+    padding: 0px;
+    letter-spacing: 1px;
+}
+
+#newOrderDetails>h4 {
+    margin: 0px;
+    padding: 0px;
+    /* letter-spacing: 1px; */
+}
+
+#newOrderTime {
+    font-size: 15px;
+    margin: 10px;
+}
+

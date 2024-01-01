@@ -6,7 +6,8 @@ const initialState = {
     quantity: 1,
     order: null,
     errorMessage: '',
-    history: null
+    history: null,
+    ordersByChef: null
 }
 
 export const orderSlice = createSlice({
@@ -40,6 +41,13 @@ export const orderSlice = createSlice({
             state.history = returned;
 
         },
+        getOrdersByChef: (state, action) => {
+            let returnedOrdersByChef = action.payload;
+            returnedOrdersByChef = returnedOrdersByChef.map(order => {
+                return { ...order, visible: false }
+            })
+            state.ordersByChef = returnedOrdersByChef;
+        },
         toggleVisibility: (state, action) => {
             state.history[action.payload].visible = !state.history[action.payload].visible
 
@@ -51,7 +59,7 @@ export const orderSlice = createSlice({
 
 
 // destructuring to export each action based on reducer functions
-export const { toggleVisibility, getHistory, increaseQuantity, decreaseQuantity, adjustOrder, invalidQuantity, resetOrder } = orderSlice.actions;
+export const { getOrdersByChef, toggleVisibility, getHistory, increaseQuantity, decreaseQuantity, adjustOrder, invalidQuantity, resetOrder } = orderSlice.actions;
 
 export default orderSlice.reducer;
 

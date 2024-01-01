@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import OrderHidden from '../Components/OrderHidden.jsx';
 import OrderVisible from '../Components/OrderVisible.jsx';
 import OrderAwaits from '../Components/OrderAwaits.jsx';
+import Review from '../Components/Review.jsx'
 
 import { getHistory } from '../Redux/orderSlice.js';
 import { useSelector, useDispatch } from 'react-redux'
-import { render } from 'react-dom';
 
 export default function Orders() {
 
@@ -30,6 +30,8 @@ export default function Orders() {
 
     }, [])
 
+
+    //function passed into component when order is ready
     function receive(id) {
 
         fetch(`http://localhost:3000/markReceived/${JSON.stringify(id)}`)
@@ -72,9 +74,9 @@ export default function Orders() {
     if (rendered) history = received.map((order, index) => {
 
         if (order.visible) {
-            return <OrderVisible index={index} chefName={order.chef_username} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.chef_address} city={order.chef_city} state={order.chef_state} zip={order.chef_zip} />
+            return <OrderVisible date={order.date} index={index} chefName={order.chef_username} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.chef_address} city={order.chef_city} state={order.chef_state} zip={order.chef_zip} />
         } else {
-            return <OrderHidden index={index} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.address} city={order.city} state={order.state} zip={order.zip} />
+            return <OrderHidden date={order.date} index={index} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.address} city={order.city} state={order.state} zip={order.zip} />
         }
 
 
@@ -88,6 +90,7 @@ export default function Orders() {
 
             <div id="ordersContainer">
                 {awaitingPickup}
+                {/* <Review /> */}
                 <h1 id="ordersH1">Completed</h1>
 
                 {rendered && history}

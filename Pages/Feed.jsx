@@ -1,19 +1,24 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 
 import { storeMeals } from '../Redux/mealsSlice.js';
 
 import MealCard from '../Components/MealCard.jsx'
+import { getHistory } from '../Redux/orderSlice.js';
+
 
 export default function Feed() {
 
 
     const dispatch = useDispatch();
     const mealData = useSelector(store => store.meals.meals)
+    const userId = useSelector(store => store.session.userDetails.id)
     const { retrieved } = useSelector(store => store.meals)
+    const history = useSelector(store => store.order.history)
 
+
+    //render meals to feed
     useEffect(() => {
 
         fetch('http://localhost:3000/meals')
@@ -21,6 +26,23 @@ export default function Feed() {
             .then(meals => {
                 dispatch(storeMeals(meals))
             })
+
+    }, [])
+
+
+    //get order history for scoreboard
+    useEffect(() => {
+        fetch(`http://localhost:3000/orderHistory/${userId}`)
+            .then(res => res.json())
+            .then(orders => {
+                console.log('order history: ', orders)
+
+                dispatch(getHistory(orders))
+
+
+
+            })
+
 
     }, [])
 
@@ -33,12 +55,27 @@ export default function Feed() {
         rendered = filtered.map(meal => <MealCard id={meal.meal_id} name={meal.mealtitle} chef={meal.chef} rating={meal.rating ? meal.rating : 'No Rating'} days="1.5" price={meal.price} image={meal.url} />)
     }
 
+    // function pounds() {
+
+    //     const pounds = history.filter(order => order.received === true)
+
+
+    //     return received
+
+
+
+    // }
+    const pounds = history ? history.filter(order => order.received === true).length : 0
 
 
     return (
         <div className='background'>
-            <div id="mainFeed">
-                <h1>eat your leftovers.</h1>
+            <div id="mainFeed"><div id='scoreboard'>
+                <h1 className='pounds'>pounds of spaghetti:</h1>
+
+                <h1 className='pounds' id='spaghetti'>{pounds}</h1>
+
+            </div>
                 <div className='feedGrid'>
                     {/* <MealCard name="my famous lasagna" chef="HaleyLo32" rating="4.9" days="1.5" price="$5.43" image="https://www.closetcooking.com/wp-content/uploads/2009/02/Lasagna-Messy-500.jpg" />
                     <MealCard name="fun nuggets" chef="BenCooks83" rating="3.5" days="2" price="$3.31" image="https://www.melaniecooks.com/wp-content/uploads/2013/01/chicken-nuggets-not-soggy.jpg" />

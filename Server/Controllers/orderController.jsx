@@ -6,7 +6,9 @@ orderController.processOrder = async (req, res, next) => {
 
     try {
 
-        const { user_id, meal_id, price, date, quantity } = req.body;
+        const { user_id, meal_id, price, date, quantity, time } = req.body;
+
+        console.log('process order time: ', time)
 
         const totalPrice = Number(price.slice(1)) * quantity
 
@@ -20,8 +22,8 @@ orderController.processOrder = async (req, res, next) => {
         console.log('total price string: ', totalPriceString)
 
 
-        const values = [user_id, meal_id, totalPriceString, date, quantity, false, false]
-        const addText = "INSERT INTO orders (user_id, meal_id, price, date, quantity, fulfilled, received) VALUES ($1, $2, $3, $4, $5, $6, $7)"
+        const values = [user_id, meal_id, totalPriceString, date, quantity, false, false, false, time]
+        const addText = "INSERT INTO orders (user_id, meal_id, price, date, quantity, fulfilled, received, reviewed, time) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)"
 
         await db.query(addText, values);
         console.log('order placed')
@@ -64,6 +66,20 @@ orderController.markReceieved = async (req, res, next) => {
 
 
 
+}
+
+orderController.getOrdersByChef = async (req, res, next) => {
+    try {
+
+
+        const chefId = req.params.chefid
+        const returned = await db.query(`SELECT meals.chef_id, orders.order_id, orders.time, orders.user_id, orders.meal_id, orders.date, orders.price, orders.quantity, orders.fulfilled, orders.received, meals.meal_id, meals.mealtitle,  users.id, users.username AS eater_username, users.firstname AS eater_firstname, users.patronrating FROM orders LEFT OUTER JOIN meals ON orders.meal_id = meals.meal_id LEFT OUTER JOIN users ON orders.user_id = users.id WHERE meals.chef_id = ${chefId}`)
+        res.locals.returned = returned.rows
+        return next()
+    }
+    catch (error) {
+        return next(error)
+    }
 }
 
 module.exports = orderController;

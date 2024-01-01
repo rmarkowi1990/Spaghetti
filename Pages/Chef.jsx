@@ -3,8 +3,10 @@ import React, { useEffect } from 'react';
 import axios from 'axios'
 
 import { enterPortions, refreshMeals, reset, addImage, enterMealTitle, enterDescription, enterExpiration, enterPrice, toggleCrustaceans, toggleDairy, toggleEggs, toggleFish, toggleMeat, togglePeanuts, toggleSesame, toggleSoybeans, toggleTreeNuts, toggleWheat } from '../Redux/chefSlice';
+import { getOrdersByChef } from '../Redux/orderSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
+import NewOrder from '../Components/NewOrder.jsx'
 
 import MiniMealCard from '../Components/MiniMealCard.jsx'
 
@@ -14,6 +16,7 @@ export default function Chef() {
     const navigate = useNavigate()
 
     const { id } = useSelector((state) => state.session.userDetails)
+    const ordersByChef = useSelector((state) => state.order.ordersByChef)
 
 
     //checks for meals made by chef to display
@@ -28,6 +31,25 @@ export default function Chef() {
 
 
     }, [])
+
+    //get all history of ordered creations
+    useEffect(() => {
+        fetch(`http://localhost:3000/ordersByChef/${id}`)
+            .then(res => res.json())
+            .then(orders => {
+                dispatch(getOrdersByChef(orders))
+            })
+
+
+    }, [])
+
+    const newOrders = ordersByChef ? ordersByChef.filter(order => order.fulfilled === false).map(orders => {
+        return <NewOrder date={orders.date} time={orders.time} title={orders.mealtitle} quantity={orders.quantity} price={orders.price} orderid={orders.order_id} username={orders.eater_username} />
+    }) : []
+
+    console.log("orders by cheffff", newOrders)
+
+
 
     const username = useSelector((state) => state.session.userDetails.username);
 
@@ -91,6 +113,9 @@ export default function Chef() {
             <div id='container2'></div>
             <h1>{username}'s Chef Table</h1>
             <div id='splitScreenChef'>
+                {/* <div id="ordersAlertSection">
+
+                </div> */}
 
                 <div id='outerMeal'>
                     {/* <h1>New Chef Creation</h1> */}
@@ -207,18 +232,20 @@ export default function Chef() {
 
                 </div>
                 <div id='imageSection'>
+                    {ordersByChef && newOrders}
                     {/* {mealsRendered} */}
 
-                    <img src="https://img.freepik.com/premium-photo/refrigerator-with-holiday-leftovers-turkey-ham-stuffing-generative-ai_864588-12391.jpg"></img>
-                    <img src="https://whatsfordinner.com/wp-content/uploads/2017/04/Keep_Them_Busy_10_Things_Kids_Can_Do_in_The_Kitchen_-_Feature.jpg"></img>
+                    {/* <img src="https://img.freepik.com/premium-photo/refrigerator-with-holiday-leftovers-turkey-ham-stuffing-generative-ai_864588-12391.jpg"></img>
+                    <img src="https://whatsfordinner.com/wp-content/uploads/2017/04/Keep_Them_Busy_10_Things_Kids_Can_Do_in_The_Kitchen_-_Feature.jpg"></img> */}
 
                 </div>
-            </div >
+                {/* </div > */}
+
+            </div>
             <h2 id='menuSubtitle'>Your Creations</h2>
             <div className='chefFeed'>
                 {mealsRendered}
             </div>
-
         </div >
     )
 

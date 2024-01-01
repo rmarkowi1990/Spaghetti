@@ -31,7 +31,7 @@ export default function Preview(props) {
 
 
 
-   
+
 
 
     //converts ingredient boolean to string to display
@@ -76,7 +76,8 @@ export default function Preview(props) {
                 date: today,
                 //adjust price
                 price: preview.price,
-                quantity: quantity
+                quantity: quantity,
+                time: new Date().toLocaleTimeString()
             })
         }
 
