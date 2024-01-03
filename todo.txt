@@ -1,5 +1,5 @@
 -Utilize ZIP Codes for distance
--rating system
+-rating system needs to not rate twice
 -add expiration date to orders
 -adjust orders on expiration
 -set up alerts

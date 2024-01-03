@@ -96,7 +96,7 @@ export default function Preview(props) {
     }
 
     const starRating = []
-    for (let i = 0; i < preview.rating; i++) {
+    for (let i = 0; i < Math.round(preview.rating); i++) {
         starRating.push(<img id='starRating' src='https://png.pngtree.com/png-vector/20220926/ourmid/pngtree-shiny-gold-star-clipart-illustration-design-png-image_6216956.png' />)
     }
 
@@ -108,9 +108,11 @@ export default function Preview(props) {
         <div className='previewContainer'>
 
             <h1 id='previewTitle'>{preview.mealtitle}</h1>
+
             <h2 id='previewChef'>a creation by <span id='previewUsername'>{preview.chef}</span>
                 {/* <span id='previewRating'>({preview.rating})</span> */}
             </h2>
+
             <div id='starBox'>
                 {starRating}
 
