@@ -55,6 +55,7 @@ export default function OrderVisible(props) {
             .then(response => {
                 if (response.status === 200) {
                     console.log('success updating review')
+                    props.refreshHistory();
                 } else {
                     // dispatch(displayError('Invalid Username'));
                 }
@@ -89,18 +90,19 @@ export default function OrderVisible(props) {
                     <p>{props.zip}</p>
 
                 </div>
-                <div className='reviewSection'>
-                    <h3 id='chefReviewText'>Chef Review</h3>
-                    <select id='ratingDropdown' onChange={setReview}>
-                        <option>5. Unbelievable</option>
-                        <option>4. Understated</option>
-                        <option>3. Underwhelming</option>
-                        <option>2. Uneatable</option>
-                        <option>1. Poison</option>
+                {props.reviewed ? <div className='OrdersRight'><p><i>Review Submitted</i></p></div> :
+                    <div className='reviewSection'>
+                        <h3 id='chefReviewText'>Chef Review</h3>
+                        <select id='ratingDropdown' onChange={setReview}>
+                            <option>5. Unbelievable</option>
+                            <option>4. Understated</option>
+                            <option>3. Underwhelming</option>
+                            <option>2. Uneatable</option>
+                            <option>1. Poison</option>
 
-                    </select>
-                    <button onClick={submitReview}>Submit</button>
-                </div>
+                        </select>
+                        <button onClick={submitReview}>Submit</button>
+                    </div>}
 
 
 

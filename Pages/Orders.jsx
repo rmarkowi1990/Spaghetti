@@ -31,6 +31,19 @@ export default function Orders() {
     }, [])
 
 
+    function refreshHistory() {
+        fetch(`http://localhost:3000/orderHistory/${user_id}`)
+            .then(res => res.json())
+            .then(orders => {
+                console.log('orders: ', orders);
+                dispatch(getHistory(orders))
+
+            })
+
+
+    }
+
+
     //function passed into component when order is ready
     function receive(id) {
 
@@ -71,10 +84,12 @@ export default function Orders() {
 
     let history = []
 
+
+
     if (rendered) history = received.map((order, index) => {
 
         if (order.visible) {
-            return <OrderVisible date={order.date} review={order.review} index={index} chefName={order.chef_username} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.chef_address} city={order.chef_city} state={order.chef_state} zip={order.chef_zip} chefId={order.chef_id} />
+            return <OrderVisible refreshHistory={refreshHistory} reviewed={order.reviewed} date={order.date} review={order.review} index={index} chefName={order.chef_username} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.chef_address} city={order.chef_city} state={order.chef_state} zip={order.chef_zip} chefId={order.chef_id} />
         } else {
             return <OrderHidden date={order.date} index={index} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.address} city={order.city} state={order.state} zip={order.zip} />
         }

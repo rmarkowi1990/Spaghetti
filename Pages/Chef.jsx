@@ -255,7 +255,8 @@ export default function Chef() {
 
                     {/* <h1 id="orderUp">Order Up:</h1>
                     <br></br> */}
-                    {ordersByChef && newOrders}
+                    {ordersByChef && newOrders.length > 0 ? newOrders : <div id='imageSection'><img src="https://img.freepik.com/premium-photo/refrigerator-with-holiday-leftovers-turkey-ham-stuffing-generative-ai_864588-12391.jpg"></img>
+                        <img src="https://whatsfordinner.com/wp-content/uploads/2017/04/Keep_Them_Busy_10_Things_Kids_Can_Do_in_The_Kitchen_-_Feature.jpg"></img></div>}
                     {/* {mealsRendered} */}
 
                     {/* <img src="https://img.freepik.com/premium-photo/refrigerator-with-holiday-leftovers-turkey-ham-stuffing-generative-ai_864588-12391.jpg"></img>
