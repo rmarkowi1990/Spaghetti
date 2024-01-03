@@ -74,7 +74,7 @@ export default function Orders() {
     if (rendered) history = received.map((order, index) => {
 
         if (order.visible) {
-            return <OrderVisible date={order.date} review={order.review} index={index} chefName={order.chef_username} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.chef_address} city={order.chef_city} state={order.chef_state} zip={order.chef_zip} />
+            return <OrderVisible date={order.date} review={order.review} index={index} chefName={order.chef_username} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.chef_address} city={order.chef_city} state={order.chef_state} zip={order.chef_zip} chefId={order.chef_id} />
         } else {
             return <OrderHidden date={order.date} index={index} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.address} city={order.city} state={order.state} zip={order.zip} />
         }

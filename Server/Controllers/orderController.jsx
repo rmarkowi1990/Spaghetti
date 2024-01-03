@@ -93,4 +93,14 @@ orderController.getOrdersByChef = async (req, res, next) => {
     }
 }
 
+orderController.updateReviewed = async (req, res, next) => {
+    try {
+        const { order_id } = req.body;
+        await db.query(`UPDATE orders SET reviewed = true WHERE order_id = ${order_id}`)
+        return next()
+    } catch (error) {
+        return next(error)
+    }
+}
+
 module.exports = orderController;

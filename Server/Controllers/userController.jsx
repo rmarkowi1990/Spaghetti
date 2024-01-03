@@ -14,8 +14,8 @@ userController.createUser = async (req, res, next) => {
     try {
 
         const submitted = req.body;
-        const values = [submitted.userName, submitted.password, submitted.firstName, submitted.lastName, submitted.address, submitted.city, submitted.state, submitted.zip];
-        const text = "INSERT INTO users (userName, password, firstName, lastName, address, city, state, zip) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)";
+        const values = [submitted.userName, submitted.password, submitted.firstName, submitted.lastName, submitted.address, submitted.city, submitted.state, submitted.zip, 0, 0];
+        const text = "INSERT INTO users (userName, password, firstName, lastName, address, city, state, zip, chefrating, chefratingamount) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)";
 
         await db.query(text, values);
         console.log("after db entry")
@@ -67,10 +67,20 @@ userController.checkUser = async (req, res, next) => {
     }
 }
 
-userController.getReview = async (req, res, next) => {
-    // const { user_id } = req.body
-    console.log('inside getReview, req.body is: ', req.body)
-    // const review = async db.query()
+userController.updateReview = async (req, res, next) => {
+    try {
+        const { chef_id, rating } = req.body
+        const returned = await db.query(`SELECT * FROM users WHERE id = ${chef_id}`);
+        const { chefrating, chefratingamount } = returned.rows[0];
+        const updatedAmount = chefratingamount + 1;
+        const updatedRating = ((chefrating * chefratingamount) + rating) / updatedAmount;
+
+        await db.query(`UPDATE users SET chefrating = ${updatedRating}, chefratingamount = ${updatedAmount} WHERE id = ${chef_id}`);
+        return next()
+    }
+    catch (error) {
+        return next()
+    }
 
 
 

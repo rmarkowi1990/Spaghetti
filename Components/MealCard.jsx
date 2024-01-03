@@ -34,7 +34,7 @@ export default function MealCard(props) {
             <div className='detailsSplit'>
                 <div className='mealDetails'>
                     <h1 className='mealTitle'>{props.name}</h1>
-                    <h2 className='mealChef'>{props.chef}<span className='chefRating'> ({props.rating}) </span></h2>
+                    <h2 className='mealChef'>{props.chef}<span className='chefRating'> ({props.rating === 0 ? "NAR" : props.rating}) </span></h2>
                     <h2 className='mealDescription'>{props.days} Days Old</h2>
                 </div>
                 <div className='detailsRight'>

@@ -1549,3 +1549,24 @@ body {
 #youveeaten {
     color: white;
 }
+
+#previewRating {
+    padding-left: 5px;
+
+}
+
+#starBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: -10px;
+}
+
+#starRating {
+    height: 50px;
+    color: yellow;
+}
