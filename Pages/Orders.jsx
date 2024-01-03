@@ -6,7 +6,9 @@ import OrderAwaits from '../Components/OrderAwaits.jsx';
 import Review from '../Components/Review.jsx'
 
 import { getHistory } from '../Redux/orderSlice.js';
+import { hideAlert } from '../Redux/sessionSlice.js';
 import { useSelector, useDispatch } from 'react-redux'
+
 
 export default function Orders() {
 
@@ -55,6 +57,7 @@ export default function Orders() {
                     .then(orders => {
                         console.log('orders: ', orders);
                         dispatch(getHistory(orders))
+                        dispatch(hideAlert());
 
                     })
 

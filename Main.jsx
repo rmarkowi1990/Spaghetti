@@ -27,7 +27,7 @@ import Feed from './Pages/Feed.jsx'
 export default function Main() {
 
 
-    const { loggedIn, alert } = useSelector((state) => state.session)
+    const { loggedIn, alert, alertBody } = useSelector((state) => state.session)
 
 
 
@@ -38,7 +38,7 @@ export default function Main() {
 
 
                 {loggedIn ? <NavLoggedIn /> : <Nav />}
-                {alert && <Alert />}
+                {alert && <Alert alertBody={alertBody} />}
 
 
                 <Routes>

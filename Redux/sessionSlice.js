@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     loggedIn: false,
     alert: false,
-    alertBody: null,
+    alertBody: "",
     userDetails: {
         id: '',
         username: '',
@@ -43,9 +43,18 @@ export const sessionSlice = createSlice({
                 patronrating: '',
             }
             state.alert = false;
-            state.alertBody = null
+            state.alertBody = ""
 
-        }
+        },
+        newAlert: (state, action) => {
+            state.alert = true;
+            state.alertBody = action.payload
+        },
+        hideAlert: (state) => {
+            state.alert = false
+            state.alertBody = ''
+        },
+
 
 
     },
@@ -53,7 +62,7 @@ export const sessionSlice = createSlice({
 
 
 // destructuring to export each action based on reducer functions
-export const { setLogin, startSession, endSession } = sessionSlice.actions;
+export const { newAlert, hideAlert, setLogin, startSession, endSession } = sessionSlice.actions;
 
 export default sessionSlice.reducer;
 

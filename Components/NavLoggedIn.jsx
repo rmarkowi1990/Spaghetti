@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux'
-import { endSession } from '../Redux/sessionSlice.js';
+import { endSession, hideAlert } from '../Redux/sessionSlice.js';
+
 
 export default function NavLoggedIn() {
 
@@ -12,6 +13,7 @@ export default function NavLoggedIn() {
 
     function logout() {
         dispatch(endSession())
+
 
     }
 

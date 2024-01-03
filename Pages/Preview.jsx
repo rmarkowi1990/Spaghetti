@@ -4,6 +4,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { invalidQuantity, increaseQuantity, decreaseQuantity } from '../Redux/orderSlice';
 import { storeMeals } from '../Redux/mealsSlice.js';
+import { newAlert } from '../Redux/sessionSlice';
+
 
 
 
@@ -85,7 +87,8 @@ export default function Preview(props) {
             .then(res => res.json())
             .then(meals => {
                 dispatch(storeMeals(meals));
-                navigate('/orders')
+                dispatch(newAlert('Order In Progress. Check back on "Order Page" to see when Order ready for pickup.'))
+                navigate('/feed')
 
             })
 

@@ -5,7 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { storeMeals } from '../Redux/mealsSlice.js';
 
 import MealCard from '../Components/MealCard.jsx'
-import { getHistory } from '../Redux/orderSlice.js';
+import { getHistory, getOrdersByChef } from '../Redux/orderSlice.js';
+import { newAlert } from '../Redux/sessionSlice';
 
 
 export default function Feed() {
@@ -45,6 +46,24 @@ export default function Feed() {
 
 
     }, [])
+
+    //check for orders for alert
+    // useEffect(() => {
+    //     fetch(`http://localhost:3000/ordersByChef/${userId}`)
+    //         .then(res => res.json())
+    //         .then(orders => {
+    //             dispatch(getOrdersByChef(orders))
+    //         })
+
+
+    // },)
+
+    // const ordersByChef = useSelector(state => state.order.ordersByChef)
+    // const unfulfilled = ordersByChef ? ordersByChef.filter(order => order.fulfilled === false) : []
+    // if (unfulfilled.length > 0) {
+    //     console.log('unfulfilled: ', unfulfilled)
+    //     dispatch(newAlert('You have a new order!'))
+    // }
 
 
 

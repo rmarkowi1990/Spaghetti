@@ -1081,19 +1081,43 @@ body {
 #alert {
     padding-left: 45px;
     padding-right: 45px;
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: center; */
+    display: grid;
+    grid-template-columns: [left] 5% [left-center] 90% [right-center] 5% [right];
     color: #273648;
     background-color: #E2FF37;
-    height: 40px;
+    align-items: center;
+    height: 50px;
     filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
     /* background: repeating-linear-gradient(135deg,
             #FD5252,
             #FD5252 9px,
             #fa5d57 9px,
             #fa5d57 18px); */
+}
+
+#alert:hover {
+    padding-bottom: 5px;
+    margin-bottom: -5px
+}
+
+#alertCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+
+}
+
+#alertLink {
+    text-decoration: underline
+}
+
+#alertLink:hover {
+    cursor: pointer;
 }
 
 /* orders page */
