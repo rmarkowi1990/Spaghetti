@@ -250,7 +250,11 @@ export default function Chef() {
 
 
                 </div>
+
                 <div id='imageSection'>
+
+                    {/* <h1 id="orderUp">Order Up:</h1>
+                    <br></br> */}
                     {ordersByChef && newOrders}
                     {/* {mealsRendered} */}
 

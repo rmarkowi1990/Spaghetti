@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import OrderHidden from '../Components/OrderHidden.jsx'
 
-import { toggleVisibility } from '../Redux/orderSlice.js';
+import { toggleVisibility, updateReviews } from '../Redux/orderSlice.js';
 import { useDispatch } from 'react-redux'
 
 export default function OrderVisible(props) {
@@ -15,6 +15,14 @@ export default function OrderVisible(props) {
     }
 
     const price = props.price
+
+    function setReview(event) {
+        const reviewAction = {
+            rating: event.target.value,
+            orderId: props.orderId
+        }
+        dispatch(updateReviews(reviewAction))
+    }
 
 
 
@@ -45,18 +53,13 @@ export default function OrderVisible(props) {
                 </div>
                 <div className='reviewSection'>
                     <h3 id='chefReviewText'>Chef Review</h3>
-                    <select id='ratingDropdown'>
+                    <select id='ratingDropdown' onChange={setReview}>
                         <option>5. Unbelievable</option>
                         <option>4. Understated</option>
                         <option>3. Underwhelming</option>
                         <option>2. Uneatable</option>
                         <option>1. Poison</option>
-                        {/* <option>1. Poison</option>
-                        <option>2. </option>
-                        <option>3. </option>
-                        <option>4. </option>
 
-                        <option>5. Bobby Flay</option> */}
                     </select>
                     <button>Submit</button>
                 </div>

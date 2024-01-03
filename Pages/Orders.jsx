@@ -66,7 +66,7 @@ export default function Orders() {
 
     //receieved is all orders that have been finished and marked received
     const received = rendered ? rendered.filter(order => order.received === true) : []
-
+    
 
 
     let history = []

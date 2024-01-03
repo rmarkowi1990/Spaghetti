@@ -62,7 +62,6 @@ export default function Feed() {
 
     return (
         <div className='background'>
-
             <div id="mainFeed"><div id='scoreboard'>
                 <h1 className='pounds'>pounds of spaghetti:</h1>
 
