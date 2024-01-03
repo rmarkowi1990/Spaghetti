@@ -88,22 +88,21 @@ export default function OrderVisible(props) {
                     <p>{props.city}, {props.state}</p>
                     <p>{props.zip}</p>
 
-                </div>{
-                    !props.reviewed &&
-                    <div className='reviewSection'>
-                        <h3 id='chefReviewText'>Chef Review</h3>
-                        <select id='ratingDropdown' onChange={setReview}>
-                            <option>5. Unbelievable</option>
-                            <option>4. Understated</option>
-                            <option>3. Underwhelming</option>
-                            <option>2. Uneatable</option>
-                            <option>1. Poison</option>
+                </div>
+                <div className='reviewSection'>
+                    <h3 id='chefReviewText'>Chef Review</h3>
+                    <select id='ratingDropdown' onChange={setReview}>
+                        <option>5. Unbelievable</option>
+                        <option>4. Understated</option>
+                        <option>3. Underwhelming</option>
+                        <option>2. Uneatable</option>
+                        <option>1. Poison</option>
 
-                        </select>
-                        <button onClick={submitReview}>Submit</button>
-                    </div>
+                    </select>
+                    <button onClick={submitReview}>Submit</button>
+                </div>
 
-                }
+
 
 
 
