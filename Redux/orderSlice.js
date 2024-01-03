@@ -36,7 +36,7 @@ export const orderSlice = createSlice({
         getHistory: (state, action) => {
             let returned = action.payload;
             returned = returned.map(order => {
-                return { ...order, visible: false }
+                return { ...order, visible: false, review: 5 }
             })
             state.history = returned;
 

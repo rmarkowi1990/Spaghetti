@@ -3,12 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import OrderHidden from '../Components/OrderHidden.jsx'
 
 import { toggleVisibility, updateReviews } from '../Redux/orderSlice.js';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 export default function OrderVisible(props) {
 
 
     const dispatch = useDispatch()
+
+
+
+
+
+
+
+    // const review = useSelector((state) => state.history[props.index].review) ? useSelector((state) => state.history[props.index].review) : ''
 
     function handleClick() {
         dispatch(toggleVisibility(props.index))
@@ -16,12 +24,41 @@ export default function OrderVisible(props) {
 
     const price = props.price
 
+
+
+
     function setReview(event) {
         const reviewAction = {
             rating: event.target.value,
             orderId: props.orderId
         }
         dispatch(updateReviews(reviewAction))
+    }
+
+    function submitReview() {
+        console.log('review: ', props.review)
+
+
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                rating: props.review,
+                order_id: props.orderId
+            })
+        }
+
+        fetch('http://localhost:3000/updateReview', requestOptions)
+            .then(response => {
+                if (response.status === 200) {
+                    console.log('success updating review')
+                } else {
+                    // dispatch(displayError('Invalid Username'));
+                }
+            })
+
     }
 
 
@@ -61,7 +98,7 @@ export default function OrderVisible(props) {
                         <option>1. Poison</option>
 
                     </select>
-                    <button>Submit</button>
+                    <button onClick={submitReview}>Submit</button>
                 </div>
 
 

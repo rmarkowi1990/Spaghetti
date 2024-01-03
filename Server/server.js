@@ -134,6 +134,10 @@ app.get('/ordersByChef/:chefid',
         res.status(200).send(res.locals.returned)
     })
 
+app.post('/updateReview', userController.getReview, (req, res) => {
+    res.status(200).send({})
+})
+
 
 
 

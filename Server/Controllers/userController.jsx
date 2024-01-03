@@ -67,4 +67,13 @@ userController.checkUser = async (req, res, next) => {
     }
 }
 
+userController.getReview = async (req, res, next) => {
+    // const { user_id } = req.body
+    console.log('inside getReview, req.body is: ', req.body)
+    // const review = async db.query()
+
+
+
+}
+
 module.exports = userController;
