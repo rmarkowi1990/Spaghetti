@@ -25,7 +25,7 @@ export default function NavLoggedIn() {
             <ul>
                 <Link to='/feed' className="navLink">Home</Link>
                 <Link to='/cheftable' className="navLink">Chef Table</Link>
-                <Link to='/orders' className="navLink">Orders</Link>
+                <Link to='/orders' className="navLink">Your Orders</Link>
                 <Link to='/login' className="navLink" onClick={logout}>Log Out</Link>
 
             </ul>

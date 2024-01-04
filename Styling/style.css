@@ -373,6 +373,19 @@ body {
 
 }
 
+#instructions {
+    color: lightblue;
+
+    text-transform: lowercase;
+    font-weight: 500;
+    letter-spacing: 3px;
+    font-style: italic;
+    margin-top: -50px;
+    margin-bottom: 40px;
+    /* font-size: 20px; */
+
+}
+
 /* meal cards */
 
 .mealContainer {
@@ -1315,10 +1328,11 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 68%;
-    padding: 50px;
+    width: 48%;
+    padding: 30px;
     margin-top: 20px;
     border-radius: 10px;
+
     /* height: 200px; */
 
 
@@ -1335,6 +1349,20 @@ body {
     font-size: 45px;
     /* margin-bottom: 20px; */
     /* font-style: italic */
+
+    font-size: 42px;
+    width: auto;
+    color: white;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: -2px;
+    /* background-color: #FF1F1F; */
+    background-color: #FC4B4B;
+    padding: 10px 30px 10px 30px;
+    border-radius: 40px;
+    margin-top: 0px;
+
+    filter: drop-shadow(0px 10px 4px rgb(35, 49, 66, 10%));
 }
 
 
@@ -1344,7 +1372,7 @@ body {
     flex-direction: row;
     width: 68%;
     justify-content: space-between;
-    padding: 50px;
+    padding: 30px;
 }
 
 
@@ -1515,6 +1543,7 @@ body {
 
 #newOrderContainer {
     background-color: #E2FF37;
+    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
