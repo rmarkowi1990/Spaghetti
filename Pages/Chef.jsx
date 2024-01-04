@@ -97,7 +97,8 @@ export default function Chef() {
         formData.append('chefId', id);
         formData.append('portions', portions)
         formData.append('price', price);
-        formData.append('expiration', expiration);
+        // formData.append('expiration', expiration);
+        formData.append('expiration', new Date(expiration));
         formData.append('description', description);
         formData.append('dairy', dairy);
         formData.append('eggs', eggs);

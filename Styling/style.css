@@ -446,6 +446,29 @@ body {
 
 }
 
+#twoPrices {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+
+}
+
+#oldPrice {
+    font-weight: 200;
+    text-decoration: line-through
+}
+
+#mealBoxDiscount {
+
+    background-color: #E2FF37;
+    background-color: #097969;
+
+    color: #273648;
+}
+
+
+
+
 .detailsRight>h2 {
     margin: 0px;
     padding-top: 19px;
@@ -853,12 +876,13 @@ body {
 .previewGrid {
     display: grid;
     grid-template-columns: [left] 55% [center] 45% [right];
-    background-color: #F6F6F6;
+    /* background-color: #F6F6F6; */
     color: #273648;
     border-radius: 20px;
     height: 100%;
     margin-bottom: 50px;
     padding: 15px;
+    background-color: #F6F6F6;
 }
 
 #previewTitle {
@@ -923,6 +947,7 @@ body {
     margin: 20px;
     display: flex;
     flex-direction: column;
+
     align-items: center;
     justify-content: flex-start;
 }
@@ -941,10 +966,12 @@ body {
     margin-right: 20px;
     margin-bottom: 20px;
     margin-left: 20px;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+
     /* background-color: pink; */
 }
 
@@ -970,11 +997,14 @@ body {
 }
 
 #previewFooter {
-    width: 100%;
+    width: 600px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
     /* gap: 20px; */
 
 }
@@ -1021,6 +1051,34 @@ body {
     border-radius: 10px;
 
 
+}
+
+#previewPriceBox2 {
+    background-color: #097969;
+
+    color: #273648;
+    color: white;
+    width: 175px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    font-size: 28px;
+    font-weight: 400;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    /* background-color: red; */
+    border-radius: 10px;
+
+
+}
+
+#oldPriceWrong {
+    font-style: italic;
+    text-decoration: line-through;
+    font-weight: 200;
 }
 
 .previewQuantityBox {

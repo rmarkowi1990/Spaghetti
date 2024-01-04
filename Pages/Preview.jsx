@@ -77,7 +77,7 @@ export default function Preview(props) {
                 meal_id: preview.meal_id,
                 date: today,
                 //adjust price
-                price: preview.price,
+                price: preview.price === 'none' ? preview.price : preview.discount,
                 quantity: quantity,
                 time: new Date().toLocaleTimeString()
             })
@@ -137,18 +137,19 @@ export default function Preview(props) {
 
                     <h3>Contains:</h3>
                     <p>{ingredientScript()}</p>
-                    <h3>Expiration:</h3>
-                    <p>{preview.expiration}</p>
-                    <div id='previewFooter'>
-                        <div id='previewPriceBox'>{preview.price}</div>
-                        <div className='previewQuantityBox'>
-                            <div id='previewArrowDown' onClick={() => dispatch(decreaseQuantity())}>↓</div>
-                            <div id='previewQuantity' >{quantity}</div>
-                            <div id='previewArrowUp' onClick={() => dispatch(increaseQuantity())}>↑</div>
-                        </div>
-                        <button onClick={placeOrder}>Order</button>
-                    </div>
+                    <h3>Expires in:</h3>
+                    <p>{preview.expiration} Days</p>
+
                 </div>
+            </div>
+            <div id='previewFooter'>
+                {preview.discount === 'none' ? <div id='previewPriceBox'>{preview.price}</div> : <div id='previewPriceBox2'><span id='oldPriceWrong'>{preview.price}</span><span>{preview.discount}</span></div>}
+                <div className='previewQuantityBox'>
+                    <div id='previewArrowDown' onClick={() => dispatch(decreaseQuantity())}>↓</div>
+                    <div id='previewQuantity' >{quantity}</div>
+                    <div id='previewArrowUp' onClick={() => dispatch(increaseQuantity())}>↑</div>
+                </div>
+                <button onClick={placeOrder}>Order</button>
             </div>
 
             <h3 id="previewError">{errorMessage}</h3>

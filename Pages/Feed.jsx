@@ -99,7 +99,7 @@ export default function Feed() {
     //only show meals with portions available
     if (retrieved) {
         const filtered = mealData.filter((meal) => meal.portions > 0)
-        rendered = filtered.map(meal => <MealCard distance={Math.round(meal.distance)} id={meal.meal_id} name={meal.mealtitle} chef={meal.chef} rating={meal.rating ? meal.rating : 'No Rating'} days="1.5" price={meal.price} image={meal.url} />)
+        rendered = filtered.map(meal => <MealCard discount={meal.discount} distance={Math.round(meal.distance)} id={meal.meal_id} name={meal.mealtitle} chef={meal.chef} rating={meal.rating ? meal.rating : 'No Rating'} days={meal.expiration} price={meal.price} image={meal.url} />)
     }
 
     const pounds = history ? history.filter(order => order.received === true).length : 0

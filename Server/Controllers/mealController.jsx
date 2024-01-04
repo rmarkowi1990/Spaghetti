@@ -27,7 +27,39 @@ mealController.getMeals = async (req, res, next) => {
 
         const getText = 'SELECT meals.*, users.username AS chef, users.address, users.city, users.state, users.zip, users.chefrating AS rating FROM meals LEFT OUTER JOIN users ON users.id = meals.chef_id';
         const returned = await db.query(getText);
-        res.locals.meals = returned.rows
+
+        const expirationInDays = (returned.rows).map(meal => {
+
+            // determines expiration in days
+            const today = new Date();
+            const expiration = new Date(meal.expiration)
+            const timeMS = expiration.getTime() - today.getTime()
+            const days = Math.round(timeMS / (1000 * 3600 * 24));
+
+            //determines discounted price IF any
+
+            let discount = 'none'
+
+            // console.log('meal price: ', Number(meal.price.slice(1)), 'days: ', days)
+
+
+            if (days === 2) discount = Number(meal.price.slice(1)) * .66
+            if (days === 1) discount = Number(meal.price.slice(1)) * .4
+            if (days === 0) discount = Number(meal.price.slice(1)) * .2
+            if (typeof discount === 'number') discount = '$' + discount.toFixed(2).toString()
+
+
+
+
+            return { ...meal, expiration: days, discount: discount }
+
+        })
+
+
+
+
+
+        res.locals.meals = expirationInDays
 
         return next()
 
