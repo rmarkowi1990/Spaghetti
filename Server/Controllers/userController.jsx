@@ -1,5 +1,6 @@
 const { MongoBatchReExecutionError } = require('mongodb');
 const db = require('../Models/databaseModels.jsx');
+const bcrypt = require('bcryptjs')
 
 
 
@@ -39,22 +40,32 @@ userController.checkUser = async (req, res, next) => {
         const text = `SELECT * FROM users WHERE username = '${userName}'`;
         const match = await db.query(text)
 
+        bcrypt.compare(password, match.rows[0].password, function (err, result) {
+            if (result) {
+                // console.log('match: ', match.rows[0])
+                const userDetails = match.rows[0];
+                delete userDetails.password;
+                res.locals.userDetails = userDetails;
+
+                return next()
+            } else {
+                return next({
+                    log: 'Invalid Login',
+                    status: 400,
+                    message: { err: 'Invalid Login' },
+
+                })
+            }
+
+
+
+        })
+
+
+
+
         //update to bcrypt.compare
-        if (password === match.rows[0].password) {
-            // console.log('match: ', match.rows[0])
-            const userDetails = match.rows[0];
-            delete userDetails.password;
-            res.locals.userDetails = userDetails;
 
-            return next()
-        } else {
-            return next({
-                log: 'Invalid Login',
-                status: 400,
-                message: { err: 'Invalid Login' },
-
-            })
-        }
 
 
 

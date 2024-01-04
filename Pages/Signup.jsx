@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import bcrypt from 'bcryptjs'
 
 
 // import bcrypt from 'bcrypt';
@@ -24,37 +25,46 @@ export default function Signup() {
         // console.log('hashed password: ,', hashedPassword);
 
         //makes sure zip code is a number that is 5 characters long
+
+
         if (zip.length !== 5 || Number(zip) === 'unefined') {
             dispatch(displayError('Invalid Zip'));
             return
         }
 
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                userName: userName,
-                password: password,
-                firstName: firstName,
-                lastName: lastName,
-                address: address,
-                city: city,
-                state: state,
-                zip: zip
-            })
-        }
+        bcrypt.hash(password, 10, function (err, hash) {
 
-        fetch('http://localhost:3000/signup', requestOptions)
-            .then(response => {
-                if (response.status === 200) {
-                    dispatch(resetState());
-                    return navigate('/login');
-                } else {
-                    dispatch(displayError('Invalid Username'));
-                }
-            })
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    userName: userName,
+                    password: hash,
+                    firstName: firstName,
+                    lastName: lastName,
+                    address: address,
+                    city: city,
+                    state: state,
+                    zip: zip
+                })
+            }
+
+            fetch('http://localhost:3000/signup', requestOptions)
+                .then(response => {
+                    if (response.status === 200) {
+                        dispatch(resetState());
+                        return navigate('/login');
+                    } else {
+                        dispatch(displayError('Invalid Username'));
+                    }
+                })
+
+        })
+
+
+
         // .then(data =>
         //     dispatch(displayError(data.msg)))
         // .then(data => {
