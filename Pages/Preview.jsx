@@ -130,7 +130,7 @@ export default function Preview(props) {
                     <h3>Description:</h3>
                     <p>{preview.description}</p>
                     <h3>Distance:</h3>
-                    <p>3 Miles</p>
+                    <p>{Math.round(preview.distance)} Miles</p>
 
                     <h3>Portions Available:</h3>
                     <p>{preview.portions}</p>
