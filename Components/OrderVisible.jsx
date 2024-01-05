@@ -10,22 +10,7 @@ export default function OrderVisible(props) {
 
     const dispatch = useDispatch()
 
-
-
-
-
-
-
-    // const review = useSelector((state) => state.history[props.index].review) ? useSelector((state) => state.history[props.index].review) : ''
-
-    function handleClick() {
-        dispatch(toggleVisibility(props.index))
-    }
-
     const price = props.price
-
-
-
 
     function setReview(event) {
         const reviewAction = {

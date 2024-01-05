@@ -113,7 +113,7 @@ export default function Feed() {
                 <h1 className='pounds' id='spaghetti'>{pounds}</h1>
 
             </div>
-                <h2 id='instructions'>Eat Leftovers. Increase Your Spaghetti Score.</h2>
+                {/* <h2 id='instructions'>Eat Leftovers. Increase Your Spaghetti Score.</h2> */}
 
                 <div className='feedGrid'>
                     {rendered}

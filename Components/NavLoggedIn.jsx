@@ -21,7 +21,7 @@ export default function NavLoggedIn() {
 
     return (
         <div id="navBar">
-            <h1 id='logo' onClick={() => navigate('/feed')}>spaghetti</h1>
+            <div id='headerWithLogline'><h1 id='logo' onClick={() => navigate('/')}>spaghetti</h1><h4>eat leftovers. increase your spaghetti score.</h4></div>
             <ul>
                 <Link to='/feed' className="navLink">Home</Link>
                 <Link to='/cheftable' className="navLink">Chef Table</Link>
