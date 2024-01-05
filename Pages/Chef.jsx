@@ -89,8 +89,6 @@ export default function Chef() {
     const submit = (event) => {
         event.preventDefault();
 
-
-
         const formData = new FormData();
         formData.append('image', image);
         formData.append('mealTitle', mealTitle);
@@ -133,12 +131,9 @@ export default function Chef() {
             <div id='container2'></div>
             <h1>{username}'s Chef Table</h1>
             <div id='splitScreenChef'>
-                {/* <div id="ordersAlertSection">
-
-                </div> */}
 
                 <div id='outerMeal'>
-                    {/* <h1>New Chef Creation</h1> */}
+
                     <div id='mealSubmission'>
                         <h1 id='newChefCreation'>New Chef Creation</h1>
 
@@ -224,28 +219,17 @@ export default function Chef() {
                                 <div id='spacer'>
                                     <h3 className='subtitle'>Description</h3>
                                     <textarea id="description" onInput={(event) => dispatch(enterDescription(event))} value={description}></textarea>
-                                    {/* <h3>Image</h3> */}
 
-                                    {/* <form onSubmit={submit}> */}
-
-                                    {/* <input type='file' accept='image/*' onChange={(event) => dispatch(addImage(event.target.files[0]))} /> */}
                                 </div>
                                 <button id='formSubmit' type='submit'>Serve</button>
 
                             </form>
 
                         </div>
-                        {/* <h3>Image</h3>
-                    <form onSubmit={submit}>
 
-                        <input type='file' accept='image/*' onChange={(event) => dispatch(addImage(event.target.files[0]))} />
-                        <button type='submit'>Submit</button>
-
-                    </form> */}
 
                     </div>
 
-                    {/* <button onClick={submit}>Share</button> */}
 
 
 
@@ -254,17 +238,13 @@ export default function Chef() {
 
                 <div id='imageSection'>
 
-                    {/* <h1 id="orderUp">Order Up:</h1>
-                    <br></br> */}
-                    {ordersByChef && newOrders.length > 0 ? newOrders : <div id='imageSection'> <img src="https://whatsfordinner.com/wp-content/uploads/2017/04/Keep_Them_Busy_10_Things_Kids_Can_Do_in_The_Kitchen_-_Feature.jpg"></img><img src="https://img.freepik.com/premium-photo/refrigerator-with-holiday-leftovers-turkey-ham-stuffing-generative-ai_864588-12391.jpg"></img>
-                    </div>}
-                    {/* {mealsRendered} */}
 
-                    {/* <img src="https://img.freepik.com/premium-photo/refrigerator-with-holiday-leftovers-turkey-ham-stuffing-generative-ai_864588-12391.jpg"></img>
-                    <img src="https://whatsfordinner.com/wp-content/uploads/2017/04/Keep_Them_Busy_10_Things_Kids_Can_Do_in_The_Kitchen_-_Feature.jpg"></img> */}
+                    {ordersByChef && newOrders.length > 0 ? newOrders : <div id='imageSection'> <img className='greyscale' src="https://img.freepik.com/premium-photo/refrigerator-with-holiday-leftovers-turkey-ham-stuffing-generative-ai_864588-12391.jpg"></img><img className="greyscale" src="https://whatsfordinner.com/wp-content/uploads/2017/04/Keep_Them_Busy_10_Things_Kids_Can_Do_in_The_Kitchen_-_Feature.jpg"></img>
+                    </div>}
+
 
                 </div>
-                {/* </div > */}
+
 
             </div>
             <h2 id='menuSubtitle'>Your Creations</h2>

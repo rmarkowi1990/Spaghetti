@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import OrderHidden from '../Components/OrderHidden.jsx';
 import OrderVisible from '../Components/OrderVisible.jsx';
 import OrderAwaits from '../Components/OrderAwaits.jsx';
+import OrderCooking from '../Components/OrderCooking.jsx'
 import Review from '../Components/Review.jsx'
 import { toggleVisibility } from '../Redux/orderSlice.js';
 
@@ -117,6 +118,11 @@ export default function Orders() {
         <div id='ordersBackground'>
 
             <div id="ordersContainer">
+
+                
+                {rendered && rendered.filter(order => order.fulfilled === false).length > 0 && <OrderCooking />}
+
+
                 {awaitingPickup}
                 {/* <Review /> */}
                 <h1 id="ordersH1">Completed</h1>

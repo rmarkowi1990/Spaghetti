@@ -7,7 +7,7 @@ export default function Nav() {
 
     return (
         <div id="navBar">
-            <h1 id='logo' onClick={() => navigate('/')}>spaghetti</h1>
+            <div id='headerWithLogline'><h1 id='logo' onClick={() => navigate('/')}>spaghetti</h1><h4>eat leftovers. increase your spaghetti score.</h4></div>
             <ul>
                 <Link to='/' className="navLink">Home</Link>
                 <Link to='/login' className="navLink">Login</Link>
