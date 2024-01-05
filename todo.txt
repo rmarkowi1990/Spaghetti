@@ -1,5 +1,5 @@
 
+process.env and git ignore
 
--make your creations not show in feed
--toggle visibility better functionality
--set up alerts
+
+new order alert?
