@@ -10,6 +10,8 @@ orderController.processOrder = async (req, res, next) => {
 
         console.log('process order time: ', time)
 
+        console.log('price price: ', price)
+
         const totalPrice = Number(price.slice(1)) * quantity
 
         const USDollar = new Intl.NumberFormat('en-US', {

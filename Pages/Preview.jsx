@@ -64,7 +64,16 @@ export default function Preview(props) {
             return;
         }
 
-        console.log('user id: ', user_id)
+
+
+        let price = ''
+
+        // if (preview.discount === 'none') {
+        //     price = preview.price
+        // } else {
+        //     price = preview.discount
+        // }
+
 
 
         const requestOptions = {
@@ -77,11 +86,13 @@ export default function Preview(props) {
                 meal_id: preview.meal_id,
                 date: today,
                 //adjust price
-                price: preview.price === 'none' ? preview.price : preview.discount,
+                price: preview.discount === 'none' ? preview.price : preview.discount,
                 quantity: quantity,
                 time: new Date().toLocaleTimeString()
             })
         }
+
+        console.log('request options, ', requestOptions)
 
         fetch('http://localhost:3000/placeOrder', requestOptions)
             .then(res => res.json())
