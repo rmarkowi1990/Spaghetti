@@ -68,13 +68,6 @@ export default function Preview(props) {
 
         let price = ''
 
-        // if (preview.discount === 'none') {
-        //     price = preview.price
-        // } else {
-        //     price = preview.discount
-        // }
-
-
 
         const requestOptions = {
             method: 'POST',
@@ -85,7 +78,6 @@ export default function Preview(props) {
                 user_id: user_id,
                 meal_id: preview.meal_id,
                 date: today,
-                //adjust price
                 price: preview.discount === 'none' ? preview.price : preview.discount,
                 quantity: quantity,
                 time: new Date().toLocaleTimeString()
@@ -99,7 +91,7 @@ export default function Preview(props) {
             .then(meals => {
                 dispatch(storeMeals(meals));
                 dispatch(newAlert('Order In Progress. Check back on "Order Page" to see when Order ready for pickup.'))
-                navigate('/feed')
+                navigate('/orders')
 
             })
 
@@ -121,7 +113,7 @@ export default function Preview(props) {
     return (
         <div className='previewContainer'>
 
-            <h1 id='previewTitle'>{preview.mealtitle}</h1>
+            <h1 id='previewTitle'>{preview.discount === 'none' ? preview.mealtitle : preview.mealtitle + '💀'}</h1>
 
             <h2 id='previewChef'>a creation by <span id='previewUsername'>{preview.chef}</span>           <span id='starSize'> {starRating}</span>
                 {/* <span id='previewRating'>({preview.rating})</span> */}

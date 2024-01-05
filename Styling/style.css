@@ -483,8 +483,8 @@ body {
 
 #mealBoxDiscount {
 
-    background-color: #E2FF37;
-    background-color: #FF7F50;
+    background-color: #643b9f;
+    /* background-color: #371576; */
 
 
     /* background: repeating-linear-gradient(135deg,
@@ -498,7 +498,9 @@ body {
 }
 
 #titleExpired {
-    color: #FF7F50
+    color: #643b9f;
+    /* background-color: #643b9f; */
+
 }
 
 
@@ -1133,7 +1135,7 @@ body {
 }
 
 #previewPriceBox2 {
-    background-color: #FF7F50;
+    background-color: #643b9f;
 
     color: #273648;
     color: white;

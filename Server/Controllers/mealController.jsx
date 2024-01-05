@@ -55,11 +55,14 @@ mealController.getMeals = async (req, res, next) => {
 
         })
 
+        //doesn't show expired meals
+        const noExpired = expirationInDays.filter(meal => meal.expiration >= 0)
 
 
 
 
-        res.locals.meals = expirationInDays
+
+        res.locals.meals = noExpired
 
         return next()
 
