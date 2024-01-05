@@ -1,3 +1,5 @@
--rating system needs to not rate twice
--adjust orders on expiration
+
+
+-make your creations not show in feed
+-toggle visibility better functionality
 -set up alerts

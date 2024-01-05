@@ -68,7 +68,7 @@ export default function OrderVisible(props) {
     return (
 
         <div className='orderVisibleContainer' >
-            <div className='orderHeader' onClick={handleClick}>
+            <div className='orderHeader' onClick={() => props.toggle(props.orderId)}>
                 <span>{props.date}</span>
                 <span id='orderMealTitle'>{props.title}</span>
                 <span>{props.price}</span>

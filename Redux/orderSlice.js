@@ -48,8 +48,20 @@ export const orderSlice = createSlice({
             })
             state.ordersByChef = returnedOrdersByChef;
         },
+        // toggleVisibility: (state, action) => {
+        //     state.history[action.payload].visible = !state.history[action.payload].visible
+
+        // },
         toggleVisibility: (state, action) => {
-            state.history[action.payload].visible = !state.history[action.payload].visible
+
+            const mutated = state.history
+
+            for (let order of mutated) {
+                if (order.order_id === action.payload) {
+                    order.visible = !order.visible
+                }
+            }
+            state.history = mutated;
 
         },
         updateReviews: (state, action) => {

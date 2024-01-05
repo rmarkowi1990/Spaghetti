@@ -12,16 +12,16 @@ export default function OrderHidden(props) {
 
     const dispatch = useDispatch()
 
-    function handleClick() {
-        dispatch(toggleVisibility(props.index))
-    }
+    // function handleClick() {
+    //     dispatch(toggleVisibility(props.index))
+    // }
 
 
 
 
 
     return (
-        <div className='orderHidden' onClick={handleClick}>
+        <div className='orderHidden' onClick={() => props.toggle(props.orderId)}>
             <span>{props.date}</span>
             <span id='orderMealTitle'>{props.title}</span>
             <span>{props.price}</span>

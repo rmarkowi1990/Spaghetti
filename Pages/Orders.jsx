@@ -4,6 +4,8 @@ import OrderHidden from '../Components/OrderHidden.jsx';
 import OrderVisible from '../Components/OrderVisible.jsx';
 import OrderAwaits from '../Components/OrderAwaits.jsx';
 import Review from '../Components/Review.jsx'
+import { toggleVisibility } from '../Redux/orderSlice.js';
+
 
 import { getHistory } from '../Redux/orderSlice.js';
 import { hideAlert } from '../Redux/sessionSlice.js';
@@ -42,6 +44,12 @@ export default function Orders() {
 
             })
 
+
+    }
+
+    function toggle(orderId) {
+        console.log('toggling order id:', orderId)
+        dispatch(toggleVisibility(orderId))
 
     }
 
@@ -89,12 +97,14 @@ export default function Orders() {
 
 
 
+
+
     if (rendered) history = received.map((order, index) => {
 
         if (order.visible) {
-            return <OrderVisible refreshHistory={refreshHistory} reviewed={order.reviewed} date={order.date} review={order.review} index={index} chefName={order.chef_username} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.chef_address} city={order.chef_city} state={order.chef_state} zip={order.chef_zip} chefId={order.chef_id} />
+            return <OrderVisible toggle={toggle} refreshHistory={refreshHistory} reviewed={order.reviewed} date={order.date} review={order.review} index={index} chefName={order.chef_username} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.chef_address} city={order.chef_city} state={order.chef_state} zip={order.chef_zip} chefId={order.chef_id} />
         } else {
-            return <OrderHidden date={order.date} index={index} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.address} city={order.city} state={order.state} zip={order.zip} />
+            return <OrderHidden toggle={toggle} date={order.date} index={index} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.address} city={order.city} state={order.state} zip={order.zip} />
         }
 
 
