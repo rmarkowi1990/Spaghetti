@@ -19,7 +19,8 @@ const initialState = {
         meat: false
     },
     description: '',
-    meals: null
+    meals: null,
+    acceptingOrders: true
 }
 
 export const chefSlice = createSlice({
@@ -79,6 +80,9 @@ export const chefSlice = createSlice({
         refreshMeals: (state, action) => {
             state.meals = action.payload
         },
+        setAcceptingOrders: (state, action) => {
+            state.acceptingOrders = action.payload
+        },
         reset: (state) => {
 
             state.mealTitle = '',
@@ -111,7 +115,7 @@ export const chefSlice = createSlice({
 
 
 // destructuring to export each action based on reducer functions
-export const { enterPortions, refreshMeals, reset, addImage, enterMealTitle, enterDescription, enterExpiration, enterPrice, toggleCrustaceans, toggleDairy, toggleEggs, toggleFish, toggleMeat, togglePeanuts, toggleSesame, toggleSoybeans, toggleTreeNuts, toggleWheat } = chefSlice.actions;
+export const { setAcceptingOrders, enterPortions, refreshMeals, reset, addImage, enterMealTitle, enterDescription, enterExpiration, enterPrice, toggleCrustaceans, toggleDairy, toggleEggs, toggleFish, toggleMeat, togglePeanuts, toggleSesame, toggleSoybeans, toggleTreeNuts, toggleWheat } = chefSlice.actions;
 
 export default chefSlice.reducer;
 

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import axios from 'axios'
 
-import { enterPortions, refreshMeals, reset, addImage, enterMealTitle, enterDescription, enterExpiration, enterPrice, toggleCrustaceans, toggleDairy, toggleEggs, toggleFish, toggleMeat, togglePeanuts, toggleSesame, toggleSoybeans, toggleTreeNuts, toggleWheat } from '../Redux/chefSlice';
+import { setAcceptingOrders, enterPortions, refreshMeals, reset, addImage, enterMealTitle, enterDescription, enterExpiration, enterPrice, toggleCrustaceans, toggleDairy, toggleEggs, toggleFish, toggleMeat, togglePeanuts, toggleSesame, toggleSoybeans, toggleTreeNuts, toggleWheat } from '../Redux/chefSlice';
 import { getOrdersByChef } from '../Redux/orderSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
@@ -43,6 +43,49 @@ export default function Chef() {
 
     }, [])
 
+    //getting initial status of accepting orders:
+    useEffect(() => {
+        fetch(`http://localhost:3000/getAcceptingOrders/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log('returned accepting orders,', data)
+                dispatch(setAcceptingOrders(data));
+            })
+
+
+    }, [])
+
+
+
+    function toggleAcceptingOrders() {
+
+        dispatch(setAcceptingOrders(!acceptingOrders));
+
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                chefID: id,
+                status: acceptingOrders,
+            })
+        }
+
+
+        fetch('http://localhost:3000/toggleAcceptingOrders', requestOptions)
+            .then(res => res.json())
+            .then(data => {
+                console.log('returned acceptingOrders via toggle ,', data)
+                // dispatch(setAcceptingOrders(data));
+                // console.log('afterDispatch')
+            })
+
+
+
+
+    }
+
 
     function markFulfilled(orderId) {
         console.log('order to fulfil: ', orderId)
@@ -75,7 +118,7 @@ export default function Chef() {
 
 
 
-    const { portions, meals, image, mealTitle, price, expiration, description } = useSelector(state => state.chef);
+    const { acceptingOrders, portions, meals, image, mealTitle, price, expiration, description } = useSelector(state => state.chef);
     const { dairy, eggs, fish, crustaceans, treeNuts, peanuts, wheat, soybeans, sesame, meat } = useSelector(state => state.chef.ingredients)
 
 
@@ -130,6 +173,14 @@ export default function Chef() {
         <div id='chefTableContainer'>
             <div id='container2'></div>
             <h1>{username}'s Chef Table</h1>
+            <div className='acceptingOrdersHeader'>
+                <h3>Accepting Orders</h3>
+                <label class="switch">
+                    <input type="checkbox" checked={acceptingOrders} onChange={toggleAcceptingOrders} />
+                    <span class="slider"></span>
+                </label>
+            </div>
+
             <div id='splitScreenChef'>
 
                 <div id='outerMeal'>
@@ -237,6 +288,7 @@ export default function Chef() {
                 </div>
 
                 <div id='imageSection'>
+
 
 
                     {ordersByChef && newOrders.length > 0 ? newOrders : <div id='imageSection'> <img className='greyscale' src="https://img.freepik.com/premium-photo/refrigerator-with-holiday-leftovers-turkey-ham-stuffing-generative-ai_864588-12391.jpg"></img><img className="greyscale" src="https://whatsfordinner.com/wp-content/uploads/2017/04/Keep_Them_Busy_10_Things_Kids_Can_Do_in_The_Kitchen_-_Feature.jpg"></img>

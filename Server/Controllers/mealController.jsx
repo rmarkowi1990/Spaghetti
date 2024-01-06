@@ -25,7 +25,7 @@ mealController.getMeals = async (req, res, next) => {
 
     try {
 
-        const getText = 'SELECT meals.*, users.username AS chef, users.address, users.city, users.state, users.zip, users.chefrating AS rating FROM meals LEFT OUTER JOIN users ON users.id = meals.chef_id';
+        const getText = 'SELECT meals.*, users.username AS chef, users.address, users.city, users.state, users.zip, users.chefrating AS rating, users.acceptingorders FROM meals LEFT OUTER JOIN users ON users.id = meals.chef_id';
         const returned = await db.query(getText);
 
         const expirationInDays = (returned.rows).map(meal => {

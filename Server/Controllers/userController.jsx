@@ -15,8 +15,8 @@ userController.createUser = async (req, res, next) => {
     try {
 
         const submitted = req.body;
-        const values = [submitted.userName, submitted.password, submitted.firstName, submitted.lastName, submitted.address, submitted.city, submitted.state, submitted.zip, 0, 0];
-        const text = "INSERT INTO users (userName, password, firstName, lastName, address, city, state, zip, chefrating, chefratingamount) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)";
+        const values = [submitted.userName, submitted.password, submitted.firstName, submitted.lastName, submitted.address, submitted.city, submitted.state, submitted.zip, 0, 0, true];
+        const text = "INSERT INTO users (userName, password, firstName, lastName, address, city, state, zip, chefrating, chefratingamount, acceptingorders) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)";
 
         await db.query(text, values);
         console.log("after db entry")
@@ -93,6 +93,41 @@ userController.updateReview = async (req, res, next) => {
         return next()
     }
 
+
+
+}
+
+userController.toggleAcceptingOrders = async (req, res, next) => {
+    const { chefID, status } = req.body;
+    await db.query(`UPDATE users SET acceptingorders = ${!status} WHERE id = ${chefID}`)
+
+
+}
+
+userController.getAcceptingOrders = async (req, res, next) => {
+    try {
+
+        const returnedStatus = await db.query(`SELECT acceptingorders FROM users WHERE id = ${req.body.chefID}`)
+        console.log('returned status, ', returnedStatus.rows[0].acceptingorders)
+        res.locals.status = returnedStatus.rows[0].acceptingorders
+        return next()
+    } catch (error) {
+        return next(error)
+    }
+
+
+}
+
+userController.getAcceptingOrdersById = async (req, res, next) => {
+
+    try {
+        const returnedStatus = await db.query(`SELECT acceptingorders FROM users WHERE id = ${req.params.chefid}`)
+        console.log('getting initial status, ', returnedStatus.rows[0].acceptingorders)
+        res.locals.status = returnedStatus.rows[0].acceptingorders
+        return next()
+    } catch (error) {
+        return next(error)
+    }
 
 
 }

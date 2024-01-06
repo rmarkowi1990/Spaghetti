@@ -141,6 +141,22 @@ app.post('/updateReview',
         res.status(200).send({})
     })
 
+app.post('/toggleAcceptingOrders',
+    userController.toggleAcceptingOrders,
+    userController.getAcceptingOrders,
+    (req, res) => {
+        res.status(200).send(res.locals.status)
+
+    })
+
+app.get('/getAcceptingOrders/:chefid',
+    userController.getAcceptingOrdersById,
+    (req, res) => {
+        console.log('now about to send response: ', res.locals.status)
+        res.status(200).send(res.locals.status)
+
+    })
+
 
 
 
@@ -168,3 +184,5 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
     console.log(`Server listening on port: ${PORT}...`);
 });
+
+
