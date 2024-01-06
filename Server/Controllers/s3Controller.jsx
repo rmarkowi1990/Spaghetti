@@ -4,21 +4,31 @@ const aws = require('aws-sdk');
 const { S3Client, PutObjectAclCommand, PutObjectCommand, GetObjectCommand } = require('@aws-sdk/client-s3');
 const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 
-const dotenv = require('dotenv');
+
+
+const path = require('path')
+
 const crypto = require('crypto')
 const { promisify } = require('util')
 
-dotenv.config()
+require('dotenv').config({ path: require('find-config')('.env') })
+
+
+
 const randomBytes = promisify(crypto.randomBytes)
 
 
 const region = 'us-west-1';
 const bucketName = 'rmarkowi1990';
 
+
+
 const s3 = new S3Client({
     credentials: {
-        accessKeyId: 'AKIA42LHJIHYBI4PA7VC',
-        secretAccessKey: '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'
+        // accessKeyId: 'AKIA42LHJIHYBI4PA7VC',
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY_ID
+        // secretAccessKey: '/BSbtJIwDIL5Z3y+RidRstzvGvieMSFvCnz6pkfA'
     },
     region: region,
 })
