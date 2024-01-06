@@ -30,12 +30,6 @@ export default function Preview(props) {
 
     const { dairy, eggs, fish, crustaceans, treenuts, peanuts, wheat, soybeans, sesame, meat } = preview;
 
-
-
-
-
-
-
     //converts ingredient boolean to string to display
     function ingredientScript() {
 
@@ -64,8 +58,6 @@ export default function Preview(props) {
             return;
         }
 
-
-
         let price = ''
 
 
@@ -91,13 +83,9 @@ export default function Preview(props) {
             .then(meals => {
                 dispatch(storeMeals(meals));
                 dispatch(newAlert('Order In Progress. Check back on "Order Page" to see when Order ready for pickup.'))
-                navigate('/orders')
+                navigate('/feed')
 
             })
-
-
-
-
 
     }
 
@@ -107,20 +95,14 @@ export default function Preview(props) {
     }
 
 
-
-
-
     return (
         <div className='previewContainer'>
 
             <h1 id='previewTitle'>{preview.discount === 'none' ? preview.mealtitle : preview.mealtitle + '💀'}</h1>
 
-            <h2 id='previewChef'>a creation by <span id='previewUsername'>{preview.chef}</span>           <span id='starSize'> {starRating}</span>
-                {/* <span id='previewRating'>({preview.rating})</span> */}
-            </h2>
+            <h2 id='previewChef'>a creation by <span id='previewUsername'>{preview.chef}</span>           <span id='starSize'> {starRating}</span></h2>
 
             <div id='starBox'>
-
 
             </div>
 

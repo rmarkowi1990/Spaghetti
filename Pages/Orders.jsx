@@ -71,15 +71,6 @@ export default function Orders() {
                     })
 
             )
-        // .then(res => res.json())
-        // .then(orders => {
-        //     console.log('order now marked received, now updating state. order: ', orders)
-
-        //     dispatch(getHistory(orders))
-        //     // navigate('/feed')
-
-
-        // })
 
     }
 
@@ -93,12 +84,7 @@ export default function Orders() {
     const received = rendered ? rendered.filter(order => order.received === true) : []
 
 
-
     let history = []
-
-
-
-
 
     if (rendered) history = received.map((order, index) => {
 
@@ -108,28 +94,19 @@ export default function Orders() {
             return <OrderHidden toggle={toggle} date={order.date} index={index} title={order.mealtitle} orderId={order.order_id} price={order.price} quantity={order.quantity} address={order.address} city={order.city} state={order.state} zip={order.zip} />
         }
 
-
     })
-
-
-
 
     return (
         <div id='ordersBackground'>
 
             <div id="ordersContainer">
 
-                
                 {rendered && rendered.filter(order => order.fulfilled === false).length > 0 && <OrderCooking />}
-
-
                 {awaitingPickup}
-                {/* <Review /> */}
+
                 <h1 id="ordersH1">Completed</h1>
 
                 {rendered && history}
-
-
 
             </div>
         </div >

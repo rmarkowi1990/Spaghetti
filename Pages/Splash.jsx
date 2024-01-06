@@ -12,8 +12,6 @@ export default function Splash() {
             <h2>not just a noodle.</h2>
             <h1>a <i>mindset</i>.</h1>
             <button onClick={() => navigate('/login')}>risk it all.</button>
-
-
         </div>
     )
 }

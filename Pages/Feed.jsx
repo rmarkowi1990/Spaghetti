@@ -14,10 +14,6 @@ import * as turf from '@turf/turf'
 
 export default function Feed() {
 
-
-
-
-
     const dispatch = useDispatch();
     const mealData = useSelector(store => store.meals.meals)
     const userId = useSelector(store => store.session.userDetails.id)
@@ -77,25 +73,6 @@ export default function Feed() {
 
     }, [])
 
-    //check for orders for alert
-    // useEffect(() => {
-    //     fetch(`http://localhost:3000/ordersByChef/${userId}`)
-    //         .then(res => res.json())
-    //         .then(orders => {
-    //             dispatch(getOrdersByChef(orders))
-    //         })
-
-
-    // },)
-
-    // const ordersByChef = useSelector(state => state.order.ordersByChef)
-    // const unfulfilled = ordersByChef ? ordersByChef.filter(order => order.fulfilled === false) : []
-    // if (unfulfilled.length > 0) {
-    //     console.log('unfulfilled: ', unfulfilled)
-    //     dispatch(newAlert('You have a new order!'))
-    // }
-
-
 
     let rendered;
 
@@ -113,16 +90,11 @@ export default function Feed() {
         <div className='background'>
             <div id="mainFeed"><div id='scoreboard'>
                 <h1 className='pounds'>pounds of spaghetti:</h1>
-
                 <h1 className='pounds' id='spaghetti'>{pounds}</h1>
-
             </div>
-                {/* <h2 id='instructions'>Eat Leftovers. Increase Your Spaghetti Score.</h2> */}
-
                 <div className='feedGrid'>
                     {rendered}
                 </div>
-
             </div>
         </div>
     )

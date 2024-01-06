@@ -62,17 +62,6 @@ export default function Signup() {
                 })
 
         })
-
-
-
-        // .then(data =>
-        //     dispatch(displayError(data.msg)))
-        // .then(data => {
-        //     console.log(data);
-        //     return navigate('/login');
-        // })
-
-
     }
 
     return (

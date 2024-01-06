@@ -56,11 +56,6 @@ export default function Chef() {
                         dispatch(getOrdersByChef(orders))
                     })
             )
-
-
-
-
-
     }
 
     const newOrders = ordersByChef ? ordersByChef.filter(order => order.fulfilled === false).map(orders => {
@@ -95,7 +90,6 @@ export default function Chef() {
         formData.append('chefId', id);
         formData.append('portions', portions)
         formData.append('price', price);
-        // formData.append('expiration', expiration);
         formData.append('expiration', new Date(expiration));
         formData.append('description', description);
         formData.append('dairy', dairy);
@@ -117,14 +111,7 @@ export default function Chef() {
                 dispatch(reset())
                 navigate('/feed')
             })
-
-
-
     }
-
-
-
-
 
     return (
         <div id='chefTableContainer'>
@@ -137,8 +124,6 @@ export default function Chef() {
                     <div id='mealSubmission'>
                         <h1 id='newChefCreation'>New Chef Creation</h1>
 
-
-
                         <div className='formSection'>
                             <form onSubmit={submit}>
 
@@ -150,10 +135,6 @@ export default function Chef() {
 
                                 <input id='imageSubmit' type='file' accept='image/*' onChange={(event) => dispatch(addImage(event.target.files[0]))} />
 
-
-
-
-
                                 <div className="chefField">
                                     <h3 className='subtitle'>Expiration Date</h3>
                                     <input type="date" onChange={(date) => dispatch(enterExpiration(date))} value={expiration}></input>
@@ -163,8 +144,6 @@ export default function Chef() {
                                     <h3 className='subtitle'>Portions</h3>
                                     <input onInput={(event) => dispatch(enterPortions(event))} value={portions} ></input>
                                 </div>
-
-
 
                                 <div className="chefField">
                                     <h3 className='subtitle'>Price Ceiling</h3>
@@ -211,41 +190,21 @@ export default function Chef() {
                                                 <label for="meat">Meat</label></span>
                                         </div>
                                     </div>
-
-
-
-
                                 </div>
                                 <div id='spacer'>
                                     <h3 className='subtitle'>Description</h3>
                                     <textarea id="description" onInput={(event) => dispatch(enterDescription(event))} value={description}></textarea>
-
                                 </div>
                                 <button id='formSubmit' type='submit'>Serve</button>
 
                             </form>
-
                         </div>
-
-
                     </div>
-
-
-
-
-
                 </div>
-
                 <div id='imageSection'>
-
-
                     {ordersByChef && newOrders.length > 0 ? newOrders : <div id='imageSection'> <img className='greyscale' src="https://img.freepik.com/premium-photo/refrigerator-with-holiday-leftovers-turkey-ham-stuffing-generative-ai_864588-12391.jpg"></img><img className="greyscale" src="https://whatsfordinner.com/wp-content/uploads/2017/04/Keep_Them_Busy_10_Things_Kids_Can_Do_in_The_Kitchen_-_Feature.jpg"></img>
                     </div>}
-
-
                 </div>
-
-
             </div>
             <h2 id='menuSubtitle'>Your Creations</h2>
             <div className='chefFeed'>

@@ -458,7 +458,10 @@ body {
 
 .detailsRight {
     display: flex;
-    justify-content: column;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    width: 80px;
     /* flex-direction: flex-start; */
 
     /* align-items: flex-end; */
@@ -484,6 +487,7 @@ body {
 #mealBoxDiscount {
 
     background-color: #643b9f;
+    background-color: olive;
     /* background-color: #371576; */
 
 
@@ -498,7 +502,7 @@ body {
 }
 
 #titleExpired {
-    color: #643b9f;
+    color: olive;
     /* background-color: #643b9f; */
 
 }
@@ -512,7 +516,7 @@ body {
     /* padding: 0px; */
     /* line-height: 4px; */
     font-size: 20px;
-    width: 50px;
+    /* width: 50px; */
 }
 
 .mealDetails {
@@ -1135,7 +1139,7 @@ body {
 }
 
 #previewPriceBox2 {
-    background-color: #643b9f;
+    background-color: olive;
 
     color: #273648;
     color: white;

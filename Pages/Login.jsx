@@ -9,8 +9,6 @@ import { startSession } from '../Redux/sessionSlice.js';
 
 export default function Login() {
 
-
-
     const dispatch = useDispatch();
 
     const { userName, password, errorMessage } = useSelector((state) => state.login);
@@ -45,9 +43,6 @@ export default function Login() {
             })
 
     }
-
-
-
 
     return (
 
