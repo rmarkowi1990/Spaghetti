@@ -10,7 +10,11 @@ export default function Alert(props) {
     const navigate = useNavigate();
 
     return (
-        <div id="alert" onClick={() => navigate('/orders')}>
+        <div id="alert" onClick={() => {
+            navigate('/orders')
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+
+        }}>
             < span ></span >
             <span id="alertCenter">{props.alertBody}</span>
 

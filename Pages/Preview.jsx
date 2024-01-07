@@ -83,7 +83,8 @@ export default function Preview(props) {
             .then(meals => {
                 dispatch(storeMeals(meals));
                 dispatch(newAlert('Order In Progress. Check back on "Order Page" to see when Order ready for pickup.'))
-                navigate('/feed')
+                navigate('/orders')
+                window.scrollTo({ top: 0, behavior: 'smooth' })
 
             })
 
